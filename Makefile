@@ -1,5 +1,5 @@
 NAME = cub3D
-SOURCES =	
+SOURCES =	main.c
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
