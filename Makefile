@@ -1,12 +1,14 @@
 NAME = cub3D
 SOURCES =	main.c
 
+SRC_PATH = sources
+SRCS = $(addprefix $(SRC_PATH)/, $(SOURCES))
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = ./mlx_linux
 MLX = $(MLX_DIR)/libmlx.a
 
-OBJECTS = $(SOURCES:.c=.o)
+OBJECTS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_FLAGS = -L $(LIBFT_DIR) -l ft
