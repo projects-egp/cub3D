@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 19:56:05 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/18 20:38:21 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ static int	init_other_data(t_mlx *data)
 	//Init other data
 	(void)data;//debug
 	return (1);
+}
+
+static void	init_map_data(t_map *map)
+{
+	map->north_path = NULL;
+	map->east_path = NULL;
+	map->south_path = NULL;
+	map->west_path = NULL;
+	map->floor_color[RED] = 0;
+	map->floor_color[GREEN] = 0 ;
+	map->floor_color[BLUE] = 0;
+	map->ceiling_color[RED] = 0;
+	map->ceiling_color[GREEN] = 0;
+	map->ceiling_color[BLUE] = 0;
+	map->map = NULL;
 }
 
 /*Files are not specifically required to be on maps/, 
@@ -45,7 +60,22 @@ static int	map_format(char *file_path)
 
 int	open_map(char *cub_file_path, t_mlx *data)
 {
+	int	fd;
 	if (!map_format(cub_file_path))
 		return (0);
+	fd = open(cub_file_path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_error("Error\nopen() file.cub has failed");
+		return (0);
+	}
+	init_map_data(data->map_data);
+	//Read line by line and store in a list, or at least this is what
+	//you did on so_long
+	//But this time, would be better to read a line, and see what it has.
+	//Do this to get all data. And later you can work with a list for map...
+	//Or not... Just think about it
+	close(fd);
+	//store_map(data->map_data);//As did it on so_long
 	return (init_other_data(data));
 }
