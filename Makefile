@@ -1,5 +1,6 @@
 NAME = cub3D
-SOURCES =	main.c
+SOURCES =	main.c\
+		$(addprefix parse/, open_map.c)
 
 SRC_PATH = sources
 SRCS = $(addprefix $(SRC_PATH)/, $(SOURCES))
@@ -10,7 +11,8 @@ MLX = $(MLX_DIR)/libmlx.a
 
 OBJECTS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+INCLUDE = -I./include
+CFLAGS = -Wall -Wextra -Werror $(INCLUDE)
 LIBFT_FLAGS = -L $(LIBFT_DIR) -l ft
 MLX_FLAGS = -Lmlx_linux -lmlx_Linux  -L/usr/lib/X11 -lXext -lX11
 LIBS_FLAGS = $(LIBFT_FLAGS) $(MLX_FLAGS)
