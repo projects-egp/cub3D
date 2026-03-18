@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 19:38:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/18 19:56:05 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,22 @@ static int	init_other_data(t_mlx *data)
  *so it is not checked*/
 static int	map_format(char *file_path)
 {
+	char	*first_dot_position;
+
 	if (ft_strnstr(file_path, ".cub", 4))
 	{
 		ft_putendl_error("Error\nGood format, but file has no name");
 		return (0);
 	}
+	first_dot_position = ft_strchr(file_path, '.');
+	if (!first_dot_position
+		|| !ft_strnstr(first_dot_position, ".cub", 4)
+		|| first_dot_position[4] != 0)
+	{
+		ft_putendl_error("Error\nExpected file format: <name>.cub");
+		return (0);
+	}
 	return (1);
-	//Maps/ is not specifically asked
 }
 
 //Store map (And data?)

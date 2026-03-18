@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 18:56:32 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/18 19:58:01 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main(int argc, char **argv)
 
 	//Parse map
 	if (argc != 2 || !open_map(argv[1], &mlx_data))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
