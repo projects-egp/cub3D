@@ -6,18 +6,17 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 18:38:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/18 19:27:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GENERAL_H
 # define GENERAL_H
 
-# include "mlx_linx/mlx.h"
-# include "mlx_linx/mlx_int.h"
-//Insert here new headers
-# include "parse.h"
-# include "libft/complete_libft.h"
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
+# include "../libft/complete_libft.h"
 # include "definitions.h"
+# include "parse.h"
 
 #endif
