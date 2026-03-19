@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_extra.c                              :+:      :+:    :+:   */
+/*   get_next_line_safe.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:30:21 by enrgil-p          #+#    #+#             */
-/*   Updated: 2025/07/12 14:07:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:30:43 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ static char	*get_next_lines(int fd, char **kept)
 	return (line);
 }
 
-char	*get_next_line_extra(int fd, int parse_error_flag)
+char	*safe_call_to_get_next_line(int fd, int parse_error_flag)
 {
 	static char	*kept;
 
-	if (parse_error_flag)
+	if (parse_error_flag == CONTINUE_READING)
 		return (get_next_lines(fd, &kept));
 	if (kept)
 		free(kept);
