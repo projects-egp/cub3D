@@ -6,11 +6,11 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 18:28:32 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:03:01 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	is_empty_line(char *line, t_mlx *data)
+int	is_empty_line(char *line, t_mlx *data)
 {
 	int	len;
 	int	i;
@@ -28,21 +28,37 @@ static int	is_empty_line(char *line, t_mlx *data)
 	return (0);
 }
 
+static int	error_found(char *line, int fd)
+{
+	free(line);
+	safe_call_to_get_next_line(fd, FAIL_HAPPENED);
+	return (0);
+}
+
 int	read_data(char *cub_file_path, t_mlx *data, int fd)
 {
 	char	*line_read;
 
 	while (1)
 	{
-		line_read = safe_call_to_get_next_line(fd);
+		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		//Check line: is it only whitespace?
-		//Have some expected data?
-		//Have more things than expected by some element?
-		//Map has been found to soon?
+		if (!is_empt_line(line_read, data) && data->map->parse_checklist < 6
+			&& !add_scene_data(line_read, data))
+			return (error_found(line_read, fd));
+			//Check what data is here
+			//Have some expected data?
+			//Have more things than expected by some element?
+			//Map has been found to soon?
+		else if (!is_empty_line(line, data))
+			//This is a map line with some chars
+		else
+			//A line on map only with whitespace,
+			//store it and later we will change it to
+			//longest_len_line of 0 or whitespace
+		free(line_read);
 	}
-	return (check_data(data));
-	//Read information
-	//Read map
+	//return (check_data(data));
+	return (check_map(data));
 }
