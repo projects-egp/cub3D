@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 17:43:15 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:27:11 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	init_map_data(t_map *map)
 	map->ceiling_color[RED] = 0;
 	map->ceiling_color[GREEN] = 0;
 	map->ceiling_color[BLUE] = 0;
+	map->parse_checklist = 0;
 	map->map = NULL;
 	map->longest_len_line = 0;
 	map->last_line = 0;

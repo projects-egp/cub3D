@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 17:44:13 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:25:59 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_map
 	char	*west_path;
 	int		floor_color[RGB_VALUES];
 	int		ceiling_color[RGB_VALUES];
+	int		parse_checklist;
 	char	**map;
 	int		longest_len_line;
 	int		last_line;
