@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_map.c                                         :+:      :+:    :+:   */
+/*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 17:04:40 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:43:15 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ static void	init_map_data(t_map *map)
 	map->ceiling_color[GREEN] = 0;
 	map->ceiling_color[BLUE] = 0;
 	map->map = NULL;
+	map->longest_len_line = 0;
+	map->last_line = 0;
 }
 
 /*Files are not specifically required to be on maps/, 
  *so it is not checked*/
-static int	map_format(char *file_path)
+static int	file_format(char *file_path)
 {
 	char	*first_dot_position;
 
@@ -56,12 +58,12 @@ static int	map_format(char *file_path)
 	return (1);
 }
 
-//Store map (And data?)
-
-int	open_map(char *cub_file_path, t_mlx *data)
+int	open_file(char *cub_file_path, t_mlx *data)
 {
 	int	fd;
-	if (!map_format(cub_file_path))
+	int	read_status;
+
+	if (!file_format(cub_file_path))
 		return (0);
 	fd = open(cub_file_path, O_RDONLY);
 	if (fd < 0)
@@ -71,12 +73,15 @@ int	open_map(char *cub_file_path, t_mlx *data)
 		return (0);
 	}
 	init_map_data(data->map_data);
+	read_status = read_data(cub_file_path, data, fd);
 	//Read line by line and store in a list, or at least this is what
 	//you did on so_long
 	//But this time, would be better to read a line, and see what it has.
 	//Do this to get all data. And later you can work with a list for map...
 	//Or not... Just think about it
 	close(fd);
+	if (!read_status)
+		return (0);
 	//store_map(data->map_data);//As did it on so_long
 	return (init_other_data(data));
 }
