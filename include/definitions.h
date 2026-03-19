@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 20:28:21 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:58:23 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_map
 
 typedef struct s_mlx
 {
-	t_map	map_data;
+	t_map	*map_data;
 }	t_mlx;
 
 #endif

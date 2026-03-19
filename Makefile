@@ -1,6 +1,6 @@
 NAME = cub3D
 SOURCES =	main.c\
-		$(addprefix parse/, open_map.c)
+		$(addprefix parse/, parse_main.c)
 
 SRC_PATH = sources
 SRCS = $(addprefix $(SRC_PATH)/, $(SOURCES))

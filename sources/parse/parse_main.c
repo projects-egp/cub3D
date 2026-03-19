@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/18 20:38:21 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:04:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	open_map(char *cub_file_path, t_mlx *data)
 	fd = open(cub_file_path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putendl_error("Error\nopen() file.cub has failed");
+		ft_putstr_fd("Error\nFailed trying to open ", 2);
+		ft_putendl_error(cub_file_path);
 		return (0);
 	}
 	init_map_data(data->map_data);
