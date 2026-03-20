@@ -1,9 +1,8 @@
 NAME = cub3D
 SOURCES =	main.c\
-		$(addprefix parse/, parse_main.c)
+		$(addprefix parse/, parse_main.c add_scene_data.c read_data.c)
 
-SRC_PATH = sources
-SRCS = $(addprefix $(SRC_PATH)/, $(SOURCES))
+SRCS = $(addprefix sources/, $(SOURCES))
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = ./mlx_linux

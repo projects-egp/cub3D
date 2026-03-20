@@ -6,9 +6,11 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 19:03:01 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/20 18:44:00 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "general.h"
 
 int	is_empty_line(char *line, t_mlx *data)
 {
@@ -19,12 +21,13 @@ int	is_empty_line(char *line, t_mlx *data)
 	i = 0;
 	while (i < len)
 	{
-		if (!ft_isspace(&line[i]))
+		if (!ft_isspace(line[i]))
 			return (1);
 		++i;
 	}
-	if (data->map->parse_checklist >= 6 && len > data->map->longest_len_line)
-		data->map->longest_len_line = len;
+	if (data->map_data->parse_checklist >= 6
+		&& len > data->map_data->longest_len_line)
+		data->map_data->longest_len_line = len;
 	return (0);
 }
 
@@ -35,7 +38,7 @@ static int	error_found(char *line, int fd)
 	return (0);
 }
 
-int	read_data(char *cub_file_path, t_mlx *data, int fd)
+int	read_data(t_mlx *data, int fd)
 {
 	char	*line_read;
 
@@ -44,14 +47,14 @@ int	read_data(char *cub_file_path, t_mlx *data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (!is_empt_line(line_read, data) && data->map->parse_checklist < 6
+		if (!is_empty_line(line_read, data) && data->map_data->parse_checklist < 6
 			&& !add_scene_data(line_read, data))
 			return (error_found(line_read, fd));
 			//Check what data is here
 			//Have some expected data?
 			//Have more things than expected by some element?
 			//Map has been found to soon?
-		else if (!is_empty_line(line, data))
+		else if (!is_empty_line(line_read, data))
 			//This is a map line with some chars
 		else
 			//A line on map only with whitespace,

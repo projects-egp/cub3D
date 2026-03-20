@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 18:27:11 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/20 18:44:37 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	open_file(char *cub_file_path, t_mlx *data)
 		return (0);
 	}
 	init_map_data(data->map_data);
-	read_status = read_data(cub_file_path, data, fd);
+	read_status = read_data(data, fd);
 	//Read line by line and store in a list, or at least this is what
 	//you did on so_long
 	//But this time, would be better to read a line, and see what it has.

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/19 19:58:28 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/20 18:27:19 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ static void	store_data(int identifier, char *info, t_mlx *data)
 		//plit with ','
 		//atoi and store
 	}
-	else if (idnetifier == 'N')
-		data->map->north_path = ft_strdup(info);
+	else if (identifier == 'N')
+		data->map_data->north_path = ft_strdup(info);
 	//HEY! START THINKING HOW TO FREE THIS IN LATER ERRORS AND
 	//AT THE END OF EXECUTION
-	else if (idnetifier == 'S')
-		data->map->south_path = ft_strdup(info);
-	else if (idnetifier == 'W')
-		data->map->west_path = ft_strdup(info);
-	else if (idnetifier == 'E')
-		data->map->east_path = ft_strdup(info);
+	else if (identifier == 'S')
+		data->map_data->south_path = ft_strdup(info);
+	else if (identifier == 'W')
+		data->map_data->west_path = ft_strdup(info);
+	else if (identifier == 'E')
+		data->map_data->east_path = ft_strdup(info);
 	return ;
 }
 
@@ -56,7 +56,7 @@ int	add_scene_data(char *line, t_mlx *data)
 {
 	char	**array;
 
-	array = ft_split(line);
+	array = ft_split(line, ' ');
 	if (array[2] != NULL || array[2][0] != 0)
 	{
 		ft_putendl_error("Error\nExpected identifier + information");
@@ -65,7 +65,7 @@ int	add_scene_data(char *line, t_mlx *data)
 	if (!valid_identifier(array[0]))
 		return (error_found(array));
 	store_data(array[0][0], array[1], data);
-	data->map->parse_checklist += 1;
+	data->map_data->parse_checklist += 1;
 	free_strings_array(array);
 	return (1);
 }
