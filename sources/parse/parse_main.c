@@ -6,35 +6,37 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/20 18:44:37 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/20 20:07:45 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static int	init_other_data(t_mlx *data)
-{
-	//Init other data
-	(void)data;//debug
+static int	init_other_data(t_mlx *data, t_map *file_data)
+{ 
+	data->map_data = file_data;//debug
+	//(void)data;//debug
 	return (1);
 }
 
-static void	init_map_data(t_map *map)
+static void	init_map_data(t_map *map_data)
 {
-	map->north_path = NULL;
-	map->east_path = NULL;
-	map->south_path = NULL;
-	map->west_path = NULL;
-	map->floor_color[RED] = 0;
-	map->floor_color[GREEN] = 0 ;
-	map->floor_color[BLUE] = 0;
-	map->ceiling_color[RED] = 0;
-	map->ceiling_color[GREEN] = 0;
-	map->ceiling_color[BLUE] = 0;
-	map->parse_checklist = 0;
-	map->map = NULL;
-	map->longest_len_line = 0;
-	map->last_line = 0;
+//	map_data = (t_map *)malloc(sizeof(t_map));
+	map_data->north_path = NULL;
+	map_data->east_path = NULL;
+	map_data->south_path = NULL;
+	map_data->west_path = NULL;
+	map_data->floor_color[RED] = 0;
+	map_data->floor_color[GREEN] = 0 ;
+	map_data->floor_color[BLUE] = 0;
+	map_data->ceiling_color[RED] = 0;
+	map_data->ceiling_color[GREEN] = 0;
+	map_data->ceiling_color[BLUE] = 0;
+	map_data->parse_checklist = 0;
+	map_data->map = NULL;
+	map_data->longest_len_line = 0;
+	map_data->last_line = 0;
+	return ;
 }
 
 /*Files are not specifically required to be on maps/, 
@@ -59,7 +61,7 @@ static int	file_format(char *file_path)
 	return (1);
 }
 
-int	open_file(char *cub_file_path, t_mlx *data)
+int	open_file(char *cub_file_path, t_mlx *data, t_map *file_data)
 {
 	int	fd;
 	int	read_status;
@@ -73,8 +75,9 @@ int	open_file(char *cub_file_path, t_mlx *data)
 		ft_putendl_error(cub_file_path);
 		return (0);
 	}
-	init_map_data(data->map_data);
-	read_status = read_data(data, fd);
+	init_map_data(file_data);
+	printf("Hello there\n");//debug
+	read_status = read_data(file_data, fd);
 	//Read line by line and store in a list, or at least this is what
 	//you did on so_long
 	//But this time, would be better to read a line, and see what it has.
@@ -84,5 +87,5 @@ int	open_file(char *cub_file_path, t_mlx *data)
 	if (!read_status)
 		return (0);
 	//store_map(data->map_data);//As did it on so_long
-	return (init_other_data(data));
+	return (init_other_data(data, file_data));
 }

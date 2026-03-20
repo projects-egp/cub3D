@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/20 18:44:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/20 20:21:04 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	is_empty_line(char *line, t_mlx *data)
+int	is_empty_line(char *line, t_map *data)
 {
 	int	len;
 	int	i;
@@ -22,13 +22,12 @@ int	is_empty_line(char *line, t_mlx *data)
 	while (i < len)
 	{
 		if (!ft_isspace(line[i]))
-			return (1);
+			return (0);
 		++i;
 	}
-	if (data->map_data->parse_checklist >= 6
-		&& len > data->map_data->longest_len_line)
-		data->map_data->longest_len_line = len;
-	return (0);
+	if (data->parse_checklist >= 6 && len > data->longest_len_line)
+		data->longest_len_line = len;
+	return (1);
 }
 
 static int	error_found(char *line, int fd)
@@ -38,7 +37,7 @@ static int	error_found(char *line, int fd)
 	return (0);
 }
 
-int	read_data(t_mlx *data, int fd)
+int	read_data(t_map *data, int fd)
 {
 	char	*line_read;
 
@@ -47,16 +46,16 @@ int	read_data(t_mlx *data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (!is_empty_line(line_read, data) && data->map_data->parse_checklist < 6
+		if (!is_empty_line(line_read, data) && data->parse_checklist < 6
 			&& !add_scene_data(line_read, data))
 			return (error_found(line_read, fd));
 			//Check what data is here
 			//Have some expected data?
 			//Have more things than expected by some element?
 			//Map has been found to soon?
-		else if (!is_empty_line(line_read, data))
+		//else if (!is_empty_line(line_read, data))
 			//This is a map line with some chars
-		else
+		//else
 			//A line on map only with whitespace,
 			//store it and later we will change it to
 			//longest_len_line of 0 or whitespace
