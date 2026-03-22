@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general.h                                          :+:      :+:    :+:   */
+/*   clean.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:06:30 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/03/22 15:05:28 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/03/22 15:06:16 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GENERAL_H
-# define GENERAL_H
+#ifndef CLEAN_H
+# define CLEAN_H
+# include "general.h"
 
-# include "../libft/complete_libft.h"
-# include "definitions.h"
-# include "parse.h"
-# include "clean.h"
-# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
-# include <fcntl.h>
-# include <stdio.h>
+void	free_texture_paths(char **texture_paths);
 
 #endif

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general.h                                          :+:      :+:    :+:   */
+/*   free_texture_paths.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:06:30 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/03/22 15:03:20 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/03/22 15:13:39 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GENERAL_H
-# define GENERAL_H
 
-# include "../libft/complete_libft.h"
-# include "definitions.h"
-# include "parse.h"
-# include "clean.h"
-# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
-# include <fcntl.h>
-# include <stdio.h>
+void	free_texture_paths(char **texture_paths)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (i < TEXTURE_PATHS)
+	{
+		if (texture_paths[i] != NULL)
+			free(texture_paths[i]);
+		++i;
+	}
+	return ;
+}
