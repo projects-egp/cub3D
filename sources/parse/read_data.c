@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 17:02:37 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 19:51:49 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	read_data(t_map *file_data, int fd)
 		if (!is_empty_line(line_read, file_data)
 			&& file_data->parse_checklist < 6
 			&& !add_scene_data(line_read, file_data))
+		{
 			return (error_found(line_read, fd));
+		}
 			//Check what data is here
 			//Have some expected data?
 			//Have more things than expected by some element?
