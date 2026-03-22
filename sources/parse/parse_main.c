@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:16:06 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:41:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	init_other_data(t_mlx *data, t_map *file_data)
 
 static void	init_map_data(t_map *map_data)
 {
-	ft_bzero((void *)map_data->texture_paths, (sizeof(char *) * TEXTURE_PATHS));
+	ft_bzero((void *)map_data->texture_paths,
+		(sizeof(char *) * (TEXTURE_PATHS + 1)));
 	ft_bzero((void *)map_data->floor_color, (sizeof(int) * RGB_VALUES));
 	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * RGB_VALUES));
 	map_data->parse_checklist = 0;
