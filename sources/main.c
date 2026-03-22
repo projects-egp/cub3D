@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 16:56:28 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 20:32:11 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx_data;//t_mlx must be defined, is not given by minilibx
-
+	
 	if (argc != 2)
 	{
 		ft_putendl_error("Error\nExpected usage: ./cub3D [filename].cub");

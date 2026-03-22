@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 19:51:49 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 20:34:02 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ int	read_data(t_map *file_data, int fd)
 			//longest_len_line of 0 or whitespace
 		free(line_read);
 	}
-	//return (check_data(file_data));
 	return (check_map(file_data));
 }

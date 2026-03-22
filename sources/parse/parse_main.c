@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 17:09:39 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 20:33:12 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static int	file_format(char *file_path)
 
 int	open_file(char *cub_file_path, t_mlx *data)
 {
-	int	fd;
-	int	read_status;
+	int		fd;
+	int		read_status;
 	t_map	file_data;
 
 	if (!file_format(cub_file_path))
