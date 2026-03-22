@@ -6,14 +6,14 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:41:30 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 17:09:39 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
 static int	init_other_data(t_mlx *data, t_map *file_data)
-{ 
+{
 	data->map_data = file_data;
 	return (1);
 }
@@ -53,10 +53,11 @@ static int	file_format(char *file_path)
 	return (1);
 }
 
-int	open_file(char *cub_file_path, t_mlx *data, t_map *file_data)
+int	open_file(char *cub_file_path, t_mlx *data)
 {
 	int	fd;
 	int	read_status;
+	t_map	file_data;
 
 	if (!file_format(cub_file_path))
 		return (0);
@@ -67,8 +68,8 @@ int	open_file(char *cub_file_path, t_mlx *data, t_map *file_data)
 		ft_putendl_error(cub_file_path);
 		return (0);
 	}
-	init_map_data(file_data);
-	read_status = read_data(file_data, fd);
+	init_map_data(&file_data);
+	read_status = read_data(&file_data, fd);
 	//Read line by line and store in a list, or at least this is what
 	//you did on so_long
 	//But this time, would be better to read a line, and see what it has.
@@ -76,7 +77,10 @@ int	open_file(char *cub_file_path, t_mlx *data, t_map *file_data)
 	//Or not... Just think about it
 	close(fd);
 	if (!read_status)
+	{
+		clean_file_data(&file_data);
 		return (0);
+	}
 	//store_map(data->map_data);//As did it on so_long
-	return (init_other_data(data, file_data));
+	return (init_other_data(data, &file_data));
 }
