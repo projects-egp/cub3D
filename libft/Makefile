@@ -6,7 +6,7 @@
 #    By: enrgil-p <enrgil-p@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 17:15:51 by enrgil-p          #+#    #+#              #
-#    Updated: 2026/03/22 17:24:27 by enrgil-p         ###   ########.fr        #
+#    Updated: 2026/03/22 17:36:19 by enrgil-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
        ft_strchr_digit.c\
        ft_atol.c ft_atoi_protected.c\
        ft_swap.c\
-       free_strings_array.c free_string_and_null.c ft_split_whitespaces.c
+       free_strings_array.c free_string_and_null.c ft_split_whitespace.c
 #
 #				Is *.h needed here?
 #				No, because a make clean would destroy it
