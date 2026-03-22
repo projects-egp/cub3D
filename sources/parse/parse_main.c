@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 13:54:51 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 13:56:49 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static int	init_other_data(t_mlx *data, t_map *file_data)
 { 
-	data->map_data = file_data;//debug
-	//(void)data;//debug
+	data->map_data = file_data;
 	return (1);
 }
 
@@ -32,8 +31,8 @@ static void	init_map_data(t_map *map_data)
 	map_data->floor_color[BLUE] = 0;
 	map_data->ceiling_color[RED] = 0;
 	map_data->ceiling_color[GREEN] = 0;
-	map_data->ceiling_color[BLUE] = 0;
-	*/map_data->parse_checklist = 0;
+	map_data->ceiling_color[BLUE] = 0;*/
+	map_data->parse_checklist = 0;
 	map_data->map = NULL;
 	map_data->longest_len_line = 0;
 	map_data->last_line = 0;
