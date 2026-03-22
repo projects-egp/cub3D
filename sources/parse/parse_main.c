@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/20 20:07:45 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 13:54:51 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@ static int	init_other_data(t_mlx *data, t_map *file_data)
 
 static void	init_map_data(t_map *map_data)
 {
-//	map_data = (t_map *)malloc(sizeof(t_map));
 	map_data->north_path = NULL;
 	map_data->east_path = NULL;
 	map_data->south_path = NULL;
 	map_data->west_path = NULL;
-	map_data->floor_color[RED] = 0;
+	ft_bzero((void *)map_data->floor_color, (sizeof(int) * 3));
+	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * 3));
+	/*map_data->floor_color[RED] = 0;
 	map_data->floor_color[GREEN] = 0 ;
 	map_data->floor_color[BLUE] = 0;
 	map_data->ceiling_color[RED] = 0;
 	map_data->ceiling_color[GREEN] = 0;
 	map_data->ceiling_color[BLUE] = 0;
-	map_data->parse_checklist = 0;
+	*/map_data->parse_checklist = 0;
 	map_data->map = NULL;
 	map_data->longest_len_line = 0;
 	map_data->last_line = 0;
