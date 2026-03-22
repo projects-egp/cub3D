@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/20 18:37:38 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:11:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ typedef enum e_rgb_values
 	RGB_VALUES
 }	t_rgb_values;
 
+typedef enum e_texture_paths
+{
+	NORTH_PATH = 0,
+	EAST_PATH,
+	SOUTH_PATH,
+	WEST_PATH,
+	TEXTURE_PATHS
+}	t_texture_paths;
+
 typedef struct s_map
 {
-	char	*north_path;
-	char	*east_path;
-	char	*south_path;
-	char	*west_path;
+	char	**texture_paths[TEXTURE_PATHS];
 	int		floor_color[RGB_VALUES];
 	int		ceiling_color[RGB_VALUES];
 	int		parse_checklist;
