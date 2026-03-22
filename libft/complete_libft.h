@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 04:56:47 by enrgil-p          #+#    #+#             */
-/*   Updated: 2025/11/06 20:55:39 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 17:26:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_swap(int *a, int *b);
 /*				not_libc functions			*/
 void	free_strings_array(char **array);
 void	free_string_and_null(char **heap_data);
-char	**ft_split_and_count(char const *s, char c, size_t *n_ptr);
+char	**ft_split_whitespace(char const *s);
 
 #endif
