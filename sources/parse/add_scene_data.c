@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 17:28:58 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 18:01:23 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	add_scene_data(char *line, t_map *file_data)
 	char	**array;
 
 	array = ft_split_whitespace(line);
-	printf("\t%s\n", array[1]);//debug
 	if (array[2] != NULL/* || array[2][0] != 0*/)//What happen if WEpath?
 	{
 		ft_putendl_error("Error\nExpected identifier + information");
