@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:11:55 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:26:58 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum e_texture_paths
 
 typedef struct s_map
 {
-	char	**texture_paths[TEXTURE_PATHS];
+	char	*texture_paths[TEXTURE_PATHS];
 	int		floor_color[RGB_VALUES];
 	int		ceiling_color[RGB_VALUES];
 	int		parse_checklist;

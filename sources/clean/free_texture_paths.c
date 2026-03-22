@@ -6,12 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 15:03:20 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 15:13:39 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:26:46 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "general.h"
 
-void	free_texture_paths(char **texture_paths)
+void	free_texture_paths(char *texture_paths[4])
 {
 	int	i;
 

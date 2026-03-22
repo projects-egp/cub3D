@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 13:59:10 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:16:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,9 @@ static int	init_other_data(t_mlx *data, t_map *file_data)
 
 static void	init_map_data(t_map *map_data)
 {
-	map_data->north_path = NULL;
-	map_data->east_path = NULL;
-	map_data->south_path = NULL;
-	map_data->west_path = NULL;
-	ft_bzero((void *)map_data->floor_color, (sizeof(int) * 3));
-	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * 3));
-	/*map_data->floor_color[RED] = 0;
-	map_data->floor_color[GREEN] = 0 ;
-	map_data->floor_color[BLUE] = 0;
-	map_data->ceiling_color[RED] = 0;
-	map_data->ceiling_color[GREEN] = 0;
-	map_data->ceiling_color[BLUE] = 0;*/
+	ft_bzero((void *)map_data->texture_paths, (sizeof(char *) * TEXTURE_PATHS));
+	ft_bzero((void *)map_data->floor_color, (sizeof(int) * RGB_VALUES));
+	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * RGB_VALUES));
 	map_data->parse_checklist = 0;
 	map_data->map = NULL;
 	map_data->longest_len_line = 0;

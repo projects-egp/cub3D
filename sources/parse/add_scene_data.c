@@ -6,15 +6,16 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 14:06:03 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:27:44 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static int	error_found(char **array)
+static int	error_found(char **array, t_map *file_data)
 {
 	free_strings_array(array);
+	free_texture_paths(file_data->texture_paths);
 	return (0);
 }
 
@@ -32,24 +33,28 @@ static int	valid_identifier(char *identifier)
 	return (0);
 }
 
-static void	store_data(int identifier, char *info, t_map *file_data)
+static int	store_data(int identifier, char *info, t_map *file_data)
 {
+	char	*path_to_allocate;
+
 	if (identifier == 'C' || identifier == 'F')
 	{
 		//plit with ','
 		//atoi and store
+		return (1);
 	}
-	else if (identifier == 'N')
-		file_data->north_path = ft_strdup(info);
-	//HEY! START THINKING HOW TO FREE THIS IN LATER ERRORS AND
-	//AT THE END OF EXECUTION
+	if (identifier == 'N')
+		path_to_allocate = file_data->texture_paths[NORTH_PATH];
 	else if (identifier == 'S')
-		file_data->south_path = ft_strdup(info);
+		path_to_allocate = file_data->texture_paths[SOUTH_PATH];
 	else if (identifier == 'W')
-		file_data->west_path = ft_strdup(info);
+		path_to_allocate = file_data->texture_paths[WEST_PATH];
 	else if (identifier == 'E')
-		file_data->east_path = ft_strdup(info);
-	return ;
+		path_to_allocate = file_data->texture_paths[EAST_PATH];
+	path_to_allocate = ft_strdup(info);
+	if (!path_to_allocate)
+		return (0);
+	return (1);
 }
 
 int	add_scene_data(char *line, t_map *file_data)
@@ -57,14 +62,14 @@ int	add_scene_data(char *line, t_map *file_data)
 	char	**array;
 
 	array = ft_split(line, ' ');
-	if (array[2] != NULL || array[2][0] != 0)
+	if (array[2] != NULL || array[2][0] != 0)//What happen if WEpath?
 	{
 		ft_putendl_error("Error\nExpected identifier + information");
-		return (error_found(array));
+		return (error_found(array, file_data));
 	}
-	if (!valid_identifier(array[0]))
-		return (error_found(array));
-	store_data(array[0][0], array[1], file_data);
+	if (!valid_identifier(array[0])
+		|| !store_data(array[0][0], array[1], file_data))
+		return (error_found(array, file_data));
 	file_data->parse_checklist += 1;
 	free_strings_array(array);
 	return (1);
