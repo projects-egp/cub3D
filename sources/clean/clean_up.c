@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/01 21:59:56 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/04/01 22:00:30 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/04/01 22:08:32 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	main(int argc, char **argv)
+void	clean_up(t_mlx *mlx_data)
 {
-	t_mlx	mlx_data;//t_mlx must be defined, is not given by minilibx
-	
-	if (argc != 2)
-	{
-		ft_putendl_error("Error\nExpected usage: ./cub3D [filename].cub");
-		return (1);
-	}
-	if (!open_file(argv[1], &mlx_data))
-		return (1);
-	clean_up(&mlx_data);
-	return (0);
+	clean_file_data(mlx_data->map_data);
+	return ;
 }

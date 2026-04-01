@@ -2,7 +2,7 @@ NAME = cub3D
 SOURCES =	main.c\
 		$(addprefix parse/, parse_main.c add_scene_data.c read_data.c\
 		check_map.c store_rgb_values.c)\
-		$(addprefix clean/, clean_file_data.c)
+		$(addprefix clean/, clean_file_data.c clean_up.c)
 
 SRCS = $(addprefix sources/, $(SOURCES))
 LIBFT_DIR = ./libft
