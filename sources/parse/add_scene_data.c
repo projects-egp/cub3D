@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/01 21:52:41 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:09:16 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ static int	store_data(int identifier, char *info, t_map *file_data)
 			return (0);
 		return (1);
 	}
-	/*else
-		return (1);*///THIS DOESN'T MAKES SENSE!!
 	path_to_allocate = ft_strdup(info);
 	if (!path_to_allocate)
 	{
