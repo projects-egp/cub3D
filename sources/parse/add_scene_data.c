@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/01 21:49:08 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:52:41 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ static int	store_data(int identifier, char *info, t_map *file_data)
 {
 	char	*path_to_allocate;
 
-	if ((identifier == 'C' || identifier == 'F')
-		&& !store_rgb_values(identifier, info, file_data))
-		return (0);
+	if (identifier == 'C' || identifier == 'F')
+	{
+		if (!store_rgb_values(identifier, info, file_data))
+			return (0);
+		return (1);
+	}
 	/*else
 		return (1);*///THIS DOESN'T MAKES SENSE!!
 	path_to_allocate = ft_strdup(info);
