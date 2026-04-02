@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 20:34:02 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:15:35 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	is_empty_line(char *line, t_map *file_data)
 
 static int	error_found(char *line, int fd)
 {
+	printf("Error found on read_data\n");//debug
 	free(line);
 	safe_call_to_get_next_line(fd, FAIL_HAPPENED);
 	return (0);
@@ -46,8 +47,8 @@ int	read_data(t_map *file_data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (!is_empty_line(line_read, file_data)
-			&& file_data->parse_checklist < 6
+		if (file_data->parse_checklist < 6
+			&& !is_empty_line(line_read, file_data)
 			&& !add_scene_data(line_read, file_data))
 		{
 			return (error_found(line_read, fd));
@@ -63,6 +64,10 @@ int	read_data(t_map *file_data, int fd)
 			//store it and later we will change it to
 			//longest_len_line of 0 or whitespace
 		free(line_read);
-	}
-	return (check_map(file_data));
+	}//Read line by line and store in a list, or at least this is what
+	//you did on so_long
+	//But this time, would be better to read a line, and see what it has.
+	//Do this to get all data. And later you can work with a list for map...
+	//Or not... Just think about it
+	return (1);
 }
