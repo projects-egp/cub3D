@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 21:10:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/02 22:14:47 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	init_other_data(t_mlx *data, t_map *file_data)
 {
 	data->map_data = file_data;
+	clean_up(data);//debug
 	return (1);
 }
 
@@ -72,7 +73,6 @@ int	open_file(char *cub_file_path, t_mlx *data)
 	}
 	init_map_data(&file_data);
 	read_status = read_data(&file_data, fd);
-	
 	close(fd);
 	if (!read_status)
 	{

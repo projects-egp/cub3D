@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 21:15:35 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:37:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	is_empty_line(char *line, t_map *file_data)
 
 static int	error_found(char *line, int fd)
 {
-	printf("Error found on read_data\n");//debug
 	free(line);
 	safe_call_to_get_next_line(fd, FAIL_HAPPENED);
 	return (0);
