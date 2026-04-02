@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:08:57 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 20:20:44 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:32:48 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	check_digit_chars(char *str)
 	return (1);
 }
 
+/*Checks if splited strings are only digits, and if there are only
+ * three strings, in order to store properly three RGB values*/
 static int	check_strings(char **array)
 {
 	int	i;
@@ -48,6 +50,12 @@ static int	check_strings(char **array)
 	return (return_status);
 }
 
+/*Conversion to integers from strings, after check if those are only three
+ * digit-chars strings. 
+ *
+ * not_needed is passed as counter requested by atoi_proteceted 
+ * to avoid overflows. In this case an overflow is impossible:
+ * integers must be between 0 and 255*/
 static int	conversion(int *rgb_array, char **string_array)
 {
 	int	return_status;
