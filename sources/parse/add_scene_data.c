@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 16:53:28 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 18:40:16 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ static int	valid_identifier(char *identifier)
 	ft_putendl_error("Error\nFound some wrong identifier");
 	return (0);
 }
-
-/*static int	allocate_path(char **path, char *info)
-{
-	*path = ft_strdup(info);
-	if (*path == NULL)
-		return (0);
-	return (1);
-}*/
 
 static int	store_data(int identifier, char *info, t_map *file_data)
 {
@@ -87,7 +79,7 @@ int	add_scene_data(char *line, t_map *file_data)
 		ft_putendl_error("Error\nMalloc failed");
 		return (0);
 	}
-	if (array[2] != NULL/* || array[2][0] != 0*/)//What happen if WEpath?
+	if (array[2] != NULL || array[1] == NULL)
 	{
 		ft_putendl_error("Error\nExpected identifier + information");
 		return (error_found(array));
