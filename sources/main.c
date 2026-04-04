@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 17:57:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:09:17 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	
 	if (argc != 2)
 	{
-		ft_putendl_error("Error\nExpected usage: ./cub3D [filename].cub");
+		ft_putendl_error(EXPECTED_USAGE);
 		return (1);
 	}
 	if (!open_file(argv[1], &file_data))

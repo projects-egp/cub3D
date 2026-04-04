@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 17:55:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 19:53:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	file_format(char *file_path)
 
 	if (ft_strnstr(file_path, ".cub", 4))
 	{
-		ft_putendl_error("Error\nGood format, but file has no name");
+		ft_putendl_error(FILE_NAMED_DOTCUB);
 		return (0);
 	}
 	first_dot_position = ft_strchr(file_path, '.');
@@ -43,7 +43,7 @@ static int	file_format(char *file_path)
 		|| !ft_strnstr(first_dot_position, ".cub", 4)
 		|| first_dot_position[4] != 0)
 	{
-		ft_putendl_error("Error\nExpected file format: <name>.cub");
+		ft_putendl_error(FILE_FORMAT_ERROR);
 		return (0);
 	}
 	return (1);

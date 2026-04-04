@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:08:57 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 21:32:48 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:04:35 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_strings(char **array)
 		return_status = 0;
 	if (!return_status)
 	{
-		ft_putendl_error("Error\nRGB integers format: 0,0,0");
+		ft_putendl_error(RGB_VALUES_ERROR);
 		free_strings_array(array);
 	}
 	return (return_status);
@@ -76,7 +76,7 @@ static int	conversion(int *rgb_array, char **string_array)
 		++i;
 	}
 	if (!return_status)
-		ft_putendl_error("Error\nColor values must be between 0 or 255");
+		ft_putendl_error(COLOR_VALUE_LIMITS);
 	free_strings_array(string_array);
 	return (return_status);
 }
@@ -88,7 +88,7 @@ int	store_rgb_values(int identifier, char *info, t_map *file_data)
 	splited = ft_split(info, ',');
 	if (!splited || splited[0][0] == 0)
 	{
-		ft_putendl_error("Error\nMalloc failed");
+		ft_putendl_error(MALLOC_FAILED);
 		return (0);
 	}
 	if (!check_strings(splited))

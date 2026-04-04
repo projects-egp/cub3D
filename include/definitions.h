@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 20:58:36 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:08:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 # define DEFINITIONS_H
 
 # include "general.h"
+//
+/*	*	general messages	*	*/
+# define MALLOC_FAILED "Error\nMalloc failed"
+# define EXPECTED_USAGE "Error\nExpected usage: ./cub3D [filename].cub"
+//
+/*	*	parse error messages	*	*/
+# define SCENE_DATA_ERROR "Error\nExpected scene data: identifier + information"
+# define IDENTIFIER_ERROR "Error\nFound some wrong identifier"
+# define FILE_FORMAT_ERROR "Error\nExpected file format: <name>.cub"
+# define FILE_NAMED_DOTCUB "Error\nGood format, but file has no name"
+# define RGB_VALUES_ERROR "Error\nRGB integers expected format: 0,0,0"
+# define COLOR_VALUE_LIMITS "Error\nCan't convert to integer between 0 and 255"
+//
 
 typedef enum e_rgb_values
 {
