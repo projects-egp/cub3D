@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 18:40:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 18:52:21 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,14 @@ static int	store_data(int identifier, char *info, t_map *file_data)
 			return (0);
 		return (1);
 	}
-	//LEAK HERE. I don't understand: 
-	//this strdup must be free here to avoid leak. But then I lose the str
-	//If i don't free, I have data in other functions.
-	//
-	//Doesn't matter if I don't free at the end of execution:
-	//leak still there
 	if (identifier == 'N')
 		path_to_allocate = &file_data->texture_paths[NORTH_PATH];
 	if (identifier == 'S')
 		path_to_allocate = &file_data->texture_paths[SOUTH_PATH];
-		//file_data->texture_paths[SOUTH_PATH] = path_to_allocate;
 	if (identifier == 'W')
 		path_to_allocate = &file_data->texture_paths[WEST_PATH];
-		//file_data->texture_paths[WEST_PATH] = path_to_allocate;
 	if (identifier == 'E')
 		path_to_allocate = &file_data->texture_paths[EAST_PATH];
-		//file_data->texture_paths[EAST_PATH] = path_to_allocate;
 	*path_to_allocate = ft_strdup(info);
 	if (*path_to_allocate == NULL)
 	{
@@ -79,7 +70,7 @@ int	add_scene_data(char *line, t_map *file_data)
 		ft_putendl_error("Error\nMalloc failed");
 		return (0);
 	}
-	if (array[2] != NULL || array[1] == NULL)
+	if (array[1] == NULL || array[2] != NULL)
 	{
 		ft_putendl_error("Error\nExpected identifier + information");
 		return (error_found(array));
