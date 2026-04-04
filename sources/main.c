@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 20:09:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:20:04 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 {
 	t_mlx	mlx_data;//t_mlx must be defined, is not given by minilibx
 	t_map	file_data;
-	
+
 	if (argc != 2)
 	{
 		ft_putendl_error(EXPECTED_USAGE);

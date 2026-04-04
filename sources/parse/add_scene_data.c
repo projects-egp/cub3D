@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 19:47:43 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:25:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static int	valid_identifier(char *identifier)
 	return (0);
 }
 
+/*char *path_to_allocated used to work, although it was origin for leaks.
+ * To keep this clean design was needed a "char **" pointer
+ * and reference (&) to it the final destination of ft_strdup's malloc*/
 static int	store_data(int identifier, char *info, t_map *file_data)
 {
 	char	**path_to_allocate;
