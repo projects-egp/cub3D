@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 15:03:20 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 21:43:07 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:58:12 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ static void	free_texture_paths(char **texture_paths)
 	i = 0;
 	while (i < TEXTURE_PATHS)
 	{
+		//printf("path %d to clean ->%s<-\n", i, texture_paths[i]);//debug
 		if (texture_paths[i])
+		{
 			free(texture_paths[i]);
+			texture_paths[i] = NULL;
+		}
+		//printf("path %d to clean ->%s<-\n", i, texture_paths[i]);//debug
 		++i;
 	}
 	return ;

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 22:13:31 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:53:28 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,17 @@ static int	valid_identifier(char *identifier)
 	return (0);
 }
 
+/*static int	allocate_path(char **path, char *info)
+{
+	*path = ft_strdup(info);
+	if (*path == NULL)
+		return (0);
+	return (1);
+}*/
+
 static int	store_data(int identifier, char *info, t_map *file_data)
 {
-	char	*path_to_allocate;
+	char	**path_to_allocate;
 
 	if (identifier == 'C' || identifier == 'F')
 	{
@@ -49,20 +57,23 @@ static int	store_data(int identifier, char *info, t_map *file_data)
 	//
 	//Doesn't matter if I don't free at the end of execution:
 	//leak still there
-	path_to_allocate = ft_strdup(info);
-	if (!path_to_allocate)
+	if (identifier == 'N')
+		path_to_allocate = &file_data->texture_paths[NORTH_PATH];
+	if (identifier == 'S')
+		path_to_allocate = &file_data->texture_paths[SOUTH_PATH];
+		//file_data->texture_paths[SOUTH_PATH] = path_to_allocate;
+	if (identifier == 'W')
+		path_to_allocate = &file_data->texture_paths[WEST_PATH];
+		//file_data->texture_paths[WEST_PATH] = path_to_allocate;
+	if (identifier == 'E')
+		path_to_allocate = &file_data->texture_paths[EAST_PATH];
+		//file_data->texture_paths[EAST_PATH] = path_to_allocate;
+	*path_to_allocate = ft_strdup(info);
+	if (*path_to_allocate == NULL)
 	{
 		ft_putendl_error("Error\nMalloc failed");
 		return (0);
 	}
-	if (identifier == 'N')
-		file_data->texture_paths[NORTH_PATH] = path_to_allocate;
-	else if (identifier == 'S')
-		file_data->texture_paths[SOUTH_PATH] = path_to_allocate;
-	else if (identifier == 'W')
-		file_data->texture_paths[WEST_PATH] = path_to_allocate;
-	else if (identifier == 'E')
-		file_data->texture_paths[EAST_PATH] = path_to_allocate;
 	return (1);
 }
 
