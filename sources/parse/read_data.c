@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/02 21:37:30 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 19:54:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	is_empty_line(char *line, t_map *file_data)
+static int	is_empty_line(char *line, t_map *file_data)
 {
 	int	len;
 	int	i;

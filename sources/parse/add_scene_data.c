@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 18:52:21 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/04 19:47:43 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	valid_identifier(char *identifier)
 		return (1);
 	else if (identifier[0] == 'E' && identifier[1] == 'A' && identifier[2] == 0)
 		return (1);
-	ft_putendl_error("Error\nFound some wrong identifier");
+	ft_putendl_error(IDENTIFIER_ERROR);
 	return (0);
 }
 
@@ -54,7 +54,7 @@ static int	store_data(int identifier, char *info, t_map *file_data)
 	*path_to_allocate = ft_strdup(info);
 	if (*path_to_allocate == NULL)
 	{
-		ft_putendl_error("Error\nMalloc failed");
+		ft_putendl_error(MALLOC_FAILED);
 		return (0);
 	}
 	return (1);
@@ -67,12 +67,12 @@ int	add_scene_data(char *line, t_map *file_data)
 	array = ft_split_whitespace(line);
 	if (!array)
 	{
-		ft_putendl_error("Error\nMalloc failed");
+		ft_putendl_error(MALLOC_FAILED);
 		return (0);
 	}
 	if (array[1] == NULL || array[2] != NULL)
 	{
-		ft_putendl_error("Error\nExpected identifier + information");
+		ft_putendl_error(SCENE_DATA_ERROR);
 		return (error_found(array));
 	}
 	if (!valid_identifier(array[0])
