@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 19:54:30 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 13:48:23 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	is_empty_line(char *line, t_map *file_data)
 			return (0);
 		++i;
 	}
+	//Maybe is a good idea to remove lines BELOW
 	if (file_data->parse_checklist >= 6 && len > file_data->longest_len_line)
 		file_data->longest_len_line = len;
 	return (1);
@@ -40,7 +41,9 @@ static int	error_found(char *line, int fd)
 int	read_data(t_map *file_data, int fd)
 {
 	char	*line_read;
+	t_list	*map_lines;
 
+	map_lines = NULL;
 	while (1)
 	{
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
@@ -49,24 +52,14 @@ int	read_data(t_map *file_data, int fd)
 		if (file_data->parse_checklist < 6
 			&& !is_empty_line(line_read, file_data)
 			&& !add_scene_data(line_read, file_data))
-		{
 			return (error_found(line_read, fd));
-		}
-			//Check what data is here
-			//Have some expected data?
-			//Have more things than expected by some element?
-			//Map has been found to soon?
-		//else if (!is_empty_line(line_read, data))
-			//This is a map line with some chars
-		//else
-			//A line on map only with whitespace,
-			//store it and later we will change it to
-			//longest_len_line of 0 or whitespace
+		else if (file_data->parse_checklist == 6
+			&& !is_empty_line(line_read, file_data)
+			&& !valid_first_map_line(line_read, file_data, &map_lines))
+			return (error_found(line_read, fd));
 		free(line_read);
-	}//Read line by line and store in a list, or at least this is what
-	//you did on so_long
-	//But this time, would be better to read a line, and see what it has.
-	//Do this to get all data. And later you can work with a list for map...
-	//Or not... Just think about it
+	}
+	//Check HERE if checklist < 6
+	//	return (0);
 	return (1);
 }
