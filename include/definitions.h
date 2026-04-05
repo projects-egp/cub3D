@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 20:08:55 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 14:18:37 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 //
 /*	*	parse error messages	*	*/
 # define SCENE_DATA_ERROR "Error\nExpected scene data: identifier + information"
-# define IDENTIFIER_ERROR "Error\nFound some wrong identifier"
+# define IDENTIFIER_ERROR "Error\nFound wrong identifier or unexpected element"
 # define FILE_FORMAT_ERROR "Error\nExpected file format: <name>.cub"
 # define FILE_NAMED_DOTCUB "Error\nGood format, but file has no name"
 # define RGB_VALUES_ERROR "Error\nRGB integers expected format: 0,0,0"

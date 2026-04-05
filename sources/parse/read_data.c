@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 13:48:23 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 14:16:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static int	is_empty_line(char *line, t_map *file_data)
+int	is_empty_line(char *line, t_map *file_data)
 {
 	int	len;
 	int	i;
@@ -53,10 +53,10 @@ int	read_data(t_map *file_data, int fd)
 			&& !is_empty_line(line_read, file_data)
 			&& !add_scene_data(line_read, file_data))
 			return (error_found(line_read, fd));
-		else if (file_data->parse_checklist == 6
+/*		else if (file_data->parse_checklist == 6
 			&& !is_empty_line(line_read, file_data)
 			&& !valid_first_map_line(line_read, file_data, &map_lines))
-			return (error_found(line_read, fd));
+			return (error_found(line_read, fd));*/
 		free(line_read);
 	}
 	//Check HERE if checklist < 6

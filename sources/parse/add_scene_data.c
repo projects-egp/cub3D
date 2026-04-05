@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 20:25:06 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 14:19:21 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,24 @@ int	add_scene_data(char *line, t_map *file_data)
 {
 	char	**array;
 
-	array = ft_split_whitespace(line);
-	if (!array)
+	if (!is_empty_line(line, file_data))
 	{
-		ft_putendl_error(MALLOC_FAILED);
-		return (0);
+		array = ft_split_whitespace(line);
+		if (!array)
+		{
+			ft_putendl_error(MALLOC_FAILED);
+			return (0);
+		}
+		if (array[1] == NULL || array[2] != NULL)
+		{
+			ft_putendl_error(SCENE_DATA_ERROR);
+			return (error_found(array));
+		}
+		if (!valid_identifier(array[0])
+			|| !store_data(array[0][0], array[1], file_data))
+			return (error_found(array));
+		file_data->parse_checklist += 1;
+		free_strings_array(array);
 	}
-	if (array[1] == NULL || array[2] != NULL)
-	{
-		ft_putendl_error(SCENE_DATA_ERROR);
-		return (error_found(array));
-	}
-	if (!valid_identifier(array[0])
-		|| !store_data(array[0][0], array[1], file_data))
-		return (error_found(array));
-	file_data->parse_checklist += 1;
-	free_strings_array(array);
 	return (1);
 }
