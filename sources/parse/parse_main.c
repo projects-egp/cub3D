@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 19:53:55 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 12:52:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	open_file(char *cub_file_path, t_map *file_data)
 		clean_file_data(file_data);
 		return (0);
 	}
-	check_map(file_data);
+	check_map(file_data);//Maybe check_map == store_map
 	//store_map(data->map_data);//As did it on so_long
 	return (1);
 }
