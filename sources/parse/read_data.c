@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 17:22:12 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 18:18:18 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ static int	reading_map(char *line_read, t_map *file_data,
 		++file_data->height;
 		++file_data->parse_checklist;
 	}
-	else if (file_data->parse_checklist > 6 && line_read[0] == '\n')
+	else if (file_data->parse_checklist > 6
+			&& !is_empty_line(line_read, file_data))
 	{
+		free_full_list_and_contents(map_lines);
 		ft_putendl_error(NEW_LINE_INSIDE_MAP);
-		//Free list
 		return (0);
 	}
 	return (1);
