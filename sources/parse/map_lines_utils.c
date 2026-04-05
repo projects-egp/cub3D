@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 17:19:06 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 18:11:29 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ static int	player_found(int cardinal_direction_view, int x_position,
 	return (1);
 }
 
+/*For map content, only space that will be acceptable will be ascii 32, ' '.
+ * This decision has been taken because other whitespaces 
+ * like tabs can break our map*/
 int	is_valid_map_char(int c, int x_position, t_map *map_data)
 {
 	if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
@@ -47,7 +50,7 @@ int	is_valid_map_char(int c, int x_position, t_map *map_data)
 		}
 		return (player_found(c, x_pos, map_data));
 	}
-	if (c == '1' || c == '0' || ft_isspace(c))
+	if (c == '1' || c == '0' || c == ' ')
 		return (1);
 	ft_putendl_error(WRONG_CHAR_FOUND);
 	return (0);
