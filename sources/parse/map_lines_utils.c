@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map_lines.c                                   :+:      :+:    :+:   */
+/*   map_lines_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 14:38:00 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/04/05 14:38:45 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	valid_first_map_line(char *line, t_map *file_data, t_list **map_lines)
+int	add_new_line(char *line, t_list **map_lines_list)
 {
-	int	i;
-	char	*line_copy;
+	t_list	*new;
 
-	i = 0;
-	line_copy = NULL;
-	if (!isspace(line[i]) && line[i] != '1')
+	new = NULL;
+	new = ft_lstnew(line);
+	if (!new)
 	{
-		//error message wrong chars
+		free_full_list_and_contents(map_lines_list);
 		return (0);
 	}
-	line_copy = ft_strdup(line);
-	if (!line_copy || !add_to_map_lines(line_copy, map_lines))
-	{
-		ft_putendl_error(MALLOC_FAILED);
-		return (0);
-	}
+	ft_lstadd_front(map_lines_list, new);
 	return (1);
 }
