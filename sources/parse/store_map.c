@@ -6,12 +6,16 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 19:35:14 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 20:16:09 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
+/*This function is returned by read_data() to parse_main(). 
+ * Here we will store and check map. In any case, we will return to parse_main()
+ * and then close file descriptor from map filei. Doesn't matter if we return
+ * succesfully or with some error found*/
 int	store_map(t_map *map_data, t_list **map_lines)
 {
 	if (map_data->parse_checklist < 6)
