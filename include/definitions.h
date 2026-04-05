@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 16:19:33 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 16:31:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_map
 	char	player_view;
 	int		height;
 	int		width;
-	int		longest_len_line;
 }	t_map;
 
 typedef struct s_mlx

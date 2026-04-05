@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 16:21:41 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 16:31:48 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	init_map_data(t_map *map_data)
 	map_data->player_view = 0;
 	map_data->height = 0;
 	map_data->width = 0;
-	map_data->longest_len_line = 0;
 	return ;
 }
 
