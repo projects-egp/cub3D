@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 16:53:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 17:08:34 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	add_new_line_to_list(char *line, t_list **map_lines_list)
 	return (1);
 }
 
-static void	player_found(int cardinal_direction_view, int x_position,
-			t_map *map_data);
+static int	player_found(int cardinal_direction_view, int x_position,
+		t_map *map_data);
 {
 	map_data->player_view = cardinal_direction_view;
 	map_data->player[X_POS] = x_position;
 	map_data->player[Y_POS] = map_data->height + 1;
-	return ;
+	return (1);
 }
 
 int	is_valid_map_char(int c, int x_position, t_map *map_data)
@@ -42,10 +42,12 @@ int	is_valid_map_char(int c, int x_position, t_map *map_data)
 	{
 		if (map_data->player_view != 0)
 		{
-			//error message: map must have just one start position
+			ft_putendl_error(TWO_PLAYER_POSITIONS);
 			return (0);
 		}
-		player_found(c, x_pos, file_data);
+		return (player_found(c, x_pos, map_data));
 	}
-	return (1);
+	if (c == '1' || c == '0' || ft_isspace(c))
+		return (1);
+	return (0);
 }
