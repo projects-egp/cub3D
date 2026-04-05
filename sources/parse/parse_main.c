@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 12:52:20 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 16:21:41 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	init_map_data(t_map *map_data)
 	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * RGB_VALUES));
 	map_data->parse_checklist = 0;
 	map_data->map = NULL;
+	ft_bzero((void *)map_data->player, (sizeof(int) * POSITION));
+	map_data->player_view = 0;
 	map_data->height = 0;
 	map_data->width = 0;
 	map_data->longest_len_line = 0;

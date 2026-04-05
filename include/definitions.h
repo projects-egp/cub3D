@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 14:18:37 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 16:19:33 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef enum e_texture_paths
 	TEXTURE_PATHS
 }	t_texture_paths;
 
+typedef enum e_pplayer_position
+{
+	X_POS = 0,
+	Y_POS,
+	POSITION
+}	t_player_position;
+
 typedef struct s_map
 {
 	char	*texture_paths[TEXTURE_PATHS + 1];
@@ -52,6 +59,8 @@ typedef struct s_map
 	int		ceiling_color[RGB_VALUES];
 	int		parse_checklist;
 	char	**map;
+	int		player[POSITION];
+	char	player_view;
 	int		height;
 	int		width;
 	int		longest_len_line;
