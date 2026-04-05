@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 18:18:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 20:06:18 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	is_empty_line(char *line, t_map *file_data)
+int	is_empty_line(char *line)
 {
 	int	len;
 	int	i;
@@ -25,9 +25,6 @@ int	is_empty_line(char *line, t_map *file_data)
 			return (0);
 		++i;
 	}
-	//Maybe is a good idea to remove lines BELOW
-	if (file_data->parse_checklist >= 6 && len > file_data->longest_len_line)
-		file_data->longest_len_line = len;
 	return (1);
 }
 
@@ -40,29 +37,31 @@ static int	error_found(char *line, int fd)
 
 static int	reading_scene_data(char *line_read, t_map *file_data)
 {
-	if (!is_empty_line(line_read, file_data)
-		&& !add_scene_data(line_read, file_data))
+	if (!is_empty_line(line_read) && !add_scene_data(line_read, file_data))
 		return (0);
 	return (1);
 }
 
+/*Inside map content, only whitespace accepted is ascii 32, ' '.
+ * There can also be "\n", only as end of a valid line though.
+ * Line starting with "\n" is an empty line, which is forbidden*/
 static int	reading_map(char *line_read, t_map *file_data,
 			t_list **map_lines)
 {
-	if (file_data->parse_checklist == 6 && file_data->height > 0
-		&& !add_valid_map_line())
-		return (0);
-	else if (file_data->parse_checklist == 6 && file_data->height == 0
-		&& !is_empty_line(line_read, file_data)
-		&& !add_valid_first_map_line(line_read, file_data, map_lines))
-		return (0);
-	else if (file_data->parse_checklist == 6 && line_read[0] == '\n')
+	if (line_read[0] == '\n' && file_data->parse_checklist == 6
+		&& file_data->height > 0)
 	{
 		++file_data->height;
 		++file_data->parse_checklist;
 	}
-	else if (file_data->parse_checklist > 6
-			&& !is_empty_line(line_read, file_data))
+	else if (file_data->parse_checklist == 6 && file_data->height > 0
+		&& !add_valid_map_line(line_read, file_data, map_lines))
+		return (0);
+	else if (file_data->parse_checklist == 6 && file_data->height == 0
+		&& !is_empty_line(line_read)
+		&& !add_valid_first_map_line(line_read, file_data, map_lines))
+		return (0);
+	else if (file_data->parse_checklist > 6 && !is_empty_line(line_read))
 	{
 		free_full_list_and_contents(map_lines);
 		ft_putendl_error(NEW_LINE_INSIDE_MAP);
@@ -82,15 +81,13 @@ int	read_data(t_map *file_data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (file_data->parse_checklist < 6
-			&& !reading_scene_data(line_read, file_data))
-			return (error_found(line_read, fd));
-		else if (file_data->parse_checklist >= 6
+		if (file_data->parse_checklist >= 6
 			&& !reading_map(line_read, file_data, &map_lines))
+			return (error_found(line_read, fd));
+		else if (file_data->parse_checklist < 6
+			&& !reading_scene_data(line_read, file_data))
 			return (error_found(line_read, fd));
 		free(line_read);
 	}
-	//Check HERE if checklist < 6, or bring back check_map() to this return
-	//	return (0);
-	return (1);
+	return (store_map(file_data, &map_lines));
 }

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 14:19:21 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 18:55:18 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	add_scene_data(char *line, t_map *file_data)
 {
 	char	**array;
 
-	if (!is_empty_line(line, file_data))
+	if (!is_empty_line(line))
 	{
 		array = ft_split_whitespace(line);
 		if (!array)

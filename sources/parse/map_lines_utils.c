@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 18:11:29 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 19:54:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	add_new_line_to_list(char *line, t_list **map_lines_list)
 }
 
 static int	player_found(int cardinal_direction_view, int x_position,
-		t_map *map_data);
+		t_map *map_data)
 {
 	map_data->spawn_orientation = cardinal_direction_view;
 	map_data->player[X_POS] = x_position;
@@ -48,9 +48,9 @@ int	is_valid_map_char(int c, int x_position, t_map *map_data)
 			ft_putendl_error(TWO_PLAYER_POSITIONS);
 			return (0);
 		}
-		return (player_found(c, x_pos, map_data));
+		return (player_found(c, x_position, map_data));
 	}
-	if (c == '1' || c == '0' || c == ' ')
+	if (c == '1' || c == '0' || c == ' ' || c == '\n')
 		return (1);
 	ft_putendl_error(WRONG_CHAR_FOUND);
 	return (0);
