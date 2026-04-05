@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 16:31:30 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 17:16:49 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define FILE_NAMED_DOTCUB "Error\nGood format, but file has no name"
 # define RGB_VALUES_ERROR "Error\nRGB integers expected format: 0,0,0"
 # define COLOR_VALUE_LIMITS "Error\nCan't convert to integer between 0 and 255"
+# define TWO_PLAYER_POSITIONS "Error\nMap must have just one start position"
+# define WRONG_CHAR_FOUND "Error\nFound wrong char inside map content"
+# define MAP_NOT_SURROUNDED "Error\nMap must be surrounded by walls"
 //
 
 typedef enum e_rgb_values
@@ -60,7 +63,7 @@ typedef struct s_map
 	int		parse_checklist;
 	char	**map;
 	int		player[POSITION];
-	char	player_view;
+	char	spawn_orientation;
 	int		height;
 	int		width;
 }	t_map;
