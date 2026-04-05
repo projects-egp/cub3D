@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 15:07:36 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 17:22:12 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,27 @@ static int	reading_scene_data(char *line_read, t_map *file_data)
 	return (1);
 }
 
-static int	reading_map(char *line_read, t_map *file_data)
+static int	reading_map(char *line_read, t_map *file_data,
+			t_list **map_lines)
 {
-	if (file_data->parse_checklist == 6
-		&& !is_empty_line(line_read, file_data)
-		&& !valid_first_map_line(line_read, file_data, &map_lines))
+	if (file_data->parse_checklist == 6 && file_data->height > 0
+		&& !add_valid_map_line())
 		return (0);
-	else if (file_data->parse_checklist > 7 && line_read[0] == '\n')
+	else if (file_data->parse_checklist == 6 && file_data->height == 0
+		&& !is_empty_line(line_read, file_data)
+		&& !add_valid_first_map_line(line_read, file_data, map_lines))
+		return (0);
+	else if (file_data->parse_checklist == 6 && line_read[0] == '\n')
 	{
-		//error message: empty line inside map
-		//free list. Okay, this is expecting a case of get this error
-		//while still reading. Another way is to check it later
+		++file_data->height;
+		++file_data->parse_checklist;
+	}
+	else if (file_data->parse_checklist > 6 && line_read[0] == '\n')
+	{
+		ft_putendl_error(NEW_LINE_INSIDE_MAP);
+		//Free list
 		return (0);
 	}
-	else if (file_data->parse_checklist > 6 && !valid_map_line())
-		return (0);
 	return (1);
 }
 
@@ -79,7 +85,7 @@ int	read_data(t_map *file_data, int fd)
 			&& !reading_scene_data(line_read, file_data))
 			return (error_found(line_read, fd));
 		else if (file_data->parse_checklist >= 6
-			&& !reading_map(line_read, file_data))
+			&& !reading_map(line_read, file_data, &map_lines))
 			return (error_found(line_read, fd));
 		free(line_read);
 	}

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 17:16:49 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/05 17:20:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define TWO_PLAYER_POSITIONS "Error\nMap must have just one start position"
 # define WRONG_CHAR_FOUND "Error\nFound wrong char inside map content"
 # define MAP_NOT_SURROUNDED "Error\nMap must be surrounded by walls"
+# define NEW_LINE_INSIDE_MAP "Error\nFound new line inside map content"
 //
 
 typedef enum e_rgb_values
