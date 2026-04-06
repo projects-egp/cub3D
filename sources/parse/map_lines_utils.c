@@ -32,7 +32,7 @@ static int	player_found(int cardinal_direction_view, int x_position,
 {
 	map_data->spawn_orientation = cardinal_direction_view;
 	map_data->player[X_POS] = x_position;
-	map_data->player[Y_POS] = map_data->height + 1;
+	map_data->player[Y_POS] = map_data->height;
 	return (1);
 }
 
