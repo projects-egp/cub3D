@@ -31,8 +31,8 @@ static int	copy_line_and_add_to_list(char *line, t_list **map_lines,
 	return (1);
 }
 
-/*First line of map must have '1' chars or whitespace, nothing else.
- * From now on, (height && width) > 0*/
+/*First line of map must have '1' chars, ' ' space char 32 on ASCII, 
+or new line char, nothing else. From now on, (height && width) > 0*/
 int	add_valid_first_map_line(char *line, t_map *file_data,
 		t_list **map_lines)
 {
@@ -57,8 +57,8 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 	return (1);
 }
 
-/*After check all line, i = strlen. Includes "\n". So, when store map, doesn't
- * allocate width + 1. Just wdith. And line[width] == "\0"*/
+/*After check all line, i = strlen. Includes "\n". This is corrected on
+copy_line_and_add_to_list()*/
 int	add_valid_map_line(char *line, t_map *file_data, t_list **map_lines)
 {
 	int	len;
