@@ -125,6 +125,8 @@ clean:
 	fi
 	@echo "Objects removed"
 
+compclean: all clean
+
 fclean: clean
 	$(RM) $(NAME)
 	@make -s -C $(LIBFT_DIR) fclean
@@ -132,4 +134,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean compclean fclean re
