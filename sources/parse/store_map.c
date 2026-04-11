@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 16:37:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:00:25 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	store_map(t_map *map_data, t_list **map_lines)
 
 	i = map_data->height - 1;
 	printf("i is %d, height is %d\n", i, map_data->height);//debug
-	map_data->map = ft_calloc(map_data->height, sizeof(char *));
+	map_data->map = ft_calloc(map_data->height + 1, sizeof(char *));
 	if (!map_data->map)
 		return (malloc_fail_at_store_map(map_lines));
 	printf("list is %d\n", ft_lstsize(*map_lines));//debug
