@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 20:16:09 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 15:54:27 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
  * succesfully or with some error found*/
 int	store_map(t_map *map_data, t_list **map_lines)
 {
-	if (map_data->parse_checklist < 6)
-	{
-		ft_putendl_error("Error\nFile has not complete data to print map");
-		//Clean data stored
-		return (0);
-	}
 	free_full_list_and_contents(map_lines);//debug
 	//This is a debug line to be sure we clean everything okay and reach
 	//this point succesfully
