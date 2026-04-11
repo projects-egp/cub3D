@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 15:03:20 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/04 20:20:35 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:09:10 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	free_texture_paths(char **texture_paths)
 void	clean_file_data(t_map *file_data)
 {
 	free_texture_paths(file_data->texture_paths);
-	//Other data to free, for example map
+	if (file_data->map)
+		free_strings_array(file_data->map);
 	return ;
 }
