@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 18:13:38 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 18:27:00 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define TWO_PLAYER_POSITIONS "Map must have just one start position"
 # define WRONG_CHAR_FOUND "Found wrong char inside map content"
 # define MAP_NOT_SURROUNDED "Map must be properly surrounded by walls"
+# define MAP_WITHOUT_SPAWN "Map has no spawn position for player"
 # define NEW_LINE_INSIDE_MAP "Found new line inside map content"
 //
 
