@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 04:56:47 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/03/22 17:26:20 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:52:01 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	ft_swap(int *a, int *b);
 void	free_strings_array(char **array);
 void	free_string_and_null(char **heap_data);
 char	**ft_split_whitespace(char const *s);
+void	print_error(char *message);
 
 #endif

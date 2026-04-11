@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:01:44 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 18:00:31 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	copy_line_and_add_to_list(char *line, t_list **map_lines,
 	line_copy = ft_substr(line, 0, *len);
 	if (!line_copy || !add_new_line_to_list(line_copy, map_lines))
 	{
-		ft_putendl_error(MALLOC_FAILED);
+		print_error(MALLOC_FAILED);
 		return (0);
 	}
 	return (1);
@@ -45,7 +45,7 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 			++len;
 		else
 		{
-			ft_putendl_error(WRONG_CHAR_FOUND);
+			print_error(WRONG_CHAR_FOUND);
 			free_full_list_and_contents(map_lines);
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 17:20:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:58:41 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 # include "general.h"
 //
 /*	*	general messages	*	*/
-# define MALLOC_FAILED "Error\nMalloc failed"
-# define EXPECTED_USAGE "Error\nExpected usage: ./cub3D [filename].cub"
+# define MALLOC_FAILED "Malloc failed"
+# define EXPECTED_USAGE "Expected usage: ./cub3D [filename].cub"
 //
 /*	*	parse error messages	*	*/
-# define SCENE_DATA_ERROR "Error\nExpected scene data: identifier + information"
-# define IDENTIFIER_ERROR "Error\nFound wrong identifier or unexpected element"
-# define FILE_FORMAT_ERROR "Error\nExpected file format: <name>.cub"
-# define FILE_NAMED_DOTCUB "Error\nGood format, but file has no name"
-# define RGB_VALUES_ERROR "Error\nRGB integers expected format: 0,0,0"
-# define COLOR_VALUE_LIMITS "Error\nCan't convert to integer between 0 and 255"
-# define TWO_PLAYER_POSITIONS "Error\nMap must have just one start position"
-# define WRONG_CHAR_FOUND "Error\nFound wrong char inside map content"
-# define MAP_NOT_SURROUNDED "Error\nMap must be surrounded by walls"
-# define NEW_LINE_INSIDE_MAP "Error\nFound new line inside map content"
+# define SCENE_DATA_ERROR "Expected scene data: identifier + information"
+# define IDENTIFIER_ERROR "Found wrong identifier"
+# define FILE_FORMAT_ERROR "Expected file format: <name>.cub"
+# define FILE_NAMED_DOTCUB "Good format, but file has no name"
+# define RGB_VALUES_ERROR "RGB integers expected format: 0,0,0"
+# define COLOR_VALUE_LIMITS "Can't convert to integer between 0 and 255"
+# define TWO_PLAYER_POSITIONS "Map must have just one start position"
+# define WRONG_CHAR_FOUND "Found wrong char inside map content"
+# define MAP_NOT_SURROUNDED "Map must be surrounded by walls"
+# define NEW_LINE_INSIDE_MAP "Found new line inside map content"
 //
 
 typedef enum e_rgb_values

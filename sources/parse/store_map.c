@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:26:26 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 18:00:46 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	malloc_fail_at_store_map(t_list **map_lines)
 {
 	free_full_list_and_contents(map_lines);
-	ft_putendl_error(MALLOC_FAILED);
+	print_error(MALLOC_FAILED);
 	return (0);
 }
 
