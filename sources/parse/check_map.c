@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:23:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:54:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
  * surrounded by other char of these type or 1*/
 int	check_map(t_map *map_data)
 {
+	(void)map_data;//debug
 	return (1);
 }
