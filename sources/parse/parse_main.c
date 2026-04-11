@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/05 19:31:45 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:16:38 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ int	open_file(char *cub_file_path, t_map *file_data)
 		clean_file_data(file_data);
 		return (0);
 	}
-	return (1);
+	return (check_map(file_data));
 }
