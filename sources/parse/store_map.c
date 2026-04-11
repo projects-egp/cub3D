@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:00:25 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:26:26 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@ int	store_map(t_map *map_data, t_list **map_lines)
 {
 	int	i;
 
+	if (!map_data->spawn_orientation)
+		return (malloc_fail_at_store_map(map_lines));
 	i = map_data->height - 1;
-	printf("i is %d, height is %d\n", i, map_data->height);//debug
 	map_data->map = ft_calloc(map_data->height + 1, sizeof(char *));
 	if (!map_data->map)
 		return (malloc_fail_at_store_map(map_lines));
-	printf("list is %d\n", ft_lstsize(*map_lines));//debug
 	while (i >= 0)
 	{
 		map_data->map[i] = ft_substr((*map_lines)->content,
 				0, map_data->width);
-		printf("lines %d is %s", i, map_data->map[i]);//debug
 		if (!map_data->map[i])
 			return (malloc_fail_at_store_map(map_lines));
 		free_first_node_and_content(map_lines);
