@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 18:27:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/13 19:00:18 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # define FILE_FORMAT_ERROR "Expected file format: <name>.cub"
 # define FILE_NAMED_DOTCUB "Good file format, but file has no name"
 # define RGB_VALUES_ERROR "RGB values expected as three integers, format: 0,0,0"
+# define SAME_COLOR_C_F "Ceiling and floor has exactly same color"
 # define COLOR_VALUE_LIMITS "RGB values must be integers between 0 and 255"
+# define UNCOMPLETE_DATA "Uncomplete file. It must have scene data and a map"
 # define TWO_PLAYER_POSITIONS "Map must have just one start position"
 # define WRONG_CHAR_FOUND "Found wrong char inside map content"
 # define MAP_NOT_SURROUNDED "Map must be properly surrounded by walls"
