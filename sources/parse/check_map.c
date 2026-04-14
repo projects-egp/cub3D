@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/14 16:36:07 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 17:00:28 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	check_orthogonal_next_chars(t_map *data, int y, int x,
 
 static int	check_line(t_map *data, int y, int last_line)
 {
-	int	x;
+	int		x;
 	char	c;
-	
+
 	x = 0;
 	while (data->map[y][x])
 	{
@@ -68,7 +68,10 @@ int	check_map(t_map *data)
 	while (y < data->height)
 	{
 		if (!check_line(data, y, last_line))
+		{
+			clean_file_data(data);
 			return (0);
+		}
 		++y;
 	}
 	return (1);
