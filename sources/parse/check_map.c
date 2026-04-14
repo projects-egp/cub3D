@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/14 17:00:28 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 17:18:29 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	check_map(t_map *data)
 	{
 		if (!check_line(data, y, last_line))
 		{
+			print_error(MAP_NOT_CLOSED);
 			clean_file_data(data);
 			return (0);
 		}
