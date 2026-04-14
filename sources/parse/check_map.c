@@ -6,28 +6,33 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 19:32:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 16:36:07 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static int	is_next_char_valid()
+static int	is_valid_char(char c)
 {
-	if (c == 1 || c == 0 || ft_ischar(c))
+	if (c == '1' || c == '0' || ft_isalpha(c))
 		return (1);
 	return (0);
 }
 
-static int	check_char(t_map *data, int y, int x, int last_line)
+/*Check in clockwise (up, right, down, left).
+ * Map is consider valid in case of empty char in corners*/
+static int	check_orthogonal_next_chars(t_map *data, int y, int x,
+		int last_line)
 {
-		//check up, don't worry, you started at second line
-	if (data->map[y][x + 1] != 0)
-		//checks right	
-	if (y < last_line)
-		//checks down
-	if (x != 0)
-		//cehcks left
+	if (!is_valid_char(data->map[y - 1][x]))
+		return (0);
+	if (data->map[y][x + 1] != 0 && !is_valid_char(data->map[y][x + 1]))
+		return (0);
+	if (y < last_line && !is_valid_char(data->map[y + 1][x]))
+		return (0);
+	if (x != 0 && !is_valid_char(data->map[y][x - 1]))
+		return (0);
+	return (1);
 }
 
 static int	check_line(t_map *data, int y, int last_line)
@@ -40,7 +45,7 @@ static int	check_line(t_map *data, int y, int last_line)
 	{
 		c = data->map[y][x];
 		if ((c == '0' || ft_isalpha(c))
-			&& !check_char(data, y, x, last_line))
+			&& !check_orthogonal_next_chars(data, y, x, last_line))
 			return (0);
 		++x;
 	}
