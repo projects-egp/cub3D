@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/13 19:00:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 17:25:27 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define UNCOMPLETE_DATA "Uncomplete file. It must have scene data and a map"
 # define TWO_PLAYER_POSITIONS "Map must have just one start position"
 # define WRONG_CHAR_FOUND "Found wrong char inside map content"
-# define MAP_NOT_SURROUNDED "Map must be properly surrounded by walls"
+# define MAP_NOT_CLOSED "Map is not properly closed by walls"
 # define MAP_WITHOUT_SPAWN "Map has no spawn position for player"
 # define NEW_LINE_INSIDE_MAP "Found new line inside map content"
 //
