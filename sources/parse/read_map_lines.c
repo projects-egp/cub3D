@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 18:00:31 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/15 12:24:59 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,12 @@ int	add_valid_map_line(char *line, t_map *file_data, t_list **map_lines)
 		}
 		++len;
 	}
-	if (!copy_line_and_add_to_list(line, map_lines, &len))
+	if (!check_first_and_last_chars(line, len)
+		|| !copy_line_and_add_to_list(line, map_lines, &len))
+	{
+		free_full_list_and_contents(map_lines);
 		return (0);
+	}
 	++file_data->height;
 	if (len > file_data->width)
 		file_data->width = len;

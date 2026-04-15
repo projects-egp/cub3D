@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:41:10 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:53:23 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/15 12:39:50 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	store_map(t_map *map_data, t_list **map_lines);
 /*	*	 map_lines_utils.c	*	*/
 int	add_new_line_to_list(char *line, t_list **map_lines_list);
 int	is_valid_map_char(int c, int x_position, t_map *map_data);
+int	check_first_and_last_chars(char *line, int len);
 
 #endif

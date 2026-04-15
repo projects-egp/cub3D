@@ -6,11 +6,39 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 17:59:47 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/15 12:44:07 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
+
+static int	is_spawn_char(char c)
+{
+
+	if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
+		return (1);
+	return (0);
+}
+
+/*Used on add_valid_map_line. In cases of first or last char,
+ * is needed to check here if first or last char of a read line is a valid
+ * char but will make a not surrounded map. SO, checks only spawn char
+ * or 0*/
+int	check_first_and_last_chars(char *line, int len)
+{
+	char	first;
+	char	last;
+
+	first = line[0];
+	last = line[len - 2];
+	if (is_spawn_char(first) || first == '0'
+		|| is_spawn_char(last) || last == '0')
+	{
+		print_error(MAP_NOT_CLOSED);
+		return (0);
+	}
+	return (1);
+}
 
 int	add_new_line_to_list(char *line, t_list **map_lines_list)
 {
@@ -41,7 +69,7 @@ static int	player_found(int cardinal_direction_view, int x_position,
  * like tabs can break our map*/
 int	is_valid_map_char(int c, int x_position, t_map *map_data)
 {
-	if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
+	if (is_spawn_char(c))
 	{
 		if (map_data->spawn_orientation != 0)
 		{
