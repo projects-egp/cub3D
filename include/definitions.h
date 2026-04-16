@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/14 17:25:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 16:36:07 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,18 @@ typedef enum e_texture_paths
 	TEXTURE_PATHS
 }	t_texture_paths;
 
-typedef enum e_pplayer_position
+typedef enum e_player_position
 {
 	X_POS = 0,
 	Y_POS,
 	POSITION
 }	t_player_position;
+
+typedef enum e_check_map_functions
+{
+	CHECK_CLOSE_MAP,
+	FILL_EMPTY_CORNERS
+}	t_check_map_functions;
 
 typedef struct s_map
 {

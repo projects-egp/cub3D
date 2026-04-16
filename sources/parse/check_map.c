@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/14 17:18:29 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 18:14:11 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,45 @@ static int	check_orthogonal_next_chars(t_map *data, int y, int x,
 	return (1);
 }
 
-static int	check_line(t_map *data, int y, int last_line)
+static int	check_line(t_map *data, int y, int last_line, int requested)
 {
 	int		x;
 	char	c;
 
 	x = 0;
-	while (data->map[y][x])
+	while (x < data->width - 1)
 	{
 		c = data->map[y][x];
-		if ((c == '0' || ft_isalpha(c))
+		if (requested == CHECK_CLOSE_MAP && c != 0 
+			&& (c == '0' || ft_isalpha(c))
 			&& !check_orthogonal_next_chars(data, y, x, last_line))
 			return (0);
+		else if (requested == FILL_EMPTY_CORNERS
+			&& !is_valid_char(data->map[y][x]))
+			data->map[y][x] = '1';
 		++x;
 	}
 	return (1);
 }
 
-/*check_map() is returned from open_file() to main(). It's last step from parse.
- * Here map is checked to be sure that a 0 or "spwan_orienation char" is not
- * surrounded by other char of these type or 1.
+/*check_map() is returned from open_file() to main().
+ * 
+ * Two last steps from parse. 
+ * 
+ * First one: map is checked to be sure that 
+ * a '0' or "spwan_orienation char" is not surrounded by other char 
+ * of these type or '1'.
+ *
+ * Second one: check in each '0' or "spawn_orientiation_char"
+ * if diagonal next chars are whitespace. If some space is found there,
+ * will be changed to 1. This is done in order to avoid player escaping map
+ * later. 
+ * Why is done in a second step? To make it sure that map is valid before
+ * changing chars.
  *
  * Will start with second line, 
  * as long as first line was validated while reading*/
-int	check_map(t_map *data)
+int	check_map(t_map *data, int requested_function)
 {
 	int	y;
 	int	last_line;
@@ -67,13 +82,20 @@ int	check_map(t_map *data)
 	last_line = data->height - 1;
 	while (y < data->height)
 	{
-		if (!check_line(data, y, last_line))
+		if (requested_function == CHECK_CLOSE_MAP
+			&& !check_line(data, y, last_line, requested_function))
 		{
 			print_error(MAP_NOT_CLOSED);
 			clean_file_data(data);
 			return (0);
 		}
-		++y;
+		else if (requested_function == FILL_EMPTY_CORNERS)
+			check_line(data, y, last_line, requested_function);
+		if (++y == data->height && requested_function == CHECK_CLOSE_MAP)
+		{
+			y = 0;
+			++requested_function;
+		}
 	}
 	return (1);
 }
