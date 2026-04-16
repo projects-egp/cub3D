@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/15 12:44:07 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 12:49:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	is_spawn_char(char c)
 {
-
 	if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
 		return (1);
 	return (0);

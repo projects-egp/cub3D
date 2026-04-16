@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/15 12:24:59 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 12:50:26 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,39 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 	return (1);
 }
 
+/*As long as a valid empty line cannot make problems to map, not only ascii 32
+ * will be accepted, but also any other whitespace char. In lines with
+ * at least one char != whitespace, a tab "'\t'" ascii 9 seems to be okay
+ * but in code is just on char, so map could appear as valid but for program
+ * would be not properly closed*/
+static int	add_valid_empty_line(char *line, t_map *map_data,
+		t_list **map_lines)
+{
+	int	len;
+
+	len = ft_strlen(line);
+	if (!copy_line_and_add_to_list(line, map_lines, &len))
+	{
+		free_full_list_and_contents(map_lines);
+		return (0);
+	}
+	++map_data->height;
+	return (1);
+}
+
 /*After check all line, i = strlen. Includes "\n". This is corrected on
-copy_line_and_add_to_list()*/
+ * copy_line_and_add_to_list().
+ * 
+ * If (is_empty_line && parse_checklist == 6) means that 
+ * line doesn't start with '\n', so map hasn't ended yet.
+ * Is valid and must be stored*/
 int	add_valid_map_line(char *line, t_map *file_data, t_list **map_lines)
 {
 	int	len;
 
 	len = 0;
+	if (is_empty_line(line))
+		return (add_valid_empty_line(line, file_data, map_lines));
 	while (line[len])
 	{
 		if (!is_valid_map_char(line[len], len, file_data))
