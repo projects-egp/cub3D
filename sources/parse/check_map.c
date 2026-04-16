@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 18:14:11 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 20:38:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ static int	is_valid_char(char c)
 	if (c == '1' || c == '0' || ft_isalpha(c))
 		return (1);
 	return (0);
+}
+
+static void	fill_empty_corners(t_map *data, int y, int x)
+{
+	if (!is_valid_char(data->map[y - 1][x - 1]))
+		data->map[y - 1][x - 1] = '1';
+	if (!is_valid_char(data->map[y - 1][x + 1]))
+		data->map[y - 1][x + 1] = '1';
+	if (!is_valid_char(data->map[y + 1][x + 1]))
+		data->map[y + 1][x + 1] = '1';
+	if (!is_valid_char(data->map[y + 1][x - 1]))
+		data->map[y + 1][x - 1] = '1';
+	return ;
 }
 
 /*Check in clockwise (up, right, down, left).
@@ -41,16 +54,15 @@ static int	check_line(t_map *data, int y, int last_line, int requested)
 	char	c;
 
 	x = 0;
-	while (x < data->width - 1)
+	while (data->map[y][x])
 	{
 		c = data->map[y][x];
-		if (requested == CHECK_CLOSE_MAP && c != 0 
-			&& (c == '0' || ft_isalpha(c))
+		if (requested == CHECK_CLOSE_MAP && (c == '0' || ft_isalpha(c))
 			&& !check_orthogonal_next_chars(data, y, x, last_line))
 			return (0);
 		else if (requested == FILL_EMPTY_CORNERS
-			&& !is_valid_char(data->map[y][x]))
-			data->map[y][x] = '1';
+			&& (c == '0' || ft_isalpha(c)))
+			fill_empty_corners(data, y, x);
 		++x;
 	}
 	return (1);
@@ -93,7 +105,7 @@ int	check_map(t_map *data, int requested_function)
 			check_line(data, y, last_line, requested_function);
 		if (++y == data->height && requested_function == CHECK_CLOSE_MAP)
 		{
-			y = 0;
+			y = 1;
 			++requested_function;
 		}
 	}
