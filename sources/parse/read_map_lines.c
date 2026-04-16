@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 17:40:43 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 20:45:14 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	copy_line_and_add_to_list(char *line, t_list **map_lines,
 {
 	char	*line_copy;
 
-	if (line[*len - 1] == '\n')
+	if (*len >= 1 && line[*len - 1] == '\n')
 		*len -= 1;
 	line_copy = NULL;
 	line_copy = ft_substr(line, 0, *len);
