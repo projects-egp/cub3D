@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 12:54:29 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 16:02:41 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static int	reading_map(char *line_read, t_map *file_data,
 	return (1);
 }
 
+/*read_data, in case of success, returns store_map() to open_file()*/
 int	read_data(t_map *file_data, int fd)
 {
 	char	*line_read;
