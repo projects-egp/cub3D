@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:08:57 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/11 18:01:01 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 14:07:44 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ static int	check_strings(char **array)
 	while (array[i] && return_status)
 	{
 		return_status = check_digit_chars(array[i]);
+		if (!return_status)
+			print_error(RGB_VALUES_CONVERSION);
 		++i;
 	}
-	if (i != RGB_VALUES)
-		return_status = 0;
-	if (!return_status)
+	if (return_status && i != RGB_VALUES)
 	{
-		print_error(RGB_VALUES_ERROR);
-		free_strings_array(array);
+		print_error(NOT_THREE_RGB_VALUES);
+		return_status = 0;
 	}
+	if (!return_status)
+		free_strings_array(array);
 	return (return_status);
 }
 

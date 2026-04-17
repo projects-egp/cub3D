@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 20:45:14 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:37:57 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ static int	copy_line_and_add_to_list(char *line, t_list **map_lines,
 }
 
 /*First line of map must have '1' chars, ' ' space char 32 on ASCII, 
-or new line char, nothing else. From now on, (height && width) > 0*/
-int	add_valid_first_map_line(char *line, t_map *file_data,
-		t_list **map_lines)
+ * or new line char, nothing else.
+ *
+ * This function is also used on add_scene_data.c, to make sure 
+ * map is not found before expected*/
+int	is_first_map_line(char *line)
 {
 	int	len;
 
@@ -44,12 +46,24 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 		if (line[len] == ' ' || line[len] == '1' || line[len] == '\n')
 			++len;
 		else
-		{
-			print_error(WRONG_CHAR_FOUND);
-			free_full_list_and_contents(map_lines);
 			return (0);
-		}
 	}
+	return (1);
+}
+
+/*From now on, (height && width) > 0. This means program is reading map*/
+int	add_valid_first_map_line(char *line, t_map *file_data,
+		t_list **map_lines)
+{
+	int	len;
+
+	if (!is_first_map_line(line))
+	{
+		print_error(WRONG_CHAR_FOUND);
+		free_full_list_and_contents(map_lines);
+		return (0);
+	}
+	len = ft_strlen(line);
 	if (!copy_line_and_add_to_list(line, map_lines, &len))
 		return (0);
 	++file_data->height;

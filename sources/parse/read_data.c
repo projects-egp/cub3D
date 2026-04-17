@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 16:02:41 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:02:59 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ static int	error_found(char *line, int fd)
 
 static int	reading_scene_data(char *line_read, t_map *file_data)
 {
+	if (!is_empty_line(line_read) && is_first_map_line(line_read))
+	{
+		print_error(MAP_IS_NOT_LAST_ELEMENT);
+		return (0);
+	}
 	if (!is_empty_line(line_read) && !add_scene_data(line_read, file_data))
 		return (0);
 	return (1);

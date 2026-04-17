@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 16:36:07 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:45:41 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,43 @@
 # define DEFINITIONS_H
 
 # include "general.h"
+
+//
+/*	*	*	* ERROR MESSAGES DEFINED *	*	*	*/
+//
 //
 /*	*	general messages	*	*/
 # define MALLOC_FAILED "Malloc failed"
 # define EXPECTED_USAGE "Expected usage: ./cub3D [filename].cub"
 //
 /*	*	parse error messages	*	*/
-# define SCENE_DATA_ERROR "Expected scene data: identifier + information"
-# define IDENTIFIER_ERROR "Found wrong identifier for scene data"
+//
+//	file name
 # define FILE_FORMAT_ERROR "Expected file format: <name>.cub"
 # define FILE_NAMED_DOTCUB "Good file format, but file has no name"
-# define RGB_VALUES_ERROR "RGB values expected as three integers, format: 0,0,0"
-# define SAME_COLOR_C_F "Ceiling and floor has exactly same color"
+//
+//	scene data: textures
+# define SCENE_DATA_ERROR "Expected scene data: identifier + information"
+# define IDENTIFIER_ERROR "Found wrong identifier for scene data"
+//
+//	scene data: ceiling and floor colors
+# define RGB_VALUES_CONVERSION "Cannot convert RGB values, non-digit char found"
+# define NOT_THREE_RGB_VALUES "Expected three RGB values for ceiling and floor"
 # define COLOR_VALUE_LIMITS "RGB values must be integers between 0 and 255"
+//
+//	scene_data: map
 # define UNCOMPLETE_DATA "Uncomplete file. It must have scene data and a map"
-# define TWO_PLAYER_POSITIONS "Map must have just one start position"
+# define MAP_IS_NOT_LAST_ELEMENT "Map must be last element on file"
+# define TWO_PLAYER_POSITIONS "Map must have just one spawn position"
 # define WRONG_CHAR_FOUND "Found wrong char inside map content"
 # define MAP_NOT_CLOSED "Map is not properly closed by walls"
 # define MAP_WITHOUT_SPAWN "Map has no spawn position for player"
 # define NEW_LINE_INSIDE_MAP "Found new line inside map content"
+//
+//	/	/	/	/	/	/	/	/	//
+//
+//
+/*	*	*	*   ENUMS AND STRUCTS	*	*	*	*/
 //
 
 typedef enum e_rgb_values
@@ -58,12 +76,6 @@ typedef enum e_player_position
 	Y_POS,
 	POSITION
 }	t_player_position;
-
-typedef enum e_check_map_functions
-{
-	CHECK_CLOSE_MAP,
-	FILL_EMPTY_CORNERS
-}	t_check_map_functions;
 
 typedef struct s_map
 {
