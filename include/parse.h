@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:41:10 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 14:55:03 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:52:59 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_check_map_functions
 
 int	open_file(char *cub_file_path, t_map *file_data);
 int	read_data(t_map *data, int fd);
-int	check_map(t_map *map_data, int requested_function);
+int	check_stored_map(t_map *map_data, int requested_function);
 int	is_empty_line(char *line);
 //
 /*	scene data: texture paths and color for ceiling and floor	*/
