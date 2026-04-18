@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 15:37:57 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 09:26:42 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /*If len includes "\n", will be updated to avoid it if later is used as
  * map_data->width. That's the reason we do substr instead of strdup, too*/
 static int	copy_line_and_add_to_list(char *line, t_list **map_lines,
-		int *len)
+		int len)
 {
 	char	*line_copy;
 
-	if (*len >= 1 && line[*len - 1] == '\n')
-		*len -= 1;
+	if (len >= 1 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
 	line_copy = NULL;
-	line_copy = ft_substr(line, 0, *len);
+	line_copy = ft_substr(line, 0, len);
 	if (!line_copy || !add_new_line_to_list(line_copy, map_lines))
 	{
 		print_error(MALLOC_FAILED);
@@ -64,7 +64,7 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 		return (0);
 	}
 	len = ft_strlen(line);
-	if (!copy_line_and_add_to_list(line, map_lines, &len))
+	if (!copy_line_and_add_to_list(line, map_lines, len))
 		return (0);
 	++file_data->height;
 	file_data->width = len;
@@ -82,7 +82,7 @@ static int	add_valid_empty_line(char *line, t_map *map_data,
 	int	len;
 
 	len = ft_strlen(line);
-	if (!copy_line_and_add_to_list(line, map_lines, &len))
+	if (!copy_line_and_add_to_list(line, map_lines, len))
 	{
 		free_full_list_and_contents(map_lines);
 		return (0);
@@ -114,7 +114,7 @@ int	add_valid_map_line(char *line, t_map *file_data, t_list **map_lines)
 		++len;
 	}
 	if (!check_first_and_last_chars(line, len)
-		|| !copy_line_and_add_to_list(line, map_lines, &len))
+		|| !copy_line_and_add_to_list(line, map_lines, len))
 	{
 		free_full_list_and_contents(map_lines);
 		return (0);
