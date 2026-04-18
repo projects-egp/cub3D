@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 15:33:51 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:48:12 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	store_map(t_map *map_data, t_list **map_lines)
 		return (error_found(map_lines, MALLOC_FAILED));
 	while (i >= 0)
 	{
-		map_data->map[i] = ft_calloc(map_data->width, sizeof(char));
+		map_data->map[i] = ft_calloc(map_data->width + 1, sizeof(char));
 		if (!map_data->map[i])
 			return (error_found(map_lines, MALLOC_FAILED));
 		ft_strlcpy(map_data->map[i], (*map_lines)->content, map_data->width);

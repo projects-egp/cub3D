@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 15:40:38 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 09:38:45 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_line(t_map *data, int y, int last_line, int requested)
 	return (1);
 }
 
-/*check_map() is returned from open_file() to main().
+/*check_stored_map() is returned from open_file() to main().
  * 
  * Two last steps from parse. 
  * 
@@ -85,7 +85,7 @@ static int	check_line(t_map *data, int y, int last_line, int requested)
  *
  * Will start with second line, 
  * as long as first line was validated while reading*/
-int	check_map(t_map *data, int requested_function)
+int	check_stored_map(t_map *data, int requested_function)
 {
 	int	y;
 	int	last_line;
