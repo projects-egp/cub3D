@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/18 09:40:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/28 19:48:42 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static void	init_mlx_data(t_mlx *mlx_data, t_map *file_data)
-{
-	mlx_data->map_data = file_data;
-	return ;
-}
-
 int	main(int argc, char **argv)
 {
-	t_mlx	mlx_data;//t_mlx must be defined, is not given by minilibx
+	t_mlx	mlx_data;
 	t_map	file_data;
 
 	if (argc != 2)
@@ -30,7 +24,11 @@ int	main(int argc, char **argv)
 	}
 	if (!open_file(argv[1], &file_data))
 		return (1);
-	init_mlx_data(&mlx_data, &file_data);
-	clean_up(&mlx_data);
+	if (!init_mlx_data(&mlx_data, &file_data))
+	{
+		clean_file_data(&file_data);
+		return (1);
+	}
+	run_mlx_loop(&mlx_data);
 	return (0);
 }

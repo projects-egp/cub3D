@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:41:10 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 18:52:59 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
-
-# include "general.h"
 
 //Adde here this enum to avoid confusion with other enums. 
 //These values are used only at check_stored_map.c

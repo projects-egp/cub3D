@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/07 18:37:07 by made-ped         ###   ########.fr       */
+/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define GENERAL_H
 
 # include "../libft/complete_libft.h"
+# include "mlx.h"
 # include "definitions.h"
+# include "image.h"
 # include "parse.h"
 # include "clean.h"
-# include "mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 

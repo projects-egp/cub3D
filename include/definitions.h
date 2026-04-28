@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 15:45:41 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
 # define DEFINITIONS_H
-
-# include "general.h"
 
 //
 /*	*	*	* ERROR MESSAGES DEFINED *	*	*	*/
@@ -89,10 +87,5 @@ typedef struct s_map
 	int		height;
 	int		width;
 }	t_map;
-
-typedef struct s_mlx
-{
-	t_map	*map_data;
-}	t_mlx;
 
 #endif
