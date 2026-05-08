@@ -10,7 +10,7 @@ NAME = cub3D
 
 SOURCES =	main.c mlx_utils.c \
 		$(addprefix parse/, parse_main.c add_scene_data.c read_data.c\
-		store_rgb_values.c map_lines_utils.c store_map.c\
+		checklist.c store_rgb_values.c map_lines_utils.c store_map.c\
 		read_map_lines.c check_stored_map.c)\
 		$(addprefix clean/, clean_file_data.c clean_up.c)
 
