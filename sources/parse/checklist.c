@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:47:02 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 13:04:31 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 16:19:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	scene_data_found(t_map *file_data)
+int	checklist(t_map *file_data)
 {
 	int	result;
 	int	i;

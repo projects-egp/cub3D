@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 16:16:01 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 16:20:14 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,17 @@ static int	reading_scene_data(char *line_read, t_map *file_data)
 static int	reading_map(char *line_read, t_map *file_data,
 			t_list **map_lines)
 {
-	if (line_read[0] == '\n' && check_data_found(file_data) == READING_MAP
+	if (line_read[0] == '\n' && checklist(file_data) == READING_MAP
 		&& file_data->height > 0)
 		file_data->parse_checklist[FOUND_MAP] = 1;
-	else if (check_data_found(file_data) == READING_MAP
-		&& file_data->height > 0
+	else if (checklist(file_data) == READING_MAP && file_data->height > 0
 		&& !add_valid_map_line(line_read, file_data, map_lines))
 		return (0);
-	else if (check_data_found(file_data) == READING_MAP
+	else if (checklist(file_data) == READING_MAP
 		&& file_data->height == 0 && !is_empty_line(line_read)
 		&& !add_valid_first_map_line(line_read, file_data, map_lines))
 		return (0);
-	else if (check_data_found(file_data) == ALL_FOUND
-		&& !is_empty_line(line_read))
+	else if (checklist(file_data) == ALL_FOUND && !is_empty_line(line_read))
 	{
 		free_full_list_and_contents(map_lines);
 		print_error(NEW_LINE_INSIDE_MAP);
@@ -91,15 +89,15 @@ int	read_data(t_map *file_data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (check_data_found(file_data) >= READING_MAP
+		if (checklist(file_data) >= READING_MAP 
 			&& !reading_map(line_read, file_data, &map_lines))
 			return (error_found(line_read, fd));
-		else if (check_data_found(file_data) < FOUND_MAP
+		else if (checklist(file_data) < FOUND_MAP
 			&& !reading_scene_data(line_read, file_data))
 			return (error_found(line_read, fd));
 		free(line_read);
 	}
-	if (check_data_found(file_data) == READIING_MAP && file_data->height > 0)
+	if (checklist(file_data) == READIING_MAP && file_data->height > 0)
 		file_data->parse_checklist[FOUND_MAP] = 1;
 	return (store_map(file_data, &map_lines));
 }

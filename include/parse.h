@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:41:10 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/08 16:18:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	open_file(char *cub_file_path, t_map *file_data);
 int	read_data(t_map *data, int fd);
 int	check_stored_map(t_map *map_data, int requested_function);
 int	is_empty_line(char *line);
+//
+/*	*	 map_lines_utils.c	*	*/
+int	checklist(t_map *file_data);
 //
 /*	scene data: texture paths and color for ceiling and floor	*/
 int	add_scene_data(char *line, t_map *data);
