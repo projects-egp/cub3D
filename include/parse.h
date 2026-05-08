@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:41:10 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 17:09:28 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:16:47 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_empty_line(char *line);
 //
 /*	*	 checklist.c	*	*/
 int	checklist(t_map *file_data);
-int	already_found(char identifier, t_map *file_data);
+int	check_if_already_found(char identifier, t_map *file_data);
 //
 /*	scene data: texture paths and color for ceiling and floor	*/
 int	add_scene_data(char *line, t_map *data);

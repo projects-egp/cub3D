@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 17:04:40 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:16:24 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,15 @@ static int	error_found(char **array)
 
 static int	valid_identifier(char *identifier, t_map *file_data)
 {
-	if ((identifier[0] == 'F' || identifier[0] == 'C')
-		&& identifier[1] == 0 && !already_found(identifier[0], file_data))
-		return (1);
+	if ((identifier[0] == 'F' || identifier[0] == 'C') && identifier[1] == 0)
+		return (check_if_already_found(identifier[0], file_data));
 	else if ((identifier[0] == 'N' || identifier[0] == 'S')
-		&& identifier[1] == 'O' && identifier[2] == 0
-		&& !already_found(identifier[0], file_data))
-		return (1);
-	else if (identifier[0] == 'W' && identifier[1] == 'E'
-		&& identifier[2] == 0 && !already_found(identifier[0], file_data))
-		return (1);
-	else if (identifier[0] == 'E' && identifier[1] == 'A'
-		&& identifier[2] == 0 && !already_found(identifier[0], file_data))
-		return (1);
+		&& identifier[1] == 'O' && identifier[2] == 0)
+		return (check_if_already_found(identifier[0], file_data));
+	else if (identifier[0] == 'W' && identifier[1] == 'E' && identifier[2] == 0)
+		return (check_if_already_found(identifier[0], file_data));
+	else if (identifier[0] == 'E' && identifier[1] == 'A' && identifier[2] == 0)
+		return (check_if_already_found(identifier[0], file_data));
 	print_error(IDENTIFIER_ERROR);
 	return (0);
 }

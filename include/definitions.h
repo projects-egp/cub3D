@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 16:04:02 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:20:00 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 //	scene data: textures
 # define SCENE_DATA_ERROR "Expected scene data: identifier + information"
 # define IDENTIFIER_ERROR "Found wrong identifier for scene data"
+# define DUPLICATED_IDENTIFIER "Found duplicated identifier"
 //
 //	scene data: ceiling and floor colors
 # define RGB_VALUES_CONVERSION "Cannot convert RGB values, non-digit char found"
