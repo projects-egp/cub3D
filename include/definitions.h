@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/08 12:27:51 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,24 @@ typedef enum e_player_position
 	POSITION
 }	t_player_position;
 
+typedef enum e_parse_checklist
+{
+	FOUND_NO = 0,
+	FOUND_SO,
+	FOUND_EA,
+	FOUND_WE,
+	FOUND_C,
+	FOUND_F,
+	FOUND_MAP,
+	ALL_FOUND
+}	t_parse_checklist;
+
 typedef struct s_map
 {
 	char	*texture_paths[TEXTURE_PATHS + 1];
 	int		floor_color[RGB_VALUES];
 	int		ceiling_color[RGB_VALUES];
-	int		parse_checklist;
+	int		parse_checklist[ALL_FOUND];
 	char	**map;
 	int		player[POSITION];
 	char	spawn_orientation;
