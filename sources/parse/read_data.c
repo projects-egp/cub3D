@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/18 09:25:50 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 16:00:38 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static int	reading_scene_data(char *line_read, t_map *file_data)
 static int	reading_map(char *line_read, t_map *file_data,
 			t_list **map_lines)
 {
-	if (line_read[0] == '\n' && file_data->parse_checklist == 6
-		&& file_data->height > 0)
-		++file_data->parse_checklist;
+	if (line_read[0] == '\n' && file_data->height > 0
+		&& check_data_found(file_data) == SCENE_DATA_FOUND)
+		file_data->parse_checklist[FOUND_MAP] = 1;
 	else if (file_data->parse_checklist == 6 && file_data->height > 0
 		&& !add_valid_map_line(line_read, file_data, map_lines))
 		return (0);
