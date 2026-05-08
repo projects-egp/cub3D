@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 18:52:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 12:43:35 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_map_data(t_map *map_data)
 		(sizeof(char *) * (TEXTURE_PATHS + 1)));
 	ft_bzero((void *)map_data->floor_color, (sizeof(int) * RGB_VALUES));
 	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * RGB_VALUES));
-	map_data->parse_checklist = 0;
+	ft_bzero((void *)map_data->parse_checklist, (sizeof(int) * ALL_FOUND));
 	map_data->map = NULL;
 	ft_bzero((void *)map_data->player, (sizeof(int) * POSITION));
 	map_data->spawn_orientation = 0;
@@ -27,11 +27,10 @@ static void	init_map_data(t_map *map_data)
 	return ;
 }
 
-/*Files are not specifically required to be on maps/, 
- *so it is not checked*/
+/*Files are not specifically required to be 
+ * on maps/, so it is not checked*/
 static int	file_format(char *file_path)
 {
-	//Note to remmeber you must decide if file must been checked strictly
 	char	*first_dot_position;
 
 	if (ft_strnstr(file_path, ".cub", 4))
