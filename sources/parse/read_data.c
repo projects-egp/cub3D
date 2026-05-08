@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 16:20:14 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 16:22:47 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	read_data(t_map *file_data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (checklist(file_data) >= READING_MAP 
+		if (checklist(file_data) >= FOUND_MAP 
 			&& !reading_map(line_read, file_data, &map_lines))
 			return (error_found(line_read, fd));
 		else if (checklist(file_data) < FOUND_MAP

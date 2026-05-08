@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 19:04:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 16:44:37 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:04:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static int	error_found(char **array)
 	return (0);
 }
 
-static int	valid_identifier(char *identifier)
+static int	valid_identifier(char *identifier, t_map *file_data)
 {
 	if ((identifier[0] == 'F' || identifier[0] == 'C')
-		&& identifier[1] == 0 && !already_found(identifier[0]))
+		&& identifier[1] == 0 && !already_found(identifier[0], file_data))
 		return (1);
 	else if ((identifier[0] == 'N' || identifier[0] == 'S')
 		&& identifier[1] == 'O' && identifier[2] == 0
-		&& !already_found(identifier[0]))
+		&& !already_found(identifier[0], file_data))
 		return (1);
-	else if (identifier[0] == 'W' && identifier[1] == 'E' 
-		&& identifier[2] == 0 && !already_found(identifier[0]))
+	else if (identifier[0] == 'W' && identifier[1] == 'E'
+		&& identifier[2] == 0 && !already_found(identifier[0], file_data))
 		return (1);
 	else if (identifier[0] == 'E' && identifier[1] == 'A'
-		&& identifier[2] == 0 && !already_found(identifier[0]))
+		&& identifier[2] == 0 && !already_found(identifier[0], file_data))
 		return (1);
 	print_error(IDENTIFIER_ERROR);
 	return (0);
@@ -84,12 +84,9 @@ int	add_scene_data(char *line, t_map *file_data)
 			print_error(SCENE_DATA_ERROR);
 			return (error_found(array));
 		}
-		if (!valid_identifier(array[0])
+		if (!valid_identifier(array[0], file_data)
 			|| !store_data(array[0][0], array[1], file_data))
 			return (error_found(array));
-		//file_data->parse_checklist += 1;
-		//Change this, what you must do is update exactly integer from
-		//checklist array
 		free_strings_array(array);
 	}
 	return (1);
