@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 18:52:55 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 18:48:12 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:29:05 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	store_map(t_map *map_data, t_list **map_lines)
 {
 	int	i;
 
-	if (map_data->parse_checklist <= 6)
+	if (checklist(map_data) <= FOUND_MAP)
 		return (error_found(map_lines, UNCOMPLETE_DATA));
 	if (!map_data->spawn_orientation)
 		return (error_found(map_lines, MAP_WITHOUT_SPAWN));

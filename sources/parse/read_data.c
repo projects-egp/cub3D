@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 16:22:47 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:25:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	read_data(t_map *file_data, int fd)
 			return (error_found(line_read, fd));
 		free(line_read);
 	}
-	if (checklist(file_data) == READIING_MAP && file_data->height > 0)
+	if (checklist(file_data) == READING_MAP && file_data->height > 0)
 		file_data->parse_checklist[FOUND_MAP] = 1;
 	return (store_map(file_data, &map_lines));
 }
