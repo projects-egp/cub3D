@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:11:35 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 17:25:20 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 19:17:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	read_data(t_map *file_data, int fd)
 		line_read = safe_call_to_get_next_line(fd, CONTINUE_READING);
 		if (!line_read)
 			break ;
-		if (checklist(file_data) >= FOUND_MAP 
+		if (checklist(file_data) >= FOUND_MAP
 			&& !reading_map(line_read, file_data, &map_lines))
 			return (error_found(line_read, fd));
 		else if (checklist(file_data) < FOUND_MAP
@@ -97,7 +97,7 @@ int	read_data(t_map *file_data, int fd)
 			return (error_found(line_read, fd));
 		free(line_read);
 	}
-	if (checklist(file_data) == READING_MAP && file_data->height > 0)
+	if (checklist(file_data) == FOUND_MAP && file_data->height > 0)
 		file_data->parse_checklist[FOUND_MAP] = 1;
 	return (store_map(file_data, &map_lines));
 }

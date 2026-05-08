@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 17:20:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 19:03:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define COLOR_VALUE_LIMITS "RGB values must be integers between 0 and 255"
 //
 //	scene_data: map
+# define EXPECTED_MAP "While searching first map's line, found unexpected char"
 # define UNCOMPLETE_DATA "Uncomplete file. It must have scene data and a map"
 # define MAP_IS_NOT_LAST_ELEMENT "Map must be last element on file"
 # define TWO_PLAYER_POSITIONS "Map must have just one spawn position"

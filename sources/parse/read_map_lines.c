@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 13:02:19 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/18 09:26:42 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 19:16:27 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	add_valid_first_map_line(char *line, t_map *file_data,
 
 	if (!is_first_map_line(line))
 	{
-		print_error(WRONG_CHAR_FOUND);
+		print_error(EXPECTED_MAP);
 		free_full_list_and_contents(map_lines);
 		return (0);
 	}
