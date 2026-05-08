@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 12:27:51 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/08 12:49:37 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ typedef enum e_parse_checklist
 	FOUND_WE,
 	FOUND_C,
 	FOUND_F,
-	FOUND_MAP,
-	ALL_FOUND
+	FOUND_MAP = 6,
+	SCENE_DATA_FOUND = 6,
+	ALL_FOUND = 7
 }	t_parse_checklist;
 
 typedef struct s_map
