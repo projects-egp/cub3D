@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 18:08:57 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/17 14:07:44 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 18:10:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static int	check_digit_chars(char *str)
 	int	i;
 
 	i = 0;
+	while (str[i] == '+')
+	{
+		++i;
+		if (!str[i])
+			return (0);
+	}
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
