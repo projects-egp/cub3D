@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/09 14:55:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 15:12:07 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,12 @@ void	run_mlx_loop(t_mlx *mlx)
 	mlx_loop(mlx->mlx_ptr);
 }
 
-int	close_program(t_mlx *mlx)
+//"Returns" an integer as long as mlx_hook expects this behaviour
+int	close_program(t_mlx *mlx, int status)
 {
 	clean_up(mlx);
-	exit(0);
+	if (status == ERROR_CLOSE)
+		exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 	return (0);
 }

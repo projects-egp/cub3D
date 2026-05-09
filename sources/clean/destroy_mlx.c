@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_up.c                                         :+:      :+:    :+:   */
+/*   destroy_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 22:00:30 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 15:10:08 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/05/09 15:03:42 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/05/09 15:09:45 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-void	clean_up(t_mlx *mlx_data)
+void	destroy_mlx_requested(t_mlx *mlx)
 {
-	destroy_mlx_requested(mlx_data);
-	clean_file_data(mlx_data->map_data);
+	if (mlx->win_ptr)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	//remove images ???
+	if (mlx->mlx_ptr)
+	{
+		mlx_destroy_display(mlx->mlx_ptr);
+		//free(mlx->mlx_ptr);//test if works without this
+	}
 	return ;
 }
