@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:16:42 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 13:42:20 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 14:49:00 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 /*	*	general messages	*	*/
 # define MALLOC_FAILED "Malloc failed"
 # define EXPECTED_USAGE "Expected usage: ./cub3D [filename].cub"
+//
+/*	*	mlx error messages	*	*/
+# define INIT_MLX "Init mlx failed"
+# define WINDOW_MLX "Create window with mlx failed"
 //
 /*	*	parse error messages	*	*/
 //

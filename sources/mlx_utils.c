@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/08 11:26:53 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 14:55:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,21 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 	mlx->map_data = file_data;
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
+	{
+		print_error(INIT_MLX);
+		//close_program();
 		return (0);
+	}
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "cub3D");
 	if (!mlx->win_ptr)
+	{
+		print_error(WINDOW_MLX);
+		//close_program();
 		return (0);
+	}
 	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	if (!mlx->img.img_ptr)
+		//print_error();
 		return (0);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
