@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 15:12:25 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 17:49:47 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-# define CEILING_COLOR 0x33A1FF // Azul cielo
-# define FLOOR_COLOR 0x333333   // Gris oscuro
+# define CEILING_COLOR 0x33A1FF // Dodger Blue
+# define FLOOR_COLOR 0x333333   // Dark grey
 
 typedef enum e_close_program
 {
