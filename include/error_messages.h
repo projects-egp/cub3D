@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:16:42 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 13:19:43 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 13:42:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@
 # define MAP_NOT_CLOSED "Map is not properly closed by walls"
 # define MAP_WITHOUT_SPAWN "Map has no spawn position for player"
 # define NEW_LINE_INSIDE_MAP "Found new line inside map content"
+# define WHITESPACE_ON_MAP "Found forbidden whitespace char, use only ascii 32"
 
 #endif

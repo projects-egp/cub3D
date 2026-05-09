@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/16 12:49:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/09 13:40:17 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ int	is_valid_map_char(int c, int x_position, t_map *map_data)
 	}
 	if (c == '1' || c == '0' || c == ' ' || c == '\n')
 		return (1);
-	print_error(WRONG_CHAR_FOUND);
+	if (ft_isspace(c))
+		print_error(WHITESPACE_ON_MAP);
+	else
+		print_error(WRONG_CHAR_FOUND);
 	return (0);
 }
