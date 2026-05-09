@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   error_messages.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 19:03:36 by enrgil-p         ###   ########.fr       */
+/*   Created: 2026/05/09 13:16:42 by enrgil-p          #+#    #+#             */
+/*   Updated: 2026/05/09 13:19:43 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINITIONS_H
-# define DEFINITIONS_H
+#ifndef ERROR_MESSAGES_H
+# define ERROR_MESSAGES_H
 
-//
-/*	*	*	* ERROR MESSAGES DEFINED *	*	*	*/
-//
 //
 /*	*	general messages	*	*/
 # define MALLOC_FAILED "Malloc failed"
@@ -46,63 +43,5 @@
 # define MAP_NOT_CLOSED "Map is not properly closed by walls"
 # define MAP_WITHOUT_SPAWN "Map has no spawn position for player"
 # define NEW_LINE_INSIDE_MAP "Found new line inside map content"
-//
-//	/	/	/	/	/	/	/	/	//
-//
-//
-/*	*	*	*   ENUMS AND STRUCTS	*	*	*	*/
-//
-
-typedef enum e_rgb_values
-{
-	RED = 0,
-	GREEN,
-	BLUE,
-	RGB_VALUES
-}	t_rgb_values;
-
-typedef enum e_texture_paths
-{
-	NORTH_PATH = 0,
-	EAST_PATH,
-	SOUTH_PATH,
-	WEST_PATH,
-	TEXTURE_PATHS
-}	t_texture_paths;
-
-typedef enum e_player_position
-{
-	X_POS = 0,
-	Y_POS,
-	POSITION
-}	t_player_position;
-
-typedef enum e_parse_checklist
-{
-	FOUND_NO = 0,
-	FOUND_SO,
-	FOUND_EA,
-	FOUND_WE,
-	FOUND_C,
-	FOUND_F,
-	FOUND_MAP,
-	READING_MAP = 6,
-	SCENE_DATA_FOUND = 6,
-	ALL_FOUND = 7,
-	CHECKLIST_SIZE = 7
-}	t_parse_checklist;
-
-typedef struct s_map
-{
-	char	*texture_paths[TEXTURE_PATHS + 1];
-	int		floor_color[RGB_VALUES];
-	int		ceiling_color[RGB_VALUES];
-	int		parse_checklist[CHECKLIST_SIZE];
-	char	**map;
-	int		player[POSITION];
-	char	spawn_orientation;
-	int		height;
-	int		width;
-}	t_map;
 
 #endif

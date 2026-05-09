@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/28 19:37:36 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/09 13:21:58 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "../libft/complete_libft.h"
 # include "mlx.h"
-# include "definitions.h"
+# include "struct_map.h"
+# include "error_messages.h"
 # include "image.h"
 # include "parse.h"
 # include "clean.h"
