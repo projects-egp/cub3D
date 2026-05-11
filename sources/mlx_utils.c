@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/11 09:56:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 10:18:29 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	run_mlx_loop(t_mlx *mlx)
 	draw_minimap(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		mlx->img.img_ptr, 0, 0);
+	mlx_hook(mlx->win_ptr, 2, 1L << 0, key_pressed, mlx);
 	mlx_hook(mlx->win_ptr, 17, 0, close_program, mlx);
 	mlx_loop(mlx->mlx_ptr);
 }
