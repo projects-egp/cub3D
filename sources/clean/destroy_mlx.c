@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:03:42 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 17:39:02 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 20:08:15 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	destroy_mlx_requested(t_mlx *mlx)
 	remove_images(mlx);
 	if (mlx->mlx_ptr)
 	{
+# ifdef __linux__
 		mlx_destroy_display(mlx->mlx_ptr);
+# endif
 		free(mlx->mlx_ptr);
 	}
 	return ;
