@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/11 10:16:02 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 11:35:34 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
-	void	*map_data;
+	t_map	*map_data;
 }				t_mlx;
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	draw_background(t_mlx *mlx);
+uint32_t	get_color_value(int *decimal_value);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	run_mlx_loop(t_mlx *mlx);
 //
