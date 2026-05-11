@@ -6,12 +6,14 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 10:41:33 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/11 12:18:32 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 13:05:51 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
+/*Operator | is used because changes a 0 bit from result to 1 in case of 
+ * bits valued as 1 from decimal_value*/
 static uint32_t	get_color_value(int *decimal_value)
 {
 	uint32_t	result;
