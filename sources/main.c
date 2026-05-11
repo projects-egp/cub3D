@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 18:23:38 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/28 19:48:42 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/11 10:02:23 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!init_mlx_data(&mlx_data, &file_data))
 	{
+		/*If mlx_new_image() changes to return (0) to close_program(),
+		 * remove this scope, because in that case this will be
+		 * not necessary*/
 		clean_file_data(&file_data);
 		return (1);
 	}
