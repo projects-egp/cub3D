@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/09 15:12:07 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 09:53:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 	if (!mlx->mlx_ptr)
 	{
 		print_error(INIT_MLX);
-		//close_program();
+		close_program(mlx, ERROR_CLOSE);
 		return (0);
 	}
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "cub3D");
 	if (!mlx->win_ptr)
 	{
 		print_error(WINDOW_MLX);
-		//close_program();
+		close_program(mlx, ERROR_CLOSE);
 		return (0);
 	}
 	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
