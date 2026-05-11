@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/11 11:35:34 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 12:14:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-# define CEILING_COLOR 0x33A1FF // Dodger Blue
-# define FLOOR_COLOR 0x333333   // Dark grey
 //
 /*	*	KEYS	*	*/
 # define ESC 65307
@@ -49,7 +47,6 @@ typedef struct s_mlx
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	draw_background(t_mlx *mlx);
-uint32_t	get_color_value(int *decimal_value);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	run_mlx_loop(t_mlx *mlx);
 //

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/11 11:37:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 12:15:26 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,6 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
-}
-
-void	draw_background(t_mlx *mlx)
-{
-	int	x;
-	int	y;
-	static uint32_t	ceiling_color;
-	static uint32_t	floor_color;
-
-	y = 0;
-	if (!ceiling_color)
-		ceiling_color = get_color_value(mlx->map_data->ceiling_color);
-	if (!floor_color)
-		floor_color = get_color_value(mlx->map_data->floor_color);
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				my_pixel_put(&mlx->img, x, y, ceiling_color);
-			else
-				my_pixel_put(&mlx->img, x, y, floor_color);
-			x++;
-		}
-		y++;
-	}
 }
 
 static void	draw_square(t_img *img, int x, int y, int size, int color)
