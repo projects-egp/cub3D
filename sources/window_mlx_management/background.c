@@ -6,24 +6,18 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 10:41:33 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/11 11:13:23 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/11 11:21:35 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-uint_32	get_color_value(int *decimal_values)
+uint_32	get_color_value(int *decimal_value)
 {
-	int	result;
-	int	bit_operator;
-	int	i;
+	uint_32	result;
 
-	bit_operator = 16;
-	i = 0;
-	while (i < RGB_VALUES)
-	{
-		//conversion
-		++i;
-		bit_operator /= 8;
-	}
+	result = decimal_value[RED] << 16 | decimal_value[GREEN] << 8
+		| decimal_value[BLUE];
+	printf("Result is %d", result);//debug
+	return (result);
 }
