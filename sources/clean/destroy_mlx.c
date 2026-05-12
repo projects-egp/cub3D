@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:03:42 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/11 20:08:15 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/12 12:19:35 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 static void	remove_images(t_mlx *mlx)
 {
+	int	i;
+
+	i = 0;
+	while (i < TEXTURE_PATHS)
+	{
+		if (mlx->textures[i])
+			mlx_destroy_image(mlx->mlx_ptr, mlx->textures[i]);
+		++i;
+	}
 	if (mlx->img.img_ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
 	return ;
