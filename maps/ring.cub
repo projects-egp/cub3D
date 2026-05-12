@@ -1,8 +1,8 @@
 		C 26,134,187
-         NO		oath
-         EA		oath
-         WE		oath
-         SO		oath
+         NO	./textures/grass.xpm
+         EA		./textures/grass.xpm
+         WE		./textures/grass.xpm
+         SO		./textures/grass.xpm
 F		19,50,52
 
                1

@@ -1,7 +1,6 @@
-SO   PATH_SNOPATH_N
-		
-WE    PATH_W
-EA		PATH-E
+SO  ./textures/grass.xpm		
+WE   ./textures/grass.xpm
+EA	./textures/grass.xpm
 
 
 
@@ -12,7 +11,7 @@ C 5,240,,,,32,
 
 
 
-NO path_north
+NO ./textures/grass.xpm
 
 
 

@@ -1,9 +1,9 @@
 F 24,160,125
 C		34,42,201
-NO	path
-SO	path
-WE	path
-EA	path
+NO	./textures/grass.xpm
+SO	./textures/grass.xpm
+WE	./textures/grass.xpm
+EA	./textures/grass.xpm
 
 11111      11111
 100001    100001
