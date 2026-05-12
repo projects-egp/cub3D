@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/12 10:43:43 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/12 11:45:05 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	//t_img	textures[TEXTURE_PATHS];
 	void	*textures[TEXTURE_PATHS];
 	t_img	img;
 	t_map	*map_data;
@@ -49,6 +50,7 @@ typedef struct s_mlx
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	draw_background(t_mlx *mlx);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
+void	link_images(t_mlx *mlx);
 void	run_mlx_loop(t_mlx *mlx);
 //
 /*	*	mlx events	*	*/
