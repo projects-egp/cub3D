@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 17:17:03 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/04/18 09:38:45 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/12 10:27:12 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_valid_char(char c)
 	return (0);
 }
 
-static void	fill_empty_corners(t_map *data, int y, int x)
+/*static void	fill_empty_corners(t_map *data, int y, int x)
 {
 	if (!is_valid_char(data->map[y - 1][x - 1]))
 		data->map[y - 1][x - 1] = '1';
@@ -30,7 +30,7 @@ static void	fill_empty_corners(t_map *data, int y, int x)
 	if (!is_valid_char(data->map[y + 1][x - 1]))
 		data->map[y + 1][x - 1] = '1';
 	return ;
-}
+}*/
 
 /*Check in clockwise (up, right, down, left).
  * Map is consider valid in case of empty char in corners*/
@@ -60,9 +60,9 @@ static int	check_line(t_map *data, int y, int last_line, int requested)
 		if (requested == CHECK_CLOSE_MAP && (c == '0' || ft_isalpha(c))
 			&& !check_orthogonal_next_chars(data, y, x, last_line))
 			return (0);
-		else if (requested == FILL_EMPTY_CORNERS
+		/*else if (requested == FILL_EMPTY_CORNERS
 			&& (c == '0' || ft_isalpha(c)))
-			fill_empty_corners(data, y, x);
+			fill_empty_corners(data, y, x);*/
 		++x;
 	}
 	return (1);
@@ -101,13 +101,14 @@ int	check_stored_map(t_map *data, int requested_function)
 			clean_file_data(data);
 			return (0);
 		}
-		else if (requested_function == FILL_EMPTY_CORNERS)
+		/*else if (requested_function == FILL_EMPTY_CORNERS)
 			check_line(data, y, last_line, requested_function);
 		if (++y == data->height && requested_function == CHECK_CLOSE_MAP)
 		{
 			y = 1;
 			++requested_function;
-		}
+		}*/
+		++y;
 	}
 	return (1);
 }
