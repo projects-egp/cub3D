@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/11 20:01:49 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/12 10:45:33 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,17 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 		print_error(WINDOW_MLX);
 		close_program(mlx, ERROR_CLOSE);
 	}
+	/*If mlx->img.img_ptr is not NULL,
+	 * should destroy first and later new_image again*/
 	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	if (!mlx->img.img_ptr)
-		//print_error();
-		return (0);
+	{
+		print_error(MLX_NEW_IMAGE);
+		close_program(mlx, ERROR_CLOSE);
+	}
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
+	link_images(mlx);
 	return (1);
 }
 

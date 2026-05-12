@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:16:42 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 14:49:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/12 10:41:10 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 /*	*	mlx error messages	*	*/
 # define INIT_MLX "Init mlx failed"
 # define WINDOW_MLX "Create window with mlx failed"
+# define MLX_NEW_IMAGE "mlx_new_image() has failed"
 //
 /*	*	parse error messages	*	*/
 //
