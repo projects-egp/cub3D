@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/12 12:10:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/12 12:26:38 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ void	draw_minimap(t_mlx *mlx)
 int	init_mlx_data(t_mlx *mlx, void *file_data)
 {
 	mlx->map_data = file_data;
+	mlx->mlx_ptr = NULL;
+	mlx->win_ptr = NULL;
+	mlx->img.img_ptr = NULL;
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
 	{
