@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_lines_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/09 13:40:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/14 13:32:42 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static int	player_found(int cardinal_direction_view, int x_position,
 		t_map *map_data)
 {
 	map_data->spawn_orientation = cardinal_direction_view;
-	map_data->player[X_POS] = x_position;
-	map_data->player[Y_POS] = map_data->height;
+	map_data->player[X_POS] = (double)x_position + 0.5;
+	map_data->player[Y_POS] = (double)map_data->height + 0.5;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/12 12:26:38 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/14 13:32:42 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	draw_minimap(t_mlx *mlx)
 		}
 	}
 	draw_fov(&mlx->img,
-		map->player[X_POS] * t_s + offset + (t_s / 2),
-		map->player[Y_POS] * t_s + offset + (t_s / 2),
-		map->spawn_orientation, t_s * 2, 0xFFFF00);
+		(int)(map->player[X_POS] * t_s) + offset,
+		(int)(map->player[Y_POS] * t_s) + offset,
+		map->spawn_orientation, t_s * 2, 0xFF0000);
 }
 
 int	init_mlx_data(t_mlx *mlx, void *file_data)
@@ -142,28 +142,29 @@ void	run_mlx_loop(t_mlx *mlx)
 int	key_pressed(int key, t_mlx *mlx)
 {
 	t_map	*map;
-	int		dx;
-	int		dy;
+	double	dx;
+	double	dy;
+	double	step;
 
 	map = (t_map *)mlx->map_data;
 	dx = 0;
 	dy = 0;
+	step = 0.12;
 	if (key == 53 || key == 65307)
 		close_program(mlx, 0);
 	if (key == 13 || key == 119)
-		{dy = -1; map->spawn_orientation = 'N';}
+		{dy = -step; map->spawn_orientation = 'N';}
 	else if (key == 1 || key == 115)
-		{dy = 1; map->spawn_orientation = 'S';}
+		{dy = step; map->spawn_orientation = 'S';}
 	else if (key == 0 || key == 97)
-		{dx = -1; map->spawn_orientation = 'W';}
+		{dx = -step; map->spawn_orientation = 'W';}
 	else if (key == 2 || key == 100)
-		{dx = 1; map->spawn_orientation = 'E';}
+		{dx = step; map->spawn_orientation = 'E';}
 	if (dx != 0 || dy != 0)
 	{
-		if (map->player[Y_POS] + dy >= 0 && map->player[Y_POS] + dy < map->height
-			&& map->player[X_POS] + dx >= 0 && map->player[X_POS] + dx < map->width
-			&& map->map[map->player[Y_POS] + dy][map->player[X_POS] + dx] != '1'
-			&& map->map[map->player[Y_POS] + dy][map->player[X_POS] + dx] != ' ')
+		if (map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != '1'
+			&& map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != ' '
+			&& map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != '\0')
 		{
 			map->player[X_POS] += dx;
 			map->player[Y_POS] += dy;

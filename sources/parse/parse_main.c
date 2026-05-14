@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/08 12:43:35 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/14 13:32:42 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_map_data(t_map *map_data)
 	ft_bzero((void *)map_data->ceiling_color, (sizeof(int) * RGB_VALUES));
 	ft_bzero((void *)map_data->parse_checklist, (sizeof(int) * ALL_FOUND));
 	map_data->map = NULL;
-	ft_bzero((void *)map_data->player, (sizeof(int) * POSITION));
+	ft_bzero((void *)map_data->player, (sizeof(double) * POSITION));
 	map_data->spawn_orientation = 0;
 	map_data->height = 0;
 	map_data->width = 0;
