@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/12 11:45:05 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/22 19:02:50 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct s_mlx
 	void	*textures[TEXTURE_PATHS];
 	t_img	img;
 	t_map	*map_data;
+	int		k_w;
+	int		k_s;
+	int		k_a;
+	int		k_d;
+	int		k_l;
+	int		k_r;
 }				t_mlx;
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
