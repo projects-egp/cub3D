@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 16:30:26 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/24 16:41:46 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static int	player_found(int cardinal_direction_view, int x_position,
 		map_data->player_angle = M_PI;
 	if (cardinal_direction_view == 'N')
 		map_data->player_angle = 3 * M_PI / 2;
+	map_data->fov_angle = (FOV_ANGLE * M_PI) / 180;
 	map_data->spawn_orientation = cardinal_direction_view;
 	map_data->player[X_POS] = (double)x_position + 0.5;
 	map_data->player[Y_POS] = (double)map_data->height + 0.5;

@@ -6,12 +6,14 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 16:37:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/24 16:42:34 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_MAP_H
 # define STRUCT_MAP_H
+
+# define FOV_ANGLE 66
 
 typedef enum e_rgb_values
 {
