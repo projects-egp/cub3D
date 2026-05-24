@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/22 19:45:27 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/24 16:24:27 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,13 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 	mlx->mlx_ptr = NULL;
 	mlx->win_ptr = NULL;
 	mlx->img.img_ptr = NULL;
-	mlx->mlx_ptr = mlx_init();
 	mlx->k_w = 0;
 	mlx->k_s = 0;
 	mlx->k_a = 0;
 	mlx->k_d = 0;
 	mlx->k_l = 0;
 	mlx->k_r = 0;
+	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
 	{
 		print_error(INIT_MLX);
