@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:33:05 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/22 18:53:38 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/24 16:37:18 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_map
 	char	**map;
 	double	player[POSITION];
 	double	player_angle;
+	double	fov_angle;
 	char	spawn_orientation;
 	int		height;
 	int		width;

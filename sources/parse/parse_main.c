@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/14 13:32:42 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/24 16:38:32 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	init_map_data(t_map *map_data)
 	ft_bzero((void *)map_data->parse_checklist, (sizeof(int) * ALL_FOUND));
 	map_data->map = NULL;
 	ft_bzero((void *)map_data->player, (sizeof(double) * POSITION));
+	map_data->player_angle = 0;
+	map_data->fov_angle = 0;
 	map_data->spawn_orientation = 0;
 	map_data->height = 0;
 	map_data->width = 0;
