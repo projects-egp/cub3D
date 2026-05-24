@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/22 18:53:38 by mario            ###   ########.fr       */
+/*   Updated: 2026/05/24 16:30:26 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	add_new_line_to_list(char *line, t_list **map_lines_list)
 static int	player_found(int cardinal_direction_view, int x_position,
 		t_map *map_data)
 {
-	if (cardinal_direction_view == 'N')
-		map_data->player_angle = 3 * M_PI / 2;
+	if (cardinal_direction_view == 'E')
+		map_data->player_angle = 0;
 	else if (cardinal_direction_view == 'S')
 		map_data->player_angle = M_PI / 2;
-	else if (cardinal_direction_view == 'E')
-		map_data->player_angle = 0;
 	else if (cardinal_direction_view == 'W')
 		map_data->player_angle = M_PI;
+	if (cardinal_direction_view == 'N')
+		map_data->player_angle = 3 * M_PI / 2;
 	map_data->spawn_orientation = cardinal_direction_view;
 	map_data->player[X_POS] = (double)x_position + 0.5;
 	map_data->player[Y_POS] = (double)map_data->height + 0.5;
