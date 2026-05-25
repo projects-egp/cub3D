@@ -6,40 +6,46 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/25 18:02:52 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/25 20:21:47 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static double	get_step(double position, double ray_direction_value, 
-		int increase)
+static double	get_step(double *position, double ray_direction_value)
 {
-	double	step;
-	doble	side;
+	double	step_hypotenuse;
+	double	side;
 
+	side = 0;
 	if (ray_direction_value < 0)
-		increase *= -1;
-	side = increase - position; 
-	step = side / ray_direction_value;
-	return (step);
+		side = *position - floor(*position); 
+	else
+		side = (floor(*position) + 1) - *position; 
+	step_hypotenuse = side / ray_direction_value;
+	return (step_hypotenuse);
 }
 
-static double	find_next_square(t_ray *ray)
+static double	find_next_square(t_ray *ray, double angle)
 {
 	double	step_x;
 	double	step_y;
 	double	result;
 
 	result = 0;
-	step_x = get_step(ray->position[X_POS], ray->direction[X_POS],
-			ray->increase[X_POS]);
-	step_y = get_step();
+	step_x = get_step(&ray->position[X_POS], ray->direction[X_POS]);
+	step_y = get_step(&ray->position[Y_POS], ray->direction[Y_POS]);
 	if (step_x > step_y)
 	{
-		result = step_x;
-		ray->increase_x += 1;
+		ray->position[X_POS] = ray->direction[Y_POS] * step_y;
+		result = step_y;
 	}
+	else
+	{
+		ray->position[Y_POS] = ray->direction[X_POS] * step_x;
+		result = step_x;
+	}
+	return (result);
 }
 
 double	throw_ray(double angle, t_mlx *mlx)
@@ -52,12 +58,10 @@ double	throw_ray(double angle, t_mlx *mlx)
 	ray_data.direction[Y_POS] = sin(angle);
 	ray_data.position[X_POS] = mlx->map_data->player[X_POS];
 	ray_data.position[Y_POS] = mlx->map_data->player[Y_POS];
-	ray_data.increase[X_POS] = 0;
-	ray_data.increase[Y_POS] = 0;
-	while ()
+	while (!ray_hit_wall(ray_data))
 	{
 		//Find next square
-		length += find_next_square(&ray_data);
+		length += find_next_square(&ray_data, angle);
 	}
 	return (length);
 }
