@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/25 20:21:47 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/25 20:29:11 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static double	get_step(double *position, double ray_direction_value)
 	else
 		side = (floor(*position) + 1) - *position; 
 	step_hypotenuse = side / ray_direction_value;
+	*position = side;
 	return (step_hypotenuse);
 }
 
@@ -48,7 +49,7 @@ static double	find_next_square(t_ray *ray, double angle)
 	return (result);
 }
 
-double	throw_ray(double angle, t_mlx *mlx)
+double	throw_ray(double angle/*, t_mlx *mlx*/)
 {
 	double	length;
 	t_ray	ray_data;
@@ -56,12 +57,23 @@ double	throw_ray(double angle, t_mlx *mlx)
 	length = 0;
 	ray_data.direction[X_POS] = cos(angle);
 	ray_data.direction[Y_POS] = sin(angle);
-	ray_data.position[X_POS] = mlx->map_data->player[X_POS];
-	ray_data.position[Y_POS] = mlx->map_data->player[Y_POS];
-	while (!ray_hit_wall(ray_data))
+	ray_data.position[X_POS] = 9//mlx->map_data->player[X_POS];
+	ray_data.position[Y_POS] = 13//mlx->map_data->player[Y_POS];
+	/*while (!ray_hit_wall(ray_data))
 	{
 		//Find next square
-		length += find_next_square(&ray_data, angle);
-	}
+	*/	length += find_next_square(&ray_data, angle);
+	//}
 	return (length);
+}
+
+int	main(void)
+{
+	double	angle;
+	double	result;
+
+	angle = (33 * M_PI) / 180;
+	result = throw_ray(angle);
+	printf("Result is %f\n", result);
+	return (0);
 }
