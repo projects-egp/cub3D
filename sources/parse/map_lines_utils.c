@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 14:29:37 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 16:41:46 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:14:43 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	add_new_line_to_list(char *line, t_list **map_lines_list)
 	return (1);
 }
 
+	/*Radians for orthogonal angles are set in order to be consistent with
+	 * a map that increase x value from west to east and increase y value 
+	 * from north to south. For example, an angle pointing to northeast
+	 * would have a direction vector with cos(angle) = positive x and
+	 * sin(angle) = negative y*/
 static int	player_found(int cardinal_direction_view, int x_position,
 		t_map *map_data)
 {
