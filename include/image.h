@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/25 17:42:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/25 20:39:45 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define IMAGE_H
 
 # include <stdlib.h>
-# include "mlx.h"
 
 # define WIDTH 800
 # define HEIGHT 600
