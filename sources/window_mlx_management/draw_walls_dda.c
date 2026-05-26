@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 18:59:50 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:25:10 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static int	ray_hit_wall(t_ray ray, t_mlx *mlx)
 	int	y;
 	
 	map = mlx->map_data->map;
-	x = floor(ray->head[X_POS]);
-	y = floor(ray->head[Y_POS]);
+	x = floor(ray.head[X_POS]);
+	y = floor(ray.head[Y_POS]);
 	if (map[y][x] == '0')
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 10:41:33 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 18:03:12 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:27:10 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	draw_background(t_mlx *mlx)
 		}
 		y++;
 	}
-	draw_walls(mlx);
+//	draw_walls(mlx);
 }
