@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/25 20:39:45 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 17:53:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_close_program
 typedef struct s_ray
 {
 	double	direction[2];
-	double	position[2];
+	double	head[2];
 	int	increase[2];
 }	t_ray;
 

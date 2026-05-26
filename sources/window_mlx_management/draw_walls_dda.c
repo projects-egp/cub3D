@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 17:50:24 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 17:53:29 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ static double	find_next_square(t_ray *ray)
 	double	step_y;
 	double	result;
 
-	step_x = get_step(ray->position[X_POS], ray->direction[X_POS]);
-	step_y = get_step(ray->position[Y_POS], ray->direction[Y_POS]);
+	step_x = get_step(ray->head[X_POS], ray->direction[X_POS]);
+	step_y = get_step(ray->head[Y_POS], ray->direction[Y_POS]);
 	if (step_x > step_y)
 	{
-		ray->position[X_POS] += ray->direction[X_POS] * step_y;
-		ray->position[Y_POS] += get_side(ray->position[Y_POS],
+		ray->head[X_POS] += ray->direction[X_POS] * step_y;
+		ray->head[Y_POS] += get_side(ray->head[Y_POS],
 				ray->direction[Y_POS]);
 		result = step_y;
 	}
 	else
 	{
-		ray->position[Y_POS] += ray->direction[Y_POS] * step_x;
-		ray->position[X_POS] += get_side(ray->position[X_POS],
+		ray->head[Y_POS] += ray->direction[Y_POS] * step_x;
+		ray->head[X_POS] += get_side(ray->head[X_POS],
 				ray->direction[X_POS]);
 		result = step_x;
 	}
@@ -70,14 +70,14 @@ double	throw_ray(double angle/*, t_mlx *mlx*/)
 	length = 0;
 	ray_data.direction[X_POS] = cos(angle);
 	ray_data.direction[Y_POS] = sin(angle);
-	ray_data.position[X_POS] = 4.0;//mlx->map_data->player[X_POS];
-	ray_data.position[Y_POS] = 4.000;//mlx->map_data->player[Y_POS];
+	ray_data.head[X_POS] = 4.0;//mlx->map_data->player[X_POS];
+	ray_data.head[Y_POS] = 4.000;//mlx->map_data->player[Y_POS];
 	/*while (!ray_hit_wall(ray_data))
 	{
 		//Find next square
 	*/	length += find_next_square(&ray_data);
-		printf("Side x == %f\n", ray_data.position[X_POS]);
-		printf("Side y == %f\n", ray_data.position[Y_POS]);
+		printf("Side x == %f\n", ray_data.head[X_POS]);
+		printf("Side y == %f\n", ray_data.head[Y_POS]);
 	//}
 	return (length);
 }
