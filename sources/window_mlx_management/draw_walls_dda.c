@@ -6,13 +6,14 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 17:53:29 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:04:44 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "general.h"
-#include "../../include/testing.h"
+#include "general.h"
 
+/*ray_direction_value is a sine or cosine. If it is negative, 
+ * x or y values of ray will decrease*/
 static double	get_side(double position, double ray_direction_value)
 {
 	double	side;
@@ -25,6 +26,9 @@ static double	get_side(double position, double ray_direction_value)
 	return (side);
 }
 
+/*ray_direction_value is a sine or cosine. With same formula
+ * we can get hypotenuse h. 
+ * h = side / (sin || cos)*/
 static double	get_step(double position, double ray_direction_value)
 {
 	double	step_hypotenuse;
@@ -62,7 +66,7 @@ static double	find_next_square(t_ray *ray)
 	return (result);
 }
 
-double	throw_ray(double angle/*, t_mlx *mlx*/)
+double	throw_ray(double angle, t_mlx *mlx)
 {
 	double	length;
 	t_ray	ray_data;
@@ -70,25 +74,14 @@ double	throw_ray(double angle/*, t_mlx *mlx*/)
 	length = 0;
 	ray_data.direction[X_POS] = cos(angle);
 	ray_data.direction[Y_POS] = sin(angle);
-	ray_data.head[X_POS] = 4.0;//mlx->map_data->player[X_POS];
-	ray_data.head[Y_POS] = 4.000;//mlx->map_data->player[Y_POS];
-	/*while (!ray_hit_wall(ray_data))
+	ray_data.head[X_POS] = mlx->map_data->player[X_POS];
+	ray_data.head[Y_POS] = mlx->map_data->player[Y_POS];
+	while (1)
 	{
-		//Find next square
-	*/	length += find_next_square(&ray_data);
-		printf("Side x == %f\n", ray_data.head[X_POS]);
-		printf("Side y == %f\n", ray_data.head[Y_POS]);
-	//}
+		length += find_next_square(&ray_data);
+		if (ray_hit_wall(ray_data))
+			break ;
+		//check square
+	}
 	return (length);
-}
-
-int	main(void)
-{
-	double	angle;
-	double	result;
-
-	angle = (30 * M_PI) / 180;
-	result = throw_ray(angle);
-	printf("Result is %f\n", result);
-	return (0);
 }
