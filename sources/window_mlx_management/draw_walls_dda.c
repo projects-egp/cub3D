@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 18:04:44 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:59:50 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,20 @@ static double	find_next_square(t_ray *ray)
 	return (result);
 }
 
+static int	ray_hit_wall(t_ray ray, t_mlx *mlx)
+{
+	char	**map;
+	int	x;
+	int	y;
+	
+	map = mlx->map_data->map;
+	x = floor(ray->head[X_POS]);
+	y = floor(ray->head[Y_POS]);
+	if (map[y][x] == '0')
+		return (0);
+	return (1);
+}
+
 double	throw_ray(double angle, t_mlx *mlx)
 {
 	double	length;
@@ -79,9 +93,8 @@ double	throw_ray(double angle, t_mlx *mlx)
 	while (1)
 	{
 		length += find_next_square(&ray_data);
-		if (ray_hit_wall(ray_data))
+		if (ray_hit_wall(ray_data, mlx))
 			break ;
-		//check square
 	}
 	return (length);
 }

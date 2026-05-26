@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 18:03:31 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 19:41:18 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:59:11 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ void	draw_walls(t_mlx *mlx)
 	while (ray_angle <= mlx->map_data->player_angle + half_angle)
 	{
 		ray_length = throw_ray(ray_angle, mlx);
-		//Get ray hit point distance
 		//Draw vertical stripe
+		/*To start, first just print one color.
+		 * We will later print wall textures*/
+		/*To print textures, we will need ray_angle,
+		 * to now if hit point was part of NORTH EAST wall 
+		 * or SOUTH WEST, for example*/
 		ray_angle += angle_step;
 	}
 	return ;
