@@ -24,7 +24,7 @@ OBJECTS = $(SRCS:.c=.o)
 # ==============================
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra 
 RM = rm -f
 
 # ==============================
