@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/05/24 16:24:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/02 18:51:43 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	key_pressed(int keycode, t_mlx *mlx);
 int	key_released(int keycode, t_mlx *mlx);
 int	update_frame(t_mlx *mlx);
+void	render_3d_scene(t_mlx *mlx);
 
 void	my_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -189,6 +190,7 @@ int	update_frame(t_mlx *mlx)
 			map->player[Y_POS] += dy;
 		}
 		draw_background(mlx);
+		render_3d_scene(mlx);
 		draw_minimap(mlx);
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 			mlx->img.img_ptr, 0, 0);
