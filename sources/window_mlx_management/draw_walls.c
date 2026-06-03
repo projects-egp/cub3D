@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 18:03:31 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 18:59:11 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:14:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	draw_walls(t_mlx *mlx)
 	static double	half_angle;
 	static double	angle_step;
 	double		ray_angle;
-	double		ray_length;
+	int			side;
+	double		dx;
+	double		dy;
 
 	if (!half_angle)
 		half_angle = mlx->map_data->fov_angle / 2;
@@ -26,7 +28,7 @@ void	draw_walls(t_mlx *mlx)
 	ray_angle = mlx->map_data->player_angle - half_angle;
 	while (ray_angle <= mlx->map_data->player_angle + half_angle)
 	{
-		ray_length = throw_ray(ray_angle, mlx);
+		throw_ray(ray_angle, mlx, &side, &dx, &dy);
 		//Draw vertical stripe
 		/*To start, first just print one color.
 		 * We will later print wall textures*/

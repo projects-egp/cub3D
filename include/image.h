@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/26 19:22:08 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:14:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_mlx
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	draw_background(t_mlx *mlx);
 void	draw_walls(t_mlx *mlx);
-double	throw_ray(double angle, t_mlx *mlx);
+double	throw_ray(double angle, t_mlx *mlx, int *side, double *dir_x, double *dir_y);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	link_images(t_mlx *mlx);
 void	run_mlx_loop(t_mlx *mlx);
