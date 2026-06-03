@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/03 12:15:49 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/03 18:04:59 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ static double	get_side(double position, double ray_direction_value)
 	double	side;
 	
 	side = 0;
-	if (ray_direction_value < 0)
+	if (ray_direction_value < 0) {
 		side = position - floor(position);
-	else
+		if (side < 0.000000001)
+			return (1.0);
+	} else {
 		side = (floor(position) + 1.0) - position;
-	if (side <= 0) side = 1.0;
+		if (side < 0.000000001)
+			return (1.0);
+	}
 	return (side);
 }
 
@@ -56,16 +60,14 @@ static double	find_next_square(t_ray *ray, int *side)
 	if (step_x > step_y)
 	{
 		ray->head[X_POS] += ray->direction[X_POS] * step_y;
-		ray->head[Y_POS] += get_side(ray->head[Y_POS],
-				ray->direction[Y_POS]);
+		ray->head[Y_POS] += ray->direction[Y_POS] * step_y;
 		temp_side = 1; // Impacto en eje Y (Norte/Sur)
 		result = step_y;
 	}
 	else
 	{
 		ray->head[Y_POS] += ray->direction[Y_POS] * step_x;
-		ray->head[X_POS] += get_side(ray->head[X_POS],
-				ray->direction[X_POS]);
+		ray->head[X_POS] += ray->direction[X_POS] * step_x;
 		temp_side = 0; // Impacto en eje X (Este/Oeste)
 		result = step_x;
 	}
