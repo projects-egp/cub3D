@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 18:14:32 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/24 16:38:32 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 22:03:48 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ int	open_file(char *cub_file_path, t_map *file_data)
 		clean_file_data(file_data);
 		return (0);
 	}
-	return (check_stored_map(file_data, CHECK_CLOSE_MAP));
+	return (check_stored_map(file_data));
 }
