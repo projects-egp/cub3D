@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 20:45:06 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 21:14:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ static void	check_keys_to_move(double dir[2], t_mlx *mlx)
 	double	move_step;
 
 	move_step = 0.03;
-	if (mlx->k_w)
+	if (mlx->key[W_KEY])
 	{
 		dir[X_POS] += cos(mlx->map_data->player_angle) * move_step;
 		dir[Y_POS] += sin(mlx->map_data->player_angle) * move_step;
 	}
-	if (mlx->k_s)
+	if (mlx->key[S_KEY])
 	{
 		dir[X_POS] -= cos(mlx->map_data->player_angle) * move_step;
 		dir[Y_POS] -= sin(mlx->map_data->player_angle) * move_step;
 	}
-	if (mlx->k_a)
+	if (mlx->key[A_KEY])
 	{
 		dir[X_POS] += cos(mlx->map_data->player_angle - M_PI / 2) * move_step;
 		dir[Y_POS] += sin(mlx->map_data->player_angle - M_PI / 2) * move_step;
 	}
-	if (mlx->k_d)
+	if (mlx->key[D_KEY])
 	{
 		dir[X_POS] += cos(mlx->map_data->player_angle + M_PI / 2) * move_step;
 		dir[Y_POS] += sin(mlx->map_data->player_angle + M_PI / 2) * move_step;
@@ -46,9 +46,9 @@ static void	check_keys_to_rotate(t_mlx *mlx)
 	double	rot_step;
 
 	rot_step = 0.03;
-	if (mlx->k_l)
+	if (mlx->key[LEFT_KEY])
 		mlx->map_data->player_angle -= rot_step;
-	if (mlx->k_r)
+	if (mlx->key[RIGHT_KEY])
 		mlx->map_data->player_angle += rot_step;
 	if (mlx->map_data->player_angle < 0)
 		mlx->map_data->player_angle += 2 * M_PI;
@@ -91,7 +91,8 @@ int	update_frame(t_mlx *mlx)
 	dir[Y_POS] = 0;
 	check_keys_to_move(dir, mlx);
 	check_keys_to_rotate(mlx);
-	if (dir[X_POS] != 0 || dir[Y_POS] != 0 || mlx->k_l || mlx->k_r)
+	if (dir[X_POS] != 0 || dir[Y_POS] != 0
+		|| mlx->key[LEFT_KEY] || mlx->key[RIGHT_KEY])
 	{
 		move_player(mlx, dir);
 		draw_background(mlx);

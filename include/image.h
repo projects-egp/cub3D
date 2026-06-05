@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 19:13:56 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 21:05:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ typedef enum e_close_program
 	ERROR_CLOSE,
 	SUCCESS_CLOSE
 }	t_close_program;
+
+typedef enum e_pressed_keys
+{
+	W_KEY = 0,
+	S_KEY,
+	A_KEY,
+	D_KEY,
+	LEFT_KEY,
+	RIGHT_KEY,
+	PLAYER_KEYS
+}	t_pressed_keys;
 
 typedef struct s_ray
 {
@@ -47,12 +58,7 @@ typedef struct s_mlx
 	void	*textures[TEXTURE_PATHS];
 	t_img	img;
 	t_map	*map_data;
-	int		k_w;
-	int		k_s;
-	int		k_a;
-	int		k_d;
-	int		k_l;
-	int		k_r;
+	int		key[PLAYER_KEYS];
 }				t_mlx;
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
