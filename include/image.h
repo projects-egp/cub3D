@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/03 12:14:11 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/05 11:55:21 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	run_mlx_loop(t_mlx *mlx);
 //
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);
+int		key_released(int key, t_mlx *mlx);
 int		close_program(t_mlx *mlx, int status);
 
 #endif
