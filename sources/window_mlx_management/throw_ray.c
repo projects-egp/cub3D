@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 20:32:13 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 22:35:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,17 +106,15 @@ static int	ray_hit_wall(t_ray ray, t_mlx *mlx)
  * 	- some wall is found;
  * 	- ray is so long and haven't reached a wall yet;
  *Last way is a protection to avoid infinite loops*/
-double	throw_ray(double angle, t_mlx *mlx, int *side, double *dx, double *dy)
+double	throw_ray(t_mlx *mlx, int *side, double dx, double dy)
 {
 	double	length;
 	t_ray	ray_data;
 
 	length = 0;
 	*side = 0;
-	*dx = cos(angle);
-	*dy = sin(angle);
-	ray_data.direction[X_POS] = *dx;
-	ray_data.direction[Y_POS] = *dy;
+	ray_data.direction[X_POS] = dx;
+	ray_data.direction[Y_POS] = dy;
 	ray_data.head[X_POS] = mlx->map_data->player[X_POS];
 	ray_data.head[Y_POS] = mlx->map_data->player[Y_POS];
 	while (length < 100)

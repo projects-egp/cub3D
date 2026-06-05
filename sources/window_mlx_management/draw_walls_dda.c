@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 19:24:14 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 22:35:16 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ static int	get_wall_color(int side, double dx, double dy)
 	}
 }
 
+/* STEPS
+ *
+ * 1) Obtain ray_angle
+ * 2) Obtain ray distance between player and wall which has been hit
+ * 3) Correct distance to avoid 'fisheye'*/
 void	render_3d_scene(t_mlx *mlx)
 {
 	int		x;
 	double	ray_angle;
 	double	distance;
-	double	corrected_dist;
 	int		wall_height;
 	int		side;
 	double	dx;
@@ -62,14 +66,15 @@ void	render_3d_scene(t_mlx *mlx)
 	x = 0;
 	while (x < WIDTH)
 	{
-		// Calculamos el ángulo del rayo basado en el FOV
-		ray_angle = (mlx->map_data->player_angle - (mlx->map_data->fov_angle / 2))
+		ray_angle = (mlx->map_data->player_angle
+			- (mlx->map_data->fov_angle / 2))
 			+ ((double)x / (double)WIDTH) * mlx->map_data->fov_angle;
-		distance = throw_ray(ray_angle, mlx, &side, &dx, &dy);
-		// Corrección efecto ojo de pez
-		corrected_dist = distance * cos(ray_angle - mlx->map_data->player_angle);
-		wall_height = (int)(HEIGHT / (corrected_dist + 0.0001));
+		dx = cos(ray_angle);
+		dy = sin(ray_angle);
+		distance = throw_ray(mlx, &side, dx, dy);
+		distance *= cos(ray_angle - mlx->map_data->player_angle);
+		wall_height = (int)(HEIGHT / (distance + 0.0001));
 		draw_vertical_line(mlx, x, wall_height, get_wall_color(side, dx, dy));
-		x++;
+		++x;
 	}
 }
