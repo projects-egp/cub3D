@@ -13,7 +13,7 @@ SOURCES =	main.c mlx_utils.c \
 		checklist.c store_rgb_values.c map_lines_utils.c store_map.c\
 		read_map_lines.c check_stored_map.c)\
 		$(addprefix window_mlx_management/, key_events.c update_frame.c\
-		background.c link_images.c draw_walls.c draw_walls_dda.c)\
+		background.c link_images.c draw_walls_dda.c throw_ray.c)\
 		$(addprefix clean/, clean_file_data.c clean_up.c destroy_mlx.c)
 
 SRCS = $(addprefix sources/, $(SOURCES))
