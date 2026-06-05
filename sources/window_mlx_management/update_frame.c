@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 13:54:53 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:17:25 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,48 @@ static void	rotate_step(t_mlx *mlx)
 	return ;
 }
 
-int	update_frame(t_mlx *mlx)
+static char	next_position(t_map *map, double dir[2])
+{
+	char	next_position;
+
+	next_position = map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])];
+	return (next_position);
+}
+
+static void	move_player(t_mlx *mlx, double dir[2])
 {
 	t_map	*map;
-	double	dir[POSITION];
 
 	map = (t_map *)mlx->map_data;
+	if (next_position(map, dir) != '1' && next_position(map, dir) != ' '
+		&& next_position(map, dir) != '\0')
+	{
+		map->player[X_POS] += dir[X_POS];
+		map->player[Y_POS] += dir[Y_POS];
+	}
+	return ;
+}
+
+int	update_frame(t_mlx *mlx)
+{
+	double	dir[POSITION];
+
 	dir[X_POS] = 0;
 	dir[Y_POS] = 0;
 	move_step(dir, mlx);
 	rotate_step(mlx);
-		if (map->player_angle < 0)
-		map->player_angle += 2 * M_PI;
-	if (map->player_angle > 2 * M_PI)
-		map->player_angle -= 2 * M_PI;
+	if (mlx->map_data->player_angle < 0)
+		mlx->map_data->player_angle += 2 * M_PI;
+	if (mlx->map_data->player_angle > 2 * M_PI)
+		mlx->map_data->player_angle -= 2 * M_PI;
 	if (dir[X_POS] != 0 || dir[Y_POS] != 0 || mlx->k_l || mlx->k_r)
 	{
-		if (map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != '1'
-			&& map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != ' '
-			&& map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != '\0')
-		{
-			map->player[X_POS] += dir[X_POS];
-			map->player[Y_POS] += dir[Y_POS];
-		}
+		move_player(mlx, dir);
 		draw_background(mlx);
 		render_3d_scene(mlx);
 		draw_minimap(mlx);
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-				mlx->img.img_ptr, 0, 0);
+			mlx->img.img_ptr, 0, 0);
 	}
 	return (0);
 }
