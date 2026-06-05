@@ -6,13 +6,13 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 14:17:25 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:25:09 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static void	move_step(double dir[2], t_mlx *mlx)
+static void	check_keys_to_move(double dir[2], t_mlx *mlx)
 {
 	double	move_step;
 
@@ -40,7 +40,7 @@ static void	move_step(double dir[2], t_mlx *mlx)
 	return ;
 }
 
-static void	rotate_step(t_mlx *mlx)
+static void	check_keys_to_rotate(t_mlx *mlx)
 {
 	double	rot_step;
 
@@ -49,6 +49,10 @@ static void	rotate_step(t_mlx *mlx)
 		mlx->map_data->player_angle -= rot_step;
 	if (mlx->k_r)
 		mlx->map_data->player_angle += rot_step;
+	if (mlx->map_data->player_angle < 0)
+		mlx->map_data->player_angle += 2 * M_PI;
+	if (mlx->map_data->player_angle > 2 * M_PI)
+		mlx->map_data->player_angle -= 2 * M_PI;
 	return ;
 }
 
@@ -80,12 +84,8 @@ int	update_frame(t_mlx *mlx)
 
 	dir[X_POS] = 0;
 	dir[Y_POS] = 0;
-	move_step(dir, mlx);
-	rotate_step(mlx);
-	if (mlx->map_data->player_angle < 0)
-		mlx->map_data->player_angle += 2 * M_PI;
-	if (mlx->map_data->player_angle > 2 * M_PI)
-		mlx->map_data->player_angle -= 2 * M_PI;
+	check_keys_to_move(dir, mlx);
+	check_keys_to_rotate(mlx);
 	if (dir[X_POS] != 0 || dir[Y_POS] != 0 || mlx->k_l || mlx->k_r)
 	{
 		move_player(mlx, dir);
