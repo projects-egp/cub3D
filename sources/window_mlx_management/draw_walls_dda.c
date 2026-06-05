@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 22:35:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 22:58:30 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static int	get_wall_color(int side, double dx, double dy)
 /* STEPS
  *
  * 1) Obtain ray_angle
- * 2) Obtain ray distance between player and wall which has been hit
- * 3) Correct distance to avoid 'fisheye'*/
+ * 2) With these angle, take cosine and sine
+ * 3) Obtain ray distance between player and wall which has been hit
+ * 4) Correct distance to avoid 'fisheye'*/
 void	render_3d_scene(t_mlx *mlx)
 {
 	int		x;
