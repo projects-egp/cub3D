@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/05 21:04:55 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 21:53:00 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	set_data(t_mlx *mlx, void *file_data)
 	mlx->win_ptr = NULL;
 	mlx->img.img_ptr = NULL;
 	ft_bzero((void *)mlx->key, (sizeof(int) * PLAYER_KEYS));
-
+	return ;
 }
 
 int	init_mlx_data(t_mlx *mlx, void *file_data)
@@ -46,16 +46,14 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 		print_error(WINDOW_MLX);
 		close_program(mlx, ERROR_CLOSE);
 	}
-	/*If mlx->img.img_ptr is not NULL,
-	 * should destroy first and later new_image again*/
 	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	if (!mlx->img.img_ptr)
 	{
 		print_error(MLX_NEW_IMAGE);
 		close_program(mlx, ERROR_CLOSE);
 	}
-	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bits_per_pixel,
-			&mlx->img.line_length, &mlx->img.endian);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr,
+			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 	return (1);
 }
 
