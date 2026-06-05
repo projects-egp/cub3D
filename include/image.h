@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 11:55:21 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 13:22:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-//
-/*	*	KEYS	*	*/
-# define ESC 65307
 
 typedef enum e_close_program
 {
@@ -32,7 +29,7 @@ typedef struct s_ray
 {
 	double	direction[2];
 	double	head[2];
-	int	increase[2];
+	int		increase[2];
 }	t_ray;
 
 typedef struct s_img
@@ -48,7 +45,6 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	//t_img	textures[TEXTURE_PATHS];
 	void	*textures[TEXTURE_PATHS];
 	t_img	img;
 	t_map	*map_data;
@@ -67,6 +63,11 @@ double	throw_ray(double angle, t_mlx *mlx, int *side, double *dir_x, double *dir
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	link_images(t_mlx *mlx);
 void	run_mlx_loop(t_mlx *mlx);
+//
+/*	*	update_frame	*	*/
+int		update_frame(t_mlx *mlx);
+void	render_3d_scene(t_mlx *mlx);
+void	draw_minimap(t_mlx *mlx);
 //
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);
