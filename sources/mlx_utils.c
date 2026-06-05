@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/05 21:53:00 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 22:09:43 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	init_mlx_data(t_mlx *mlx, void *file_data)
 void	run_mlx_loop(t_mlx *mlx)
 {
 	draw_background(mlx);
+	render_3d_scene(mlx);
 	draw_minimap(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		mlx->img.img_ptr, 0, 0);
