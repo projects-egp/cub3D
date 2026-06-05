@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 13:47:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 13:54:53 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,29 @@ static void	move_step(double dir[2], t_mlx *mlx)
 	return ;
 }
 
+static void	rotate_step(t_mlx *mlx)
+{
+	double	rot_step;
+
+	rot_step = 0.03;
+	if (mlx->k_l)
+		mlx->map_data->player_angle -= rot_step;
+	if (mlx->k_r)
+		mlx->map_data->player_angle += rot_step;
+	return ;
+}
+
 int	update_frame(t_mlx *mlx)
 {
 	t_map	*map;
 	double	dir[POSITION];
-	double	rot_step;
 
 	map = (t_map *)mlx->map_data;
 	dir[X_POS] = 0;
 	dir[Y_POS] = 0;
-	rot_step = 0.03;
 	move_step(dir, mlx);
-	if (mlx->k_l)
-		map->player_angle -= rot_step;
-	if (mlx->k_r)
-		map->player_angle += rot_step;
-	if (map->player_angle < 0)
+	rotate_step(mlx);
+		if (map->player_angle < 0)
 		map->player_angle += 2 * M_PI;
 	if (map->player_angle > 2 * M_PI)
 		map->player_angle -= 2 * M_PI;
