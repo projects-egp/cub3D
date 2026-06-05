@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/03 18:04:59 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/05 19:22:46 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ static double	get_side(double position, double ray_direction_value)
 
 /*ray_direction_value is a sine or cosine. With same formula
  * we can get hypotenuse h. 
- * h = side / (sin || cos)*/
+ *
+ * h = side / (sin || cos)
+ *
+ * If (sin || cos) == 0, side / ray_direction_value is 
+ * protected to avoid a zero-valued divisor*/
 static double	get_step(double position, double ray_direction_value)
 {
 	double	step_hypotenuse;
