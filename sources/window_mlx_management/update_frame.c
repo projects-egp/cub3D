@@ -6,45 +6,51 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 13:22:24 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 13:47:17 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-int	update_frame(t_mlx *mlx)
+static void	move_step(double dir[2], t_mlx *mlx)
 {
-	t_map	*map;
-	double	dx;
-	double	dy;
 	double	move_step;
-	double	rot_step;
 
-	map = (t_map *)mlx->map_data;
-	dx = 0;
-	dy = 0;
 	move_step = 0.03;
-	rot_step = 0.03;
 	if (mlx->k_w)
 	{
-		dx += cos(map->player_angle) * move_step;
-		dy += sin(map->player_angle) * move_step;
+		dir[X_POS] += cos(mlx->map_data->player_angle) * move_step;
+		dir[Y_POS] += sin(mlx->map_data->player_angle) * move_step;
 	}
 	if (mlx->k_s)
 	{
-		dx -= cos(map->player_angle) * move_step;
-		dy -= sin(map->player_angle) * move_step;
+		dir[X_POS] -= cos(mlx->map_data->player_angle) * move_step;
+		dir[Y_POS] -= sin(mlx->map_data->player_angle) * move_step;
 	}
 	if (mlx->k_a)
 	{
-		dx += cos(map->player_angle - M_PI / 2) * move_step;
-		dy += sin(map->player_angle - M_PI / 2) * move_step;
+		dir[X_POS] += cos(mlx->map_data->player_angle - M_PI / 2) * move_step;
+		dir[Y_POS] += sin(mlx->map_data->player_angle - M_PI / 2) * move_step;
 	}
 	if (mlx->k_d)
 	{
-		dx += cos(map->player_angle + M_PI / 2) * move_step;
-		dy += sin(map->player_angle + M_PI / 2) * move_step;
+		dir[X_POS] += cos(mlx->map_data->player_angle + M_PI / 2) * move_step;
+		dir[Y_POS] += sin(mlx->map_data->player_angle + M_PI / 2) * move_step;
 	}
+	return ;
+}
+
+int	update_frame(t_mlx *mlx)
+{
+	t_map	*map;
+	double	dir[POSITION];
+	double	rot_step;
+
+	map = (t_map *)mlx->map_data;
+	dir[X_POS] = 0;
+	dir[Y_POS] = 0;
+	rot_step = 0.03;
+	move_step(dir, mlx);
 	if (mlx->k_l)
 		map->player_angle -= rot_step;
 	if (mlx->k_r)
@@ -53,14 +59,14 @@ int	update_frame(t_mlx *mlx)
 		map->player_angle += 2 * M_PI;
 	if (map->player_angle > 2 * M_PI)
 		map->player_angle -= 2 * M_PI;
-	if (dx != 0 || dy != 0 || mlx->k_l || mlx->k_r)
+	if (dir[X_POS] != 0 || dir[Y_POS] != 0 || mlx->k_l || mlx->k_r)
 	{
-		if (map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != '1'
-			&& map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != ' '
-			&& map->map[(int)(map->player[Y_POS] + dy)][(int)(map->player[X_POS] + dx)] != '\0')
+		if (map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != '1'
+			&& map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != ' '
+			&& map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])] != '\0')
 		{
-			map->player[X_POS] += dx;
-			map->player[Y_POS] += dy;
+			map->player[X_POS] += dir[X_POS];
+			map->player[Y_POS] += dir[Y_POS];
 		}
 		draw_background(mlx);
 		render_3d_scene(mlx);
