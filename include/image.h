@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 13:22:55 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 19:13:56 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_ray
 {
 	double	direction[2];
 	double	head[2];
-	int		increase[2];
 }	t_ray;
 
 typedef struct s_img
@@ -58,7 +57,6 @@ typedef struct s_mlx
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	draw_background(t_mlx *mlx);
-void	draw_walls(t_mlx *mlx);
 double	throw_ray(double angle, t_mlx *mlx, int *side, double *dir_x, double *dir_y);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	link_images(t_mlx *mlx);
