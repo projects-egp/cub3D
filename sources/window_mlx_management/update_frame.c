@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 14:25:09 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 20:45:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	check_keys_to_move(double dir[2], t_mlx *mlx)
 	return ;
 }
 
+/*Also updates angle to keep values between 0 - (2 * PI)*/
 static void	check_keys_to_rotate(t_mlx *mlx)
 {
 	double	rot_step;
@@ -59,8 +60,12 @@ static void	check_keys_to_rotate(t_mlx *mlx)
 static char	next_position(t_map *map, double dir[2])
 {
 	char	next_position;
+	double	y_coord;
+	double	x_coord;
 
-	next_position = map->map[(int)(map->player[Y_POS] + dir[Y_POS])][(int)(map->player[X_POS] + dir[X_POS])];
+	y_coord = map->player[Y_POS] + dir[Y_POS];
+	x_coord = map->player[X_POS] + dir[X_POS];
+	next_position = map->map[(int)y_coord][(int)x_coord];
 	return (next_position);
 }
 
