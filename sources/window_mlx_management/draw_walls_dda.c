@@ -6,18 +6,20 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 22:58:30 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/07 14:19:51 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static void	draw_vertical_line(t_mlx *mlx, int x, int wall_height, int color)
+static void	draw_vertical_line(t_mlx *mlx, int x, double distance, int color)
 {
+	int	wall_height;
 	int	y;
 	int	start;
 	int	end;
 
+	wall_height = (int)(HEIGHT / (distance + 0.0001));
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
 	if (start < 0)
@@ -59,7 +61,6 @@ void	render_3d_scene(t_mlx *mlx)
 	int		x;
 	double	ray_angle;
 	double	distance;
-	int		wall_height;
 	int		side;
 	double	dx;
 	double	dy;
@@ -74,8 +75,7 @@ void	render_3d_scene(t_mlx *mlx)
 		dy = sin(ray_angle);
 		distance = throw_ray(mlx, &side, dx, dy);
 		distance *= cos(ray_angle - mlx->map_data->player_angle);
-		wall_height = (int)(HEIGHT / (distance + 0.0001));
-		draw_vertical_line(mlx, x, wall_height, get_wall_color(side, dx, dy));
+		draw_vertical_line(mlx, x, distance, get_wall_color(side, dx, dy));
 		++x;
 	}
 }
