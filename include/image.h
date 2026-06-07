@@ -6,15 +6,12 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 22:37:59 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/07 15:20:27 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGE_H
 # define IMAGE_H
-
-# include <stdlib.h>
-# include "mlx.h"
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -71,7 +68,6 @@ void	run_mlx_loop(t_mlx *mlx);
 /*	*	update_frame	*	*/
 int		update_frame(t_mlx *mlx);
 void	render_3d_scene(t_mlx *mlx);
-void	draw_minimap(t_mlx *mlx);
 //
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);

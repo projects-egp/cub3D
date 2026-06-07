@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/22 18:53:38 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/07 15:19:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "struct_map.h"
 # include "error_messages.h"
 # include "image.h"
+# include "minimap.h"
 # include "parse.h"
 # include "clean.h"
 # include <fcntl.h>
