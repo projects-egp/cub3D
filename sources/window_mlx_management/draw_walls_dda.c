@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/07 14:19:51 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/07 14:24:58 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ void	render_3d_scene(t_mlx *mlx)
 	double	ray_angle;
 	double	distance;
 	int		side;
-	double	dx;
-	double	dy;
+	double	dir[POSITION];
+	//double	dx;
+	//double	dy;
 
 	x = 0;
 	while (x < WIDTH)
@@ -71,11 +72,15 @@ void	render_3d_scene(t_mlx *mlx)
 		ray_angle = (mlx->map_data->player_angle
 			- (mlx->map_data->fov_angle / 2))
 			+ ((double)x / (double)WIDTH) * mlx->map_data->fov_angle;
-		dx = cos(ray_angle);
-		dy = sin(ray_angle);
-		distance = throw_ray(mlx, &side, dx, dy);
+		//dx = cos(ray_angle);
+		dir[X_POS] = cos(ray_angle);
+		//dy = sin(ray_angle);
+		dir[Y_POS] = sin(ray_angle);
+		//distance = throw_ray(mlx, &side, dx, dy);
+		distance = throw_ray(mlx, &side, dir[X_POS], dir[Y_POS]);
 		distance *= cos(ray_angle - mlx->map_data->player_angle);
-		draw_vertical_line(mlx, x, distance, get_wall_color(side, dx, dy));
+//		draw_vertical_line(mlx, x, distance, get_wall_color(side, dx, dy));
+		draw_vertical_line(mlx, x, distance, get_wall_color(side, dir[X_POS], dir[Y_POS]));
 		++x;
 	}
 }
