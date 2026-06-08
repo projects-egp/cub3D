@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/08 16:58:08 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:02:03 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ void	draw_minimap(t_mlx *mlx)
 		while (++minimap.x < map->width && map->map[minimap.y][minimap.x])
 			call_draw_square(mlx, minimap, map);
 	}
-	draw_fov(&mlx->img, map, minimap, 0xFF0000);
+	draw_fov(&mlx->img, map, minimap, FOV_COLOR);
 }
