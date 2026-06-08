@@ -175,4 +175,4 @@ re: fclean all
 
 bonus_re: fclean bonus
 
-.PHONY: all bonus clean compclean fclean re re_bonus
+.PHONY: all bonus clean compclean fclean re bonus_re
