@@ -6,17 +6,23 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/08 16:35:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:47:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static void	draw_square(t_img *img, int x, int y, int size, int color)
+static void	draw_square(t_img *img, t_minimap data, int color)
 {
 	int	i;
 	int	j;
+	int	x;
+	int	y;
+	int	size;
 
+	x = data.x * data.t_s + data.offset;
+	y = data.y * data.t_s + data.offset;
+	size = data.t_s;
 	i = 0;
 	while (i < size)
 	{
@@ -38,11 +44,9 @@ static void	call_draw_square(t_mlx *mlx, t_minimap data, t_map *map)
 	x = data.x;
 	y = data.y;
 	if (map->map[y][x] == '1')
-		draw_square(&mlx->img, x * data.t_s + data.offset,
-			y * data.t_s + data.offset, data.t_s, BLACK);
+		draw_square(&mlx->img, data, BLACK);
 	else if (map->map[y][x] != ' ' && map->map[y][x] != '\n')
-		draw_square(&mlx->img, x * data.t_s + data.offset,
-			y * data.t_s + data.offset, data.t_s, WHITE);
+		draw_square(&mlx->img, data, WHITE);
 }
 
 static void	draw_fov(t_img *img, int x, int y, double angle, int size,
@@ -74,7 +78,7 @@ void	draw_minimap(t_mlx *mlx)
 	while (++minimap.y < map->height)
 	{
 		minimap.x = -1;
-		while (++minimap.x < map->width && map->map[minimap.y][minimap.x])
+			while (++minimap.x < map->width && map->map[minimap.y][minimap.x])
 			call_draw_square(mlx, minimap, map);
 	}
 	draw_fov(&mlx->img, (int)(map->player[X_POS] * minimap.t_s)
