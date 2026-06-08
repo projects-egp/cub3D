@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/08 13:39:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/05 21:14:06 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	update_frame(t_mlx *mlx)
 		move_player(mlx, dir);
 		draw_background(mlx);
 		render_3d_scene(mlx);
+		draw_minimap(mlx);
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 			mlx->img.img_ptr, 0, 0);
 	}

@@ -3,22 +3,31 @@
 # ==============================
 
 NAME = cub3D
+BONUS_NAME = cub3D_bonus
 
 # ==============================
 # SOURCES
 # ==============================
 
-SOURCES =	main.c mlx_utils.c \
+COMMON_SOURCES =	main.c\
 		$(addprefix parse/, parse_main.c add_scene_data.c read_data.c\
 		checklist.c store_rgb_values.c map_lines_utils.c store_map.c\
 		read_map_lines.c check_stored_map.c)\
-		$(addprefix window_mlx_management/, key_events.c update_frame.c\
-		background.c minimap.c link_images.c draw_walls_dda.c\
-		throw_ray.c)\
+		$(addprefix window_mlx_management/, key_events.c background.c\
+		link_images.c render_3d_scene.c throw_ray.c)\
 		$(addprefix clean/, clean_file_data.c clean_up.c destroy_mlx.c)
 
-SRCS = $(addprefix sources/, $(SOURCES))
+MANDATORY_SOURCES =	mlx_utils.c\
+			$(addprefix window_mlx_management/, update_frame.c)
+
+BONUS_SOURCES =	$(addprefix bonus/, minimap.c mlx_utils_bonus.c\
+		update_frame_bonus.c)
+
+SRCS = $(addprefix sources/, $(COMMON_SOURCES) $(MANDATORY_SOURCES))
+SRCS_BONUS = $(addprefix sources/, $(COMMON_SOURCES)) $(BONUS_SOURCES)
+
 OBJECTS = $(SRCS:.c=.o)
+OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
 
 # ==============================
 # COMPILER
@@ -116,25 +125,54 @@ $(NAME): $(LIBFT) $(MLX) $(OBJECTS)
 sources/%.o: sources/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# ==============================
+# ------------------------------
+# BONUS
+# ------------------------------
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(MLX) $(OBJECTS_BONUS)
+	$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBS_FLAGS) -o $(BONUS_NAME)
+	@echo "$(BONUS_NAME) created for $(UNAME)"
+
+# ------------------------------
 # CLEAN
-# ==============================
+# ------------------------------
 
 clean:
 	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS_BONUS)
 	@make -s -C $(LIBFT_DIR) clean
 	@if [ -d "$(MLX_DIR)" ]; then \
 		make -s -C $(MLX_DIR) clean; \
 	fi
 	@echo "Objects removed"
+# ------------------------------
+# COMPCLEAN
+# ------------------------------
 
 compclean: all clean
 
+# ------------------------------
+# FCLEAN
+# ------------------------------
+
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(BONUS_NAME)
 	@make -s -C $(LIBFT_DIR) fclean
 	@echo "Binary removed"
 
+# ------------------------------
+# RE
+# ------------------------------
+
 re: fclean all
 
-.PHONY: all clean compclean fclean re
+# ------------------------------
+# BONUS_RE
+# ------------------------------
+
+bonus_re: fclean bonus
+
+.PHONY: all bonus clean compclean fclean re re_bonus
