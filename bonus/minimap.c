@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/07 15:29:49 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:35:17 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,23 @@ static void	draw_square(t_img *img, int x, int y, int size, int color)
 	}
 }
 
-static void	draw_fov(t_img *img, int x, int y, double angle, int size, int color)
+static void	call_draw_square(t_mlx *mlx, t_minimap data, t_map *map)
+{
+	int	x;
+	int	y;
+
+	x = data.x;
+	y = data.y;
+	if (map->map[y][x] == '1')
+		draw_square(&mlx->img, x * data.t_s + data.offset,
+			y * data.t_s + data.offset, data.t_s, BLACK);
+	else if (map->map[y][x] != ' ' && map->map[y][x] != '\n')
+		draw_square(&mlx->img, x * data.t_s + data.offset,
+			y * data.t_s + data.offset, data.t_s, WHITE);
+}
+
+static void	draw_fov(t_img *img, int x, int y, double angle, int size,
+		int color)
 {
 	int	i;
 
@@ -44,35 +60,24 @@ static void	draw_fov(t_img *img, int x, int y, double angle, int size, int color
 
 void	draw_minimap(t_mlx *mlx)
 {
-	t_map	*map;
-	int		t_s;
-	int		x;
-	int		y;
-	int		offset;
+	t_map		*map;
+	t_minimap	minimap;
 
 	map = (t_map *)mlx->map_data;
-	t_s = (HEIGHT / 5) / map->height;
-	if (map->width > 0 && (WIDTH / 5) / map->width < t_s)
-		t_s = (WIDTH / 5) / map->width;
-	if (t_s < 1)
-		t_s = 1;
-	offset = 20;
-	y = -1;
-	while (++y < map->height)
+	minimap.t_s = (HEIGHT / 5) / map->height;
+	if (map->width > 0 && (WIDTH / 5) / map->width < minimap.t_s)
+		minimap.t_s = (WIDTH / 5) / map->width;
+	if (minimap.t_s < 1)
+		minimap.t_s = 1;
+	minimap.offset = 20;
+	minimap.y = -1;
+	while (++minimap.y < map->height)
 	{
-		x = -1;
-		while (++x < map->width && map->map[y][x])
-		{
-			if (map->map[y][x] == '1')
-				draw_square(&mlx->img, x * t_s + offset,
-					y * t_s + offset, t_s, BLACK);
-			else if (map->map[y][x] != ' '
-				&& map->map[y][x] != '\n')
-				draw_square(&mlx->img, x * t_s + offset,
-					y * t_s + offset, t_s, WHITE);
-		}
+		minimap.x = -1;
+		while (++minimap.x < map->width && map->map[minimap.y][minimap.x])
+			call_draw_square(mlx, minimap, map);
 	}
-	draw_fov(&mlx->img, (int)(map->player[X_POS] * t_s) + offset,
-		(int)(map->player[Y_POS] * t_s) + offset, map->player_angle,
-		t_s * 1.25, 0xFF0000);
+	draw_fov(&mlx->img, (int)(map->player[X_POS] * minimap.t_s)
+		+ minimap.offset, (int)(map->player[Y_POS] * minimap.t_s)
+		+ minimap.offset, map->player_angle, minimap.t_s * 1.25, 0xFF0000);
 }

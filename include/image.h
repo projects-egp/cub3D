@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/07 15:20:27 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:22:33 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ typedef struct s_ray
 	double	direction[2];
 	double	head[2];
 }	t_ray;
+
+typedef struct s_minimap
+{
+	int	t_s;
+	int	x;
+	int	y;
+	int	offset;
+}	t_minimap;
 
 typedef struct s_img
 {
