@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/08 13:40:39 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 11:02:28 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static void	set_data(t_mlx *mlx, void *file_data)
 	return ;
 }
 
+/*After init mlx, first thing done is link images. 
+ * In case of error, this function will call to close program, 
+ * and user won't see a window trying to open on screen*/
 int	init_mlx_data(t_mlx *mlx, void *file_data)
 {
 	set_data(mlx, file_data);
