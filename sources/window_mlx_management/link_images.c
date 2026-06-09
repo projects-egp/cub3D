@@ -6,7 +6,7 @@
 /*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 10:54:46 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/05/12 12:25:24 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 11:52:37 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,30 @@ static void	init_pointers(t_mlx *mlx)
 
 	i = 0;
 	while (i < TEXTURE_PATHS)
-		mlx->textures[i++] = NULL;
+		mlx->textures[i++].img_ptr = NULL;
 }
 
 void	link_images(t_mlx *mlx)
 {
 	int	i;
-	int	debug_w = 64;//debug
-	int	debug_h = 64;//debug
 
 	i = 0;
 	init_pointers(mlx);
 	while (i < TEXTURE_PATHS)
 	{
-		mlx->textures[i] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-				mlx->map_data->texture_paths[i], &debug_w/*&width*/,
-				&debug_h/*&height*/);
-		if (!mlx->textures[i])
+		mlx->textures[i].img_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
+				mlx->map_data->texture_paths[i],
+				&mlx->textures[i].width,
+				&mlx->textures[i].height);
+		if (!mlx->textures[i].img_ptr)
 		{
 			link_error_message(mlx, i);
 			close_program(mlx, ERROR_CLOSE);
 		}
-		/*mlx->textures[i].addr = mlx_get_data_addr(mlx->textures[i].img_ptr,
+		mlx->textures[i].addr = mlx_get_data_addr(mlx->textures[i].img_ptr,
 				&mlx->textures[i].bits_per_pixel,
 				&mlx->textures[i].line_length,
-				&mlx->textures[i].endian);*/
+				&mlx->textures[i].endian);
 		++i;
 	}
 	return ;

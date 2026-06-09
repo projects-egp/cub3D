@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/08 16:22:33 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 11:29:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_img
 {
 	void	*img_ptr;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -60,7 +62,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*textures[TEXTURE_PATHS];
+	t_img	textures[TEXTURE_PATHS];
 	t_img	img;
 	t_map	*map_data;
 	int		key[PLAYER_KEYS];
