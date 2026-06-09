@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 17:32:53 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/07 15:19:06 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 10:21:26 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <stdio.h>
 # include <stdint.h>/*For uint_32, used to store colors. This integer
 		      guarantees that integer is unsigned and has 4 bytes.
-		      Needed because we use 24 bytes to store color*/
+		      Needed because we use 24 bits to store color*/
 # include <math.h>
 
 # ifndef M_PI
