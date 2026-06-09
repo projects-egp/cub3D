@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enrgil-p <enrgil-p@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/08 13:39:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:12:16 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,26 @@ static void	check_keys_to_rotate(t_mlx *mlx)
 	return ;
 }
 
-static char	next_position(t_map *map, double dir[2])
-{
-	char	next_position;
-	double	y_coord;
-	double	x_coord;
-
-	y_coord = map->player[Y_POS] + dir[Y_POS];
-	x_coord = map->player[X_POS] + dir[X_POS];
-	next_position = map->map[(int)y_coord][(int)x_coord];
-	return (next_position);
-}
-
 static void	move_player(t_mlx *mlx, double dir[2])
 {
 	t_map	*map;
+	double	margin;
 
 	map = (t_map *)mlx->map_data;
-	if (next_position(map, dir) != '1' && next_position(map, dir) != ' '
-		&& next_position(map, dir) != '\0')
-	{
+	margin = 0.2;
+	if (dir[X_POS] < 0)
+		margin = -0.2;
+	if (map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != '1'
+		&& map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != ' '
+		&& map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != '\0')
 		map->player[X_POS] += dir[X_POS];
+	margin = 0.2;
+	if (dir[Y_POS] < 0)
+		margin = -0.2;
+	if (map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != '1'
+		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != ' '
+		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != '\0')
 		map->player[Y_POS] += dir[Y_POS];
-	}
-	return ;
 }
 
 int	update_frame(t_mlx *mlx)
