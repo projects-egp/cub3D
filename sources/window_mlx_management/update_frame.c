@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:14:48 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/09 19:12:16 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/10 11:04:53 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,22 @@ static void	move_player(t_mlx *mlx, double dir[2])
 	margin = 0.2;
 	if (dir[X_POS] < 0)
 		margin = -0.2;
-	if (map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != '1'
-		&& map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != ' '
-		&& map->map[(int)map->player[Y_POS]][(int)(map->player[X_POS] + dir[X_POS] + margin)] != '\0')
+	if (map->map[(int)map->player[Y_POS]]
+		[(int)(map->player[X_POS] + dir[X_POS] + margin)] != '1'
+		&& map->map[(int)map->player[Y_POS]]
+		[(int)(map->player[X_POS] + dir[X_POS] + margin)] != ' '
+		&& map->map[(int)map->player[Y_POS]]
+		[(int)(map->player[X_POS] + dir[X_POS] + margin)] != '\0')
 		map->player[X_POS] += dir[X_POS];
 	margin = 0.2;
 	if (dir[Y_POS] < 0)
 		margin = -0.2;
-	if (map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != '1'
-		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != ' '
-		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)][(int)map->player[X_POS]] != '\0')
+	if (map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)]
+		[(int)map->player[X_POS]] != '1'
+		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)]
+		[(int)map->player[X_POS]] != ' '
+		&& map->map[(int)(map->player[Y_POS] + dir[Y_POS] + margin)]
+		[(int)map->player[X_POS]] != '\0')
 		map->player[Y_POS] += dir[Y_POS];
 }
 
