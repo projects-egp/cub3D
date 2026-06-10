@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/08 17:02:03 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 10:09:58 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	call_draw_square(t_mlx *mlx, t_minimap data, t_map *map)
 	y = data.y;
 	if (map->map[y][x] == '1')
 		draw_square(&mlx->img, data, BLACK);
-	else if (map->map[y][x] != ' ' && map->map[y][x] != '\n')
+	else if (!ft_isspace(map->map[y][x]))
 		draw_square(&mlx->img, data, WHITE);
 }
 
