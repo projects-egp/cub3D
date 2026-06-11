@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/11 18:04:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/11 18:27:17 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	{
 		texture_y = (int)((y - start)
 				* ((double)texture.height * wall_height));
-		color = texture.bits_per_pixel * texture_y * texture.width + texture_x;
+		color = texture_y * texture.width + texture_x;
 		my_pixel_put(&mlx->img, x, y, color);
 		y++;
 	}
