@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/11 18:27:17 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:12:16 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static double	get_texture_x(double wall_x, t_img texture, int side,
 	double	texture_x;
 
 	texture_x = wall_x * texture.width;
-	if ((side == 1  && dy > 0) || (side == 0 && dx < 0))
+	if ((side == 1  && dy < 0) || (side == 0 && dx > 0))
 		texture_x = texture.width - texture_x - 1;
 	return (texture_x);
 }
