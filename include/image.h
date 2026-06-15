@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/09 11:29:36 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/15 17:25:52 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+# define BLOCK_SIZE 64
 
 typedef enum e_close_program
 {

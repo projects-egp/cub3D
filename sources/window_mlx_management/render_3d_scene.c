@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/15 17:16:46 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/15 17:46:44 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	get_texture_x(double wall_x, t_img texture, int side,
 {
 	double	texture_x;
 
-	texture_x = wall_x * texture.width;
+	texture_x = wall_x * BLOCK_SIZE;
 	if ((side == 1  && dy < 0) || (side == 0 && dx > 0))
 		texture_x = texture.width - texture_x - 1;
 	return (texture_x);
@@ -57,9 +57,9 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	texture = get_texture(mlx, side, dir[X_POS], dir[Y_POS]);
 	texture_x = get_texture_x(wall_x, texture, side, dir[X_POS], dir[Y_POS]);
 	wall_height = (int)(HEIGHT / (distance + 0.0001));
-	step = 1 * texture.width / wall_height;//STEP
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
+	step = BLOCK_SIZE / wall_height;//STEP
 	tex_pos = (start - HEIGHT / 2 + wall_height / 2) * step;//TEX_POS
 	if (start < 0)
 		start = 0;
@@ -68,10 +68,10 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	y = start;
 	while (y < end)
 	{
-		texture_y = (int)tex_pos & (texture.width - 1);//tex_pos % BLOCK:
+		texture_y = (int)tex_pos & (BLOCK_SIZE - 1);//tex_pos % BLOCK:
 		tex_pos += step;//INCREASE TEX_POS
 		index = (texture_y * texture.line_length + texture_x)
-			* (texture.bits_per_pixel / 8);
+			* (texture.bits_per_pixel);
 		color = *(unsigned int *)(texture.addr + index);
 		my_pixel_put(&mlx->img, x, y, color);
 		y++;

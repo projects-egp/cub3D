@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:30:00 by mario             #+#    #+#             */
-/*   Updated: 2026/06/09 11:51:10 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/15 17:53:51 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+	/*int	index;
+
+	index = (y * img->line_length) + (x * 4);
+	img->addr[index] = color & 0xFF;
+	img->addr[index + 1] = (color >> 8) & 0xFF;
+	img->addr[index + 2] = (color >> 16) & 0xFF;*/
 }
 
 static void	set_data(t_mlx *mlx, void *file_data)
