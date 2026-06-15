@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/11 20:12:16 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:42:40 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static double	get_texture_x(double wall_x, t_img texture, int side,
 		texture_x = texture.width - texture_x - 1;
 	return (texture_x);
 }
+
 static t_img	get_texture(t_mlx *mlx, int side, double dx, double dy)
 {
 	if (side == 1) // Impacto en Eje Y (Paredes Norte o Sur)
@@ -42,19 +43,23 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 		double dir[2], double wall_x) 
 {
 	int	wall_height;
-	int	y;
+	int	y;//Iterator
 	int	start;
 	int	end;
 	t_img	texture;
 	double	texture_x;
 	double	texture_y;
 	int	color;
+	double	step;
+	double	tex_pos;
 
 	texture = get_texture(mlx, side, dir[X_POS], dir[Y_POS]);
 	texture_x = get_texture_x(wall_x, texture, side, dir[X_POS], dir[Y_POS]);
 	wall_height = (int)(HEIGHT / (distance + 0.0001));
+	step = 1 * texture.width / wall_height;//STEP
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
+	tex_pos = (start - HEIGHT / 2 + wall_height / 2) * step;//TEX_POS
 	if (start < 0)
 		start = 0;
 	if (end >= HEIGHT)
@@ -62,9 +67,9 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	y = start;
 	while (y < end)
 	{
-		texture_y = (int)((y - start)
-				* ((double)texture.height * wall_height));
-		color = texture_y * texture.width + texture_x;
+		texture_y = (int)tex_pos & (texture.width - 1);//tex_pos % BLOCK:
+		tex_pos += step;//INCREASE TEX_POS
+		/*INDEX*/ = (texture_y * texture.width + texture_x) * /*bytes_per_pixel*/ ;
 		my_pixel_put(&mlx->img, x, y, color);
 		y++;
 	}
