@@ -59,10 +59,13 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	wall_height = (int)(HEIGHT / (distance + 0.0001));
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
-	step = BLOCK_SIZE / wall_height;//STEP
-	tex_pos = (start - HEIGHT / 2 + wall_height / 2) * step;//TEX_POS
+	step = (double)BLOCK_SIZE / wall_height;
+	tex_pos = 0;
 	if (start < 0)
+	{
+		tex_pos = (double)(-start) * step;
 		start = 0;
+	}
 	if (end >= HEIGHT)
 		end = HEIGHT - 1;
 	y = start;
@@ -70,8 +73,8 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	{
 		texture_y = (int)tex_pos & (BLOCK_SIZE - 1);//tex_pos % BLOCK:
 		tex_pos += step;//INCREASE TEX_POS
-		index = (texture_y * texture.line_length + texture_x)
-			* (texture.bits_per_pixel);
+		index = (int)texture_y * texture.line_length
+			+ (int)texture_x * (texture.bits_per_pixel / 8);
 		color = *(unsigned int *)(texture.addr + index);
 		my_pixel_put(&mlx->img, x, y, color);
 		y++;
@@ -84,9 +87,9 @@ static double	hit_position(t_mlx *mlx, double distance, double dir[2], int side)
 
 	wall_x = 0;
 	if (side == 1) // Impacto en Eje Y (Paredes Norte o Sur)
-		wall_x = mlx->map_data->player[Y_POS] + distance * dir[X_POS];
+		wall_x = mlx->map_data->player[X_POS] + distance * dir[X_POS];
 	else
-		wall_x = mlx->map_data->player[X_POS] + distance * dir[Y_POS];
+		wall_x = mlx->map_data->player[Y_POS] + distance * dir[Y_POS];
 	wall_x /= 64.0;
 	wall_x -= floor(wall_x);
 	return (wall_x);
