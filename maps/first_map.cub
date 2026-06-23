@@ -1,6 +1,6 @@
 NO ./textures/north_letter.xpm
 SO ./textures/south_letter.xpm
-WE ./textures/west_letter.xpm
+WE ./textures/west_32.xpm
 EA ./textures/east_letter.xpm
 
 F 42,42,42
