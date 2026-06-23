@@ -25,59 +25,48 @@ static int	hit_wall(t_mlx *mlx, int map_x, int map_y)
 	return (c != '0' && c != mlx->map_data->spawn_orientation);
 }
 
+static void	init_dda(t_dda *d, t_mlx *mlx, double dx, double dy)
+{
+	double	px;
+	double	py;
+
+	px = mlx->map_data->player[X_POS];
+	py = mlx->map_data->player[Y_POS];
+	d->map_x = (int)px;
+	d->map_y = (int)py;
+	d->delta_dist_x = (dx == 0) ? 1e30 : fabs(1.0 / dx);
+	d->delta_dist_y = (dy == 0) ? 1e30 : fabs(1.0 / dy);
+	d->step_x = (dx < 0) ? -1 : 1;
+	d->side_dist_x = (dx < 0) ? (px - d->map_x) * d->delta_dist_x
+		: (d->map_x + 1.0 - px) * d->delta_dist_x;
+	d->step_y = (dy < 0) ? -1 : 1;
+	d->side_dist_y = (dy < 0) ? (py - d->map_y) * d->delta_dist_y
+		: (d->map_y + 1.0 - py) * d->delta_dist_y;
+}
+
 double	throw_ray(t_mlx *mlx, int *side, double dx, double dy)
 {
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
+	t_dda	d;
 
-	map_x = (int)mlx->map_data->player[X_POS];
-	map_y = (int)mlx->map_data->player[Y_POS];
-	delta_dist_x = (dx == 0) ? 1e30 : fabs(1.0 / dx);
-	delta_dist_y = (dy == 0) ? 1e30 : fabs(1.0 / dy);
-	if (dx < 0)
-	{
-		step_x = -1;
-		side_dist_x = (mlx->map_data->player[X_POS] - map_x) * delta_dist_x;
-	}
-	else
-	{
-		step_x = 1;
-		side_dist_x = (map_x + 1.0 - mlx->map_data->player[X_POS]) * delta_dist_x;
-	}
-	if (dy < 0)
-	{
-		step_y = -1;
-		side_dist_y = (mlx->map_data->player[Y_POS] - map_y) * delta_dist_y;
-	}
-	else
-	{
-		step_y = 1;
-		side_dist_y = (map_y + 1.0 - mlx->map_data->player[Y_POS]) * delta_dist_y;
-	}
+	init_dda(&d, mlx, dx, dy);
 	while (1)
 	{
-		if (side_dist_x < side_dist_y)
+		if (d.side_dist_x < d.side_dist_y)
 		{
-			side_dist_x += delta_dist_x;
-			map_x += step_x;
+			d.side_dist_x += d.delta_dist_x;
+			d.map_x += d.step_x;
 			*side = 0;
 		}
 		else
 		{
-			side_dist_y += delta_dist_y;
-			map_y += step_y;
+			d.side_dist_y += d.delta_dist_y;
+			d.map_y += d.step_y;
 			*side = 1;
 		}
-		if (hit_wall(mlx, map_x, map_y))
+		if (hit_wall(mlx, d.map_x, d.map_y))
 			break ;
 	}
 	if (*side == 0)
-		return (side_dist_x - delta_dist_x);
-	return (side_dist_y - delta_dist_y);
+		return (d.side_dist_x - d.delta_dist_x);
+	return (d.side_dist_y - d.delta_dist_y);
 }

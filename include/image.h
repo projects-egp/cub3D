@@ -33,11 +33,17 @@ typedef enum e_pressed_keys
 	PLAYER_KEYS
 }	t_pressed_keys;
 
-typedef struct s_ray
+typedef struct s_dda
 {
-	double	direction[2];
-	double	head[2];
-}	t_ray;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+}	t_dda;
 
 typedef struct s_minimap
 {
