@@ -1,7 +1,7 @@
-NO ./textures/grass.xpm
-SO ./textures/grass.xpm
-WE ./textures/grass.xpm
-EA ./textures/grass.xpm
+NO ./textures/north_letter.xpm
+SO ./textures/south_letter.xpm
+WE ./textures/west_letter.xpm
+EA ./textures/east_letter.xpm
 
 F 42,42,42
 C 24,200,128

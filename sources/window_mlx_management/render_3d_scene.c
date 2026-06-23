@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/15 17:46:44 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/23 11:39:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	get_texture_x(double wall_x, t_img texture, int side,
 {
 	double	texture_x;
 
-	texture_x = wall_x * BLOCK_SIZE;
+	texture_x = wall_x * texture.width;
 	if ((side == 1  && dy < 0) || (side == 0 && dx > 0))
 		texture_x = texture.width - texture_x - 1;
 	return (texture_x);
@@ -59,7 +59,7 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	wall_height = (int)(HEIGHT / (distance + 0.0001));
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
-	step = (double)BLOCK_SIZE / wall_height;
+	step = (double)texture.height / wall_height;
 	tex_pos = 0;
 	if (start < 0)
 	{
@@ -71,7 +71,7 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	y = start;
 	while (y < end)
 	{
-		texture_y = (int)tex_pos & (BLOCK_SIZE - 1);//tex_pos % BLOCK:
+		texture_y = (int)tex_pos & (texture.height - 1);//tex_pos % BLOCK:
 		tex_pos += step;//INCREASE TEX_POS
 		index = (int)texture_y * texture.line_length
 			+ (int)texture_x * (texture.bits_per_pixel / 8);
@@ -90,7 +90,6 @@ static double	hit_position(t_mlx *mlx, double distance, double dir[2], int side)
 		wall_x = mlx->map_data->player[X_POS] + distance * dir[X_POS];
 	else
 		wall_x = mlx->map_data->player[Y_POS] + distance * dir[Y_POS];
-	wall_x /= 64.0;
 	wall_x -= floor(wall_x);
 	return (wall_x);
 }
