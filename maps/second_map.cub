@@ -1,7 +1,7 @@
-SO  ./textures/grass.xpm
+SO  ./textures/south_letter.xpm
 		
-WE   ./textures/grass.xpm
-EA	./textures/grass.xpm
+WE   ./textures/west_letter.xpm
+EA	./textures/east_letter.xpm
 
 
 
@@ -12,7 +12,7 @@ C 56,240,,,,131,
 
 
 
-NO ./textures/grass.xpm
+NO ./textures/north_letter.xpm
 
 
 
