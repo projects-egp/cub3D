@@ -25,27 +25,31 @@ static uint32_t	get_color_value(int *decimal_value)
 
 void	draw_background(t_mlx *mlx)
 {
+	uint32_t		*row;
 	int				x;
 	int				y;
 	static uint32_t	ceiling_color;
 	static uint32_t	floor_color;
 
-	y = 0;
 	if (!ceiling_color)
 		ceiling_color = get_color_value(mlx->map_data->ceiling_color);
 	if (!floor_color)
 		floor_color = get_color_value(mlx->map_data->floor_color);
-	while (y < HEIGHT)
+	y = 0;
+	while (y < HEIGHT / 2)
 	{
+		row = (uint32_t *)(mlx->img.addr + y * mlx->img.line_length);
 		x = 0;
 		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				my_pixel_put(&mlx->img, x, y, ceiling_color);
-			else
-				my_pixel_put(&mlx->img, x, y, floor_color);
-			x++;
-		}
+			row[x++] = ceiling_color;
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		row = (uint32_t *)(mlx->img.addr + y * mlx->img.line_length);
+		x = 0;
+		while (x < WIDTH)
+			row[x++] = floor_color;
 		y++;
 	}
 }

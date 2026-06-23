@@ -42,17 +42,18 @@ static t_img	get_texture(t_mlx *mlx, int side, double dx, double dy)
 static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 		double dir[2], double wall_x) 
 {
-	int	wall_height;
-	int	y;//Iterator
-	int	start;
-	int	end;
+	int		wall_height;
+	int		y;
+	int		start;
+	int		end;
 	t_img	texture;
 	double	texture_x;
 	double	texture_y;
-	int	color;
+	int		color;
 	double	step;
 	double	tex_pos;
-	int	index;
+	int		index;
+	char	*pixel;
 
 	texture = get_texture(mlx, side, dir[X_POS], dir[Y_POS]);
 	texture_x = get_texture_x(wall_x, texture, side, dir[X_POS], dir[Y_POS]);
@@ -68,15 +69,18 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	}
 	if (end >= HEIGHT)
 		end = HEIGHT - 1;
+	pixel = mlx->img.addr + start * mlx->img.line_length
+		+ x * (mlx->img.bits_per_pixel / 8);
 	y = start;
 	while (y < end)
 	{
-		texture_y = (int)tex_pos & (texture.height - 1);//tex_pos % BLOCK:
-		tex_pos += step;//INCREASE TEX_POS
+		texture_y = (int)tex_pos & (texture.height - 1);
+		tex_pos += step;
 		index = (int)texture_y * texture.line_length
 			+ (int)texture_x * (texture.bits_per_pixel / 8);
 		color = *(unsigned int *)(texture.addr + index);
-		my_pixel_put(&mlx->img, x, y, color);
+		*(unsigned int *)pixel = color;
+		pixel += mlx->img.line_length;
 		y++;
 	}
 }
