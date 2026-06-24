@@ -20,6 +20,10 @@ _This project has been created as part of the 42 curriculum by made-ped, enrgil-
   <li>How to get color for ceiling and floor from three decimal integers, given by file.cub</li>
   Used ChatGPT for this query, answer it give to us was to use bit operators to store the bits from this three decimal integers to just one new integer.
   This integer would be an uin32_t, to make sure always that the integer has 32 bits. As long as we need 24 bits to store the value.
+  <li>Help with Digital Differential Analysis</li>
+  After learn about vectors and trigonometric functions, AI was used to ask for some cases and correct answers,
+  so we could do our operations and check if these reach those results too.
+  This was done first by hand, to make sure we understood all properly.
 </ul>
 
 <a href="#top">Back to index</a>
