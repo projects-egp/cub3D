@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/23 12:00:00 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/24 10:00:00 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,42 @@ static int	hit_wall(t_mlx *mlx, int map_x, int map_y)
 	return (c != '0' && c != mlx->map_data->spawn_orientation);
 }
 
+static void	init_step_x(t_dda *d, double px, double dx)
+{
+	if (dx == 0)
+		d->delta_dist_x = 1e30;
+	else
+		d->delta_dist_x = fabs(1.0 / dx);
+	if (dx < 0)
+	{
+		d->step_x = -1;
+		d->side_dist_x = (px - d->map_x) * d->delta_dist_x;
+	}
+	else
+	{
+		d->step_x = 1;
+		d->side_dist_x = (d->map_x + 1.0 - px) * d->delta_dist_x;
+	}
+}
+
+static void	init_step_y(t_dda *d, double py, double dy)
+{
+	if (dy == 0)
+		d->delta_dist_y = 1e30;
+	else
+		d->delta_dist_y = fabs(1.0 / dy);
+	if (dy < 0)
+	{
+		d->step_y = -1;
+		d->side_dist_y = (py - d->map_y) * d->delta_dist_y;
+	}
+	else
+	{
+		d->step_y = 1;
+		d->side_dist_y = (d->map_y + 1.0 - py) * d->delta_dist_y;
+	}
+}
+
 static void	init_dda(t_dda *d, t_mlx *mlx, double dx, double dy)
 {
 	double	px;
@@ -34,14 +70,8 @@ static void	init_dda(t_dda *d, t_mlx *mlx, double dx, double dy)
 	py = mlx->map_data->player[Y_POS];
 	d->map_x = (int)px;
 	d->map_y = (int)py;
-	d->delta_dist_x = (dx == 0) ? 1e30 : fabs(1.0 / dx);
-	d->delta_dist_y = (dy == 0) ? 1e30 : fabs(1.0 / dy);
-	d->step_x = (dx < 0) ? -1 : 1;
-	d->side_dist_x = (dx < 0) ? (px - d->map_x) * d->delta_dist_x
-		: (d->map_x + 1.0 - px) * d->delta_dist_x;
-	d->step_y = (dy < 0) ? -1 : 1;
-	d->side_dist_y = (dy < 0) ? (py - d->map_y) * d->delta_dist_y
-		: (d->map_y + 1.0 - py) * d->delta_dist_y;
+	init_step_x(d, px, dx);
+	init_step_y(d, py, dy);
 }
 
 double	throw_ray(t_mlx *mlx, int *side, double dx, double dy)
