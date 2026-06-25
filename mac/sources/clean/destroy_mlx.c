@@ -34,11 +34,6 @@ void	destroy_mlx_requested(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	remove_images(mlx);
 	if (mlx->mlx_ptr)
-	{
-# ifdef __linux__
-		mlx_destroy_display(mlx->mlx_ptr);
-# endif
 		free(mlx->mlx_ptr);
-	}
 	return ;
 }

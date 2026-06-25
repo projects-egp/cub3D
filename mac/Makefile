@@ -46,40 +46,18 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L $(LIBFT_DIR) -lft
 
 # ==============================
-# SYSTEM DETECTION
+# MLX
 # ==============================
 
-UNAME := $(shell uname)
-
-# ==============================
-# MLX CONFIG
-# ==============================
-
-ifeq ($(UNAME), Linux)
-
-	MLX_DIR = ./mlx_linux
-	MLX = $(MLX_DIR)/libmlx.a
-	MLX_INCLUDE = -Imlx_linux
-
-	MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib/X11 -lXext -lX11 -lm
-
-endif
-
-ifeq ($(UNAME), Darwin)
-
-	MLX_DIR = ./mlx_mac
-	MLX = $(MLX_DIR)/libmlx.a
-	MLX_INCLUDE = -Imlx_mac
-
-	MLX_FLAGS = -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
-
-endif
+MLX_DIR = ./mlx
+MLX = $(MLX_DIR)/libmlx.a
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 # ==============================
 # INCLUDES
 # ==============================
 
-INCLUDE = -I./include -I./libft $(MLX_INCLUDE)
+INCLUDE = -I./include -I./libft -Imlx
 CFLAGS += $(INCLUDE)
 
 LIBS_FLAGS = $(LIBFT_FLAGS) $(MLX_FLAGS)
@@ -90,89 +68,43 @@ LIBS_FLAGS = $(LIBFT_FLAGS) $(MLX_FLAGS)
 
 all: $(NAME)
 
-# ------------------------------
-# LIBFT
-# ------------------------------
-
 $(LIBFT):
 	@echo "Compiling Libft..."
 	@make -s -C $(LIBFT_DIR)
 
-# ------------------------------
-# MLX
-# ------------------------------
-
 $(MLX):
-	@if [ ! -d "$(MLX_DIR)" ]; then \
-		echo "Error: MiniLibX folder not found -> $(MLX_DIR)"; \
-		exit 1; \
-	fi
-	@echo "Compiling MLX for $(UNAME)..."
+	@echo "Compiling MLX..."
 	@make -s -C $(MLX_DIR)
-
-# ------------------------------
-# BUILD
-# ------------------------------
 
 $(NAME): $(LIBFT) $(MLX) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBS_FLAGS) -o $(NAME)
-	@echo "$(NAME) created for $(UNAME)"
-
-# ------------------------------
-# OBJECTS
-# ------------------------------
+	@echo "$(NAME) created"
 
 sources/%.o: sources/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# ------------------------------
-# BONUS
-# ------------------------------
+bonus/%.o: bonus/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MLX) $(OBJECTS_BONUS)
 	$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBS_FLAGS) -o $(BONUS_NAME)
-	@echo "$(BONUS_NAME) created for $(UNAME)"
-
-# ------------------------------
-# CLEAN
-# ------------------------------
+	@echo "$(BONUS_NAME) created"
 
 clean:
-	$(RM) $(OBJECTS)
-	$(RM) $(OBJECTS_BONUS)
+	$(RM) $(OBJECTS) $(OBJECTS_BONUS)
 	@make -s -C $(LIBFT_DIR) clean
-	@if [ -d "$(MLX_DIR)" ]; then \
-		make -s -C $(MLX_DIR) clean; \
-	fi
+	@make -s -C $(MLX_DIR) clean
 	@echo "Objects removed"
-# ------------------------------
-# COMPCLEAN
-# ------------------------------
-
-compclean: all clean
-
-# ------------------------------
-# FCLEAN
-# ------------------------------
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(BONUS_NAME)
+	$(RM) $(NAME) $(BONUS_NAME)
 	@make -s -C $(LIBFT_DIR) fclean
 	@echo "Binary removed"
 
-# ------------------------------
-# RE
-# ------------------------------
-
 re: fclean all
-
-# ------------------------------
-# BONUS_RE
-# ------------------------------
 
 bonus_re: fclean bonus
 
-.PHONY: all bonus clean compclean fclean re bonus_re
+.PHONY: all bonus clean fclean re bonus_re

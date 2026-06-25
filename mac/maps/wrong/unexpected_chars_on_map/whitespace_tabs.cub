@@ -1,0 +1,13 @@
+NO ./[path-to_north_texture]
+SO ./[path-to_north_texture]
+WE ./[path-to_north_texture]
+EA ./[path-to_north_texture]
+
+F 42,42,42
+C 24,200,128
+
+1111111    
+1000001
+10W0001  11111
+111111	1000001
+         11111
