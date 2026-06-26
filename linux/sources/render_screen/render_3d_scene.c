@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/26 21:33:31 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 22:04:36 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static double	hit_position(t_mlx *mlx, double distance,
  * 5) Draw a vertical stripe*/
 void	render_3d_scene(t_mlx *mlx)
 {
-	t_vertical_line	wall;
+	t_wall			wall;
 	int				x;
 	double			ray_angle;
 

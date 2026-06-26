@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/26 21:37:20 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 22:27:55 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,21 @@ typedef struct s_dda
 	double	side_dist_y;
 }	t_dda;
 
-typedef struct s_vertical_line
+typedef struct s_wall
 {
 	int		side;
 	double	dir[POSITION];
 	double	distance;
 	double	hit_position;
+}	t_wall;
+
+typedef struct s_vertical_line
+{
+	int		start;
+	int		end;
+	double	texture_x;
+	double	step;
+	double	tex_pos;
 }	t_vertical_line;
 
 typedef struct s_minimap
@@ -97,7 +106,7 @@ int		update_frame(t_mlx *mlx);
 /*	*	render_screen	*	*/
 void	draw_background(t_mlx *mlx);
 void	render_3d_scene(t_mlx *mlx);
-void	draw_vertical_line(t_mlx *mlx, int x, t_vertical_line *wall);
+void	draw_vertical_line(t_mlx *mlx, int x, t_wall *wall);
 //
 /*	*	throw_ray	*	*/
 double	throw_ray(t_mlx *mlx, int *side, double dx, double dy);
