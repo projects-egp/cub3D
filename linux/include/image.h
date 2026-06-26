@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/23 12:37:25 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 12:33:54 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,24 @@ typedef struct s_mlx
 	int		key[PLAYER_KEYS];
 }				t_mlx;
 
+//
+/*	*	,lx_utils.c	*	*/
 void	my_pixel_put(t_img *img, int x, int y, int color);
-void	draw_background(t_mlx *mlx);
-double	throw_ray(t_mlx *mlx, int *side, double dx, double dy);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
-void	link_images(t_mlx *mlx);
 void	run_mlx_loop(t_mlx *mlx);
+//
+/*	*	link_images.c	*	*/
+void	link_images(t_mlx *mlx);
+//
+/*	*	background.c	*	*/
+void	draw_background(t_mlx *mlx);
 //
 /*	*	update_frame	*	*/
 int		update_frame(t_mlx *mlx);
 void	render_3d_scene(t_mlx *mlx);
+//
+/*	*	throw_ray	*	*/
+double	throw_ray(t_mlx *mlx, int *side, double dx, double dy);
 //
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);
