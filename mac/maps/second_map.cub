@@ -1,0 +1,35 @@
+SO  ./textures/south_letter.xpm
+		
+WE   ./textures/west_letter.xpm
+EA	./textures/east_letter.xpm
+
+
+
+
+F 00000000000000000255,15,255
+C 56,240,,,,131,
+
+
+
+
+NO ./textures/north_letter.xpm
+
+
+
+
+ 111     111
+1011111110011
+ 1100000101
+ 1000001011
+ 1N1110101
+  101010001
+1101100011
+  1000011
+   1111
+
+
+
+
+
+
+
