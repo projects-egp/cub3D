@@ -85,6 +85,7 @@ sources/%.o: sources/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus/%.o: bonus/%.c
+	@echo "Compiling $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_NAME)
