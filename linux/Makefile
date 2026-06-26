@@ -77,23 +77,24 @@ $(MLX):
 	@make -s -C $(MLX_DIR)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBS_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBS_FLAGS) -o $(NAME)
 	@echo "$(NAME) created"
 
 sources/%.o: sources/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiling $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus/%.o: bonus/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MLX) $(OBJECTS_BONUS)
-	$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBS_FLAGS) -o $(BONUS_NAME)
+	@$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBS_FLAGS) -o $(BONUS_NAME)
 	@echo "$(BONUS_NAME) created"
 
 clean:
-	$(RM) $(OBJECTS) $(OBJECTS_BONUS)
+	@$(RM) $(OBJECTS) $(OBJECTS_BONUS)
 	@make -s -C $(LIBFT_DIR) clean
 	@make -s -C $(MLX_DIR) clean
 	@echo "Objects removed"
