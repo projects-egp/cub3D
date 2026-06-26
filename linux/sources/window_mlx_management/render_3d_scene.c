@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/23 12:05:13 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:08:34 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,22 @@ static double	get_texture_x(double wall_x, t_img texture, int side,
 	return (texture_x);
 }
 
+//side is the axis where hit position has happened 
+//dx and dy gives info from ray direction, to specify wall side hit, so we
+//can choose it's texture
 static t_img	get_texture(t_mlx *mlx, int side, double dx, double dy)
 {
-	if (side == 1) // Impacto en Eje Y (Paredes Norte o Sur)
+	if (side == Y_POS)
 	{
 		if (dy > 0)
-			return (mlx->textures[NORTH_PATH]); // Rayo baja: golpea cara NORTE (Rojo)
-		return (mlx->textures[SOUTH_PATH]);// Rayo sube: golpea cara SUR (Amarillo)
+			return (mlx->textures[NORTH_PATH]);
+		return (mlx->textures[SOUTH_PATH]);
 	}
-	else // Impacto en Eje X (Paredes Este u Oeste)
+	else
 	{
 		if (dx > 0)
-			return (mlx->textures[WEST_PATH]); // Rayo va derecha: golpea cara OESTE (Verde)
-		return (mlx->textures[EAST_PATH]);// Rayo va izquierda: golpea cara ESTE (Azul)
+			return (mlx->textures[WEST_PATH]);
+		return (mlx->textures[EAST_PATH]);
 	}
 }
 
@@ -90,7 +93,7 @@ static double	hit_position(t_mlx *mlx, double distance, double dir[2], int side)
 	double	wall_x;
 
 	wall_x = 0;
-	if (side == 1) // Impacto en Eje Y (Paredes Norte o Sur)
+	if (side == Y_POS)
 		wall_x = mlx->map_data->player[X_POS] + distance * dir[X_POS];
 	else
 		wall_x = mlx->map_data->player[Y_POS] + distance * dir[Y_POS];
@@ -125,7 +128,7 @@ void	render_3d_scene(t_mlx *mlx)
 		distance = throw_ray(mlx, &side, dir[X_POS], dir[Y_POS]);
 		wall_hit_position = hit_position(mlx, distance, dir, side);
 		distance *= cos(ray_angle - mlx->map_data->player_angle);
-		draw_vertical_line(mlx, x, side, distance, dir, wall_hit_position);	
+		draw_vertical_line(mlx, x, side, distance, dir, wall_hit_position);
 		++x;
 	}
 }
