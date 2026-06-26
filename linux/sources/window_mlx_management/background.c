@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 10:41:33 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/05 13:32:20 by mario            ###   ########.fr       */
+/*   Updated: 2026/06/26 20:14:13 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,24 @@ static uint32_t	get_color_value(int *decimal_value)
 	return (result);
 }
 
-void	draw_background(t_mlx *mlx)
+static void	draw_loop(t_mlx *mlx, int limit_to_draw, uint32_t color, int *y)
 {
 	uint32_t		*row;
 	int				x;
+
+	while (*y < limit_to_draw)
+	{
+		row = (uint32_t *)(mlx->img.addr + (*y) * mlx->img.line_length);
+		x = 0;
+		while (x < WIDTH)
+			row[x++] = color;
+		++(*y);
+	}
+	return ;
+}
+
+void	draw_background(t_mlx *mlx)
+{
 	int				y;
 	static uint32_t	ceiling_color;
 	static uint32_t	floor_color;
@@ -36,20 +50,6 @@ void	draw_background(t_mlx *mlx)
 	if (!floor_color)
 		floor_color = get_color_value(mlx->map_data->floor_color);
 	y = 0;
-	while (y < HEIGHT / 2)
-	{
-		row = (uint32_t *)(mlx->img.addr + y * mlx->img.line_length);
-		x = 0;
-		while (x < WIDTH)
-			row[x++] = ceiling_color;
-		y++;
-	}
-	while (y < HEIGHT)
-	{
-		row = (uint32_t *)(mlx->img.addr + y * mlx->img.line_length);
-		x = 0;
-		while (x < WIDTH)
-			row[x++] = floor_color;
-		y++;
-	}
+	draw_loop(mlx, (HEIGHT / 2), ceiling_color, &y);
+	draw_loop(mlx, HEIGHT, floor_color, &y);
 }
