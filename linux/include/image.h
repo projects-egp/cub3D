@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/26 20:43:25 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 21:37:20 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct s_mlx
 }				t_mlx;
 
 //
-/*	*	,lx_utils.c	*	*/
+/*	*	mlx_utils.c	*	*/
 void	my_pixel_put(t_img *img, int x, int y, int color);
 int		init_mlx_data(t_mlx *mlx, void *file_data);
 void	run_mlx_loop(t_mlx *mlx);
@@ -91,12 +91,13 @@ void	run_mlx_loop(t_mlx *mlx);
 /*	*	link_images.c	*	*/
 void	link_images(t_mlx *mlx);
 //
-/*	*	background.c	*	*/
-void	draw_background(t_mlx *mlx);
-//
 /*	*	update_frame	*	*/
 int		update_frame(t_mlx *mlx);
+//
+/*	*	render_screen	*	*/
+void	draw_background(t_mlx *mlx);
 void	render_3d_scene(t_mlx *mlx);
+void	draw_vertical_line(t_mlx *mlx, int x, t_vertical_line *wall);
 //
 /*	*	throw_ray	*	*/
 double	throw_ray(t_mlx *mlx, int *side, double dx, double dy);
