@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 15:10:49 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/26 12:33:54 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 20:43:25 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ typedef struct s_dda
 	double	side_dist_x;
 	double	side_dist_y;
 }	t_dda;
+
+typedef struct s_vertical_line
+{
+	int		side;
+	double	dir[POSITION];
+	double	distance;
+	double	hit_position;
+}	t_vertical_line;
 
 typedef struct s_minimap
 {

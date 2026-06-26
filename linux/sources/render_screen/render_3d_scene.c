@@ -6,19 +6,20 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 19:41:59 by enrgil-p          #+#    #+#             */
-/*   Updated: 2026/06/26 13:08:34 by enrgil-p         ###   ########.fr       */
+/*   Updated: 2026/06/26 21:02:42 by enrgil-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-static double	get_texture_x(double wall_x, t_img texture, int side,
-		double dx, double dy)
+static double	get_texture_x(double wall_x, t_img texture,
+		t_vertical_line *wall)
 {
 	double	texture_x;
 
 	texture_x = wall_x * texture.width;
-	if ((side == 1  && dy > 0) || (side == 0 && dx < 0))
+	if ((wall->side == 1 && wall->dir[Y_POS] > 0)
+		|| (wall->side == 0 && wall->dir[X_POS] < 0))
 		texture_x = texture.width - texture_x - 1;
 	return (texture_x);
 }
@@ -42,8 +43,9 @@ static t_img	get_texture(t_mlx *mlx, int side, double dx, double dy)
 	}
 }
 
-static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
-		double dir[2], double wall_x) 
+/*static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
+		double dir[2], double wall_x)*/ 
+static void	draw_vertical_line(t_mlx *mlx, int x, t_vertical_line *wall)
 {
 	int		wall_height;
 	int		y;
@@ -58,9 +60,10 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	int		index;
 	char	*pixel;
 
-	texture = get_texture(mlx, side, dir[X_POS], dir[Y_POS]);
-	texture_x = get_texture_x(wall_x, texture, side, dir[X_POS], dir[Y_POS]);
-	wall_height = (int)(HEIGHT / (distance + 0.0001));
+	texture = get_texture(mlx, wall->side,
+			wall->dir[X_POS], wall->dir[Y_POS]);
+	texture_x = get_texture_x(wall->hit_position, texture, wall);
+	wall_height = (int)(HEIGHT / (wall->distance + 0.0001));
 	start = (HEIGHT / 2) - (wall_height / 2);
 	end = (HEIGHT / 2) + (wall_height / 2);
 	step = (double)texture.height / wall_height;
@@ -88,7 +91,8 @@ static void	draw_vertical_line(t_mlx *mlx, int x, int side, double distance,
 	}
 }
 
-static double	hit_position(t_mlx *mlx, double distance, double dir[2], int side)
+static double	hit_position(t_mlx *mlx, double distance,
+		double dir[2], int side)
 {
 	double	wall_x;
 
@@ -110,12 +114,9 @@ static double	hit_position(t_mlx *mlx, double distance, double dir[2], int side)
  * 5) Draw a vertical stripe*/
 void	render_3d_scene(t_mlx *mlx)
 {
-	int		x;
-	double	ray_angle;
-	double	distance;
-	int		side;
-	double	dir[POSITION];
-	double	wall_hit_position;
+	t_vertical_line	wall;
+	int				x;
+	double			ray_angle;
 
 	x = 0;
 	while (x < WIDTH)
@@ -123,12 +124,14 @@ void	render_3d_scene(t_mlx *mlx)
 		ray_angle = (mlx->map_data->player_angle
 				- (mlx->map_data->fov_angle / 2))
 			+ ((double)x / (double)WIDTH) * mlx->map_data->fov_angle;
-		dir[X_POS] = cos(ray_angle);
-		dir[Y_POS] = sin(ray_angle);
-		distance = throw_ray(mlx, &side, dir[X_POS], dir[Y_POS]);
-		wall_hit_position = hit_position(mlx, distance, dir, side);
-		distance *= cos(ray_angle - mlx->map_data->player_angle);
-		draw_vertical_line(mlx, x, side, distance, dir, wall_hit_position);
+		wall.dir[X_POS] = cos(ray_angle);
+		wall.dir[Y_POS] = sin(ray_angle);
+		wall.distance = throw_ray(mlx, &wall.side,
+				wall.dir[X_POS], wall.dir[Y_POS]);
+		wall.hit_position = hit_position(mlx, wall.distance,
+				wall.dir, wall.side);
+		wall.distance *= cos(ray_angle - mlx->map_data->player_angle);
+		draw_vertical_line(mlx, x, &wall);
 		++x;
 	}
 }

@@ -13,10 +13,10 @@ COMMON_SOURCES =	main.c\
 		$(addprefix parse/, parse_main.c add_scene_data.c read_data.c\
 		checklist.c store_rgb_values.c map_lines_utils.c store_map.c\
 		read_map_lines.c check_stored_map.c)\
-		$(addprefix window_mlx_management/, key_events.c background.c\
-		link_images.c render_3d_scene.c throw_ray.c)\
-		$(addprefix clean/, clean_file_data.c clean_up.c destroy_mlx.c)
-
+		$(addprefix window_mlx_management/, key_events.c link_images.c)\
+		$(addprefix clean/, clean_file_data.c clean_up.c destroy_mlx.c)\
+		$(addprefix render_screen/, background.c draw_vertical_line.c\
+		render_3d_scene.c throw_ray.c)
 MANDATORY_SOURCES =	mlx_utils.c\
 			$(addprefix window_mlx_management/, update_frame.c)
 
