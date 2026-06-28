@@ -1,0 +1,13 @@
+NO ./textures/grass.xpm
+SO ./textures/grass.xpm
+WE ./textures/grass.xpm
+EA ./textures/grass.xpm
+
+F 42,42,42
+C 24,200,128
+
+11111111    
+100000101
+100W001001
+100000101
+11111111
