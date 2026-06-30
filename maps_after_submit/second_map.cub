@@ -1,7 +1,6 @@
-SO  ./textures/south_letter.xpm
-		
-WE   ./textures/west_letter.xpm
-EA	./textures/east_letter.xpm
+         WE		./maps_after_submit/textures/BLUE-WALL_column.xpm
+         EA		./maps_after_submit/textures/east_letter.png
+         SO		./maps_after_submit/textures/BLUE-WALL_column_torch.xpm
 
 
 
@@ -12,7 +11,7 @@ C 56,240,,,,131,
 
 
 
-NO ./textures/north_letter.xpm
+         NO	./maps_after_submit/textures/BLUE-WALL_moss.xpm
 
 
 
