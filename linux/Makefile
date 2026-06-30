@@ -95,7 +95,7 @@ $(BONUS_NAME): $(LIBFT) $(MLX) $(OBJECTS_BONUS)
 clean:
 	$(RM) $(OBJECTS) $(OBJECTS_BONUS)
 	@make -s -C $(LIBFT_DIR) clean
-	@make -s -C $(MLX_DIR) clean
+	@make -s -C $(MLX_DIR) clean > /dev/null 2>&1
 	@echo "Objects removed"
 
 fclean: clean

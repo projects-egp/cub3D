@@ -47,3 +47,9 @@ int	key_released(int key, t_mlx *mlx)
 		mlx->key[RIGHT_KEY] = 0;
 	return (0);
 }
+
+int	focus_out(t_mlx *mlx)
+{
+	ft_bzero((void *)mlx->key, sizeof(int) * PLAYER_KEYS);
+	return (0);
+}

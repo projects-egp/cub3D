@@ -47,3 +47,12 @@ int	key_released(int key, t_mlx *mlx)
 		mlx->key[RIGHT_KEY] = 0;
 	return (0);
 }
+
+int	mouse_pressed(int button, int x, int y, t_mlx *mlx)
+{
+	(void)button;
+	(void)x;
+	(void)y;
+	ft_bzero((void *)mlx->key, sizeof(int) * PLAYER_KEYS);
+	return (0);
+}

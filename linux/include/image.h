@@ -88,6 +88,7 @@ void	render_3d_scene(t_mlx *mlx);
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);
 int		key_released(int key, t_mlx *mlx);
+int		focus_out(t_mlx *mlx);
 int		close_program(t_mlx *mlx, int status);
 
 #endif

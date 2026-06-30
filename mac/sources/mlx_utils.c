@@ -74,6 +74,7 @@ void	run_mlx_loop(t_mlx *mlx)
 		mlx->img.img_ptr, 0, 0);
 	mlx_hook(mlx->win_ptr, 2, 1L << 0, key_pressed, mlx);
 	mlx_hook(mlx->win_ptr, 3, 1L << 1, key_released, mlx);
+	mlx_hook(mlx->win_ptr, 4, 1L << 2, mouse_pressed, mlx);
 	mlx_hook(mlx->win_ptr, 17, 0, close_program, mlx);
 	mlx_loop_hook(mlx->mlx_ptr, update_frame, mlx);
 	mlx_loop(mlx->mlx_ptr);

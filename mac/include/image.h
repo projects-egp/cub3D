@@ -88,6 +88,7 @@ void	render_3d_scene(t_mlx *mlx);
 /*	*	mlx events	*	*/
 int		key_pressed(int key, t_mlx *mlx);
 int		key_released(int key, t_mlx *mlx);
+int		mouse_pressed(int button, int x, int y, t_mlx *mlx);
 int		close_program(t_mlx *mlx, int status);
 
 #endif
