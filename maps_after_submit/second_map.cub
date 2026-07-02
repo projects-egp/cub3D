@@ -1,7 +1,6 @@
-         WE		./maps_after_submit/textures/BLUE-WALL_column.xpm
-         EA		./maps_after_submit/textures/east_letter.png
-         SO		./maps_after_submit/textures/BLUE-WALL_column_torch.xpm
-
+EA ./maps_after_submit/textures/BLUE-WALL_column_torch.xpm
+WE ./maps_after_submit/textures/BLUE-WALL_column.xpm
+SO ./maps_after_submit/textures/BLUE-WALL_flag.xpm
 
 
 
@@ -10,8 +9,8 @@ C 56,240,,,,131,
 
 
 
+NO ./maps_after_submit/textures/BLUE-WALL_moss.xpm
 
-         NO	./maps_after_submit/textures/BLUE-WALL_moss.xpm
 
 
 
